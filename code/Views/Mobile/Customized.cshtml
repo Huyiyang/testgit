@@ -1,0 +1,869 @@
+﻿@{
+    ViewBag.Title = "来肯云商|来肯在线|进销存软件|进销存管理软件|在线进销存";
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<link rel="stylesheet" href="@(cdnFileRoot)/mobile/swiper/swiper.min.css?v=1129">
+<style>
+    /*   body {
+        background-color: #333;
+    }
+*/
+    html, body {
+        height:100%;
+        width:100%;
+    overflow:hidden;
+    }
+    .section-extend {
+        background-color: #fefefe;
+    }
+
+    .swiper-container {
+        width: 100%;
+       
+        /*height: 100%;*/
+    }
+
+    .swiper-slide {
+        text-align: center;
+        /*font-size: 18px;
+        background: #fff;*/
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: 0;
+    }
+
+    .swiper-pagination-bullet-active {
+        border-color: #667b9a;
+        background-color:transparent;
+    }
+
+    .swiper-pagination-bullet {
+        width: 46px;
+        height: 14px;
+        border-radius: 0;
+        border-top:2px solid;
+        border-color: #667b9a;
+        background-color:transparent;
+    }
+
+    .footerLink + .footerLink {
+        display: none;
+    }
+</style>
+<div id="scrollview" style="top:62px;bottom:58px;left:0;right:0;position:absolute;">
+    <div id="customized-view">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="section swiper-slide">
+                    <div class="section-bg image-design-get1" data-width="750" data-height="984" style="padding: 65.6% 0%;">
+                        <img src="@(cdnFileRoot)/mobile/image/4.0/ka/bg1.1.jpg?v=1129" />
+                    </div>
+                    <div class="section-content text-center">
+                        <div class="head-box">
+                            <h1 class="font-70">铸智能系统<br />创智慧商业</h1>
+                            <div class="font-26">
+                                无论您是连锁加盟、商业市场、<br />
+                                总代/厂商+分销，<br />
+                                还是多门店经营、供应商/经销商，
+                            </div>
+                        </div>
+                        <div class="font-24">我们都能为您提供最适合您的经营管理一体化解决方案</div>
+
+                    </div>
+
+                </div>
+                <div class="section swiper-slide">
+                    <div class="section-bg image-design-get2" data-width="750" data-height="984" style="padding: 65.6% 0%;">
+                        <img class="swiper-lazy" data-src="@(cdnFileRoot)/mobile/image/4.0/ka/bg2.1.jpg" />
+                    </div>
+                    <div class="section-content text-center">
+                        <div class="text-right design-get2-box" style="display:inline-block;">
+                            <h1 class="font-62">用专业成就品质<br />用品质筑就高度</h1>
+                            <div class="font-24"><span class="font-50">3</span>项专利 / <span class="font-50">3</span>项认证 / <span class="font-50">9</span>项软著 / <span class="font-50">10</span>个专业部门</div>
+                            <div class="font-24">50人技术团队 / 100人规模企业 / 100000家用户</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section swiper-slide">
+                    <div class="section-bg image-design-get3" data-width="750" data-height="984" style="padding: 65.6% 0%;">
+                        <img class="swiper-lazy" data-src="@(cdnFileRoot)/mobile/image/4.0/ka/bg3.1.jpg" />
+                    </div>
+                    <div class="section-content text-center">
+                        <div class="design-get3-box">
+                            <div class="font-56">一体化设计&emsp;一站式解决</div>
+                            <div class="font-58">专业定制&emsp;极致品质</div>
+                            <img class="swiper-lazy" width="301" data-src="@(cdnFileRoot)/mobile/image/4.0/ka/app.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="section-btnpane" style=" -webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);">
+                <a class="link-apply" href="CustomizedApply?sourceflag=@Request["sourceflag"]">立即获取方案</a>
+            </div>
+        </div>
+        <div class="text-center" style="padding: 1.2em 0;background-color:#f3f3f3">
+            <div class="font-52 font-lighter" style="color:#454545;">多种经营模式解决方案</div>
+            <div class="font-36 font-lighter" style="color:#9f9f9f;">更加贴合您的需要</div>
+        </div>
+        <!--连锁加盟-->
+        <div class="section" id="lazyloadpoint">
+            <div class="section-bg" style="padding: 77.2% 0%;">
+            </div>
+
+            <div class="section-bg section-fixed-image image-design-abg" data-width="750" data-height="1158" style="padding: 77.2% 0%;">
+                <div class="section-image" style="background-image:url(@(cdnFileRoot)/mobile/image/4.0/ka/abg1.1.jpg?v=1207)"></div>
+                <div class="section-image-cover"></div>
+            </div>
+            <div class="section-content-bg" style="padding: 57.2% 0%;">
+                <div class="section-content text-center">
+                    <div class="design-a-box">
+                        <div class="font-56">连锁加盟解决方案</div>
+                        <div class="font-28">集成大数据让所有经营状况了如指掌</div>
+                    </div>
+                    <div class="design-icons row">
+                        <div class="col-xs-6">
+                            <img class="design-icon" src="@(cdnFileRoot)/mobile/image/4.0/ka/icon.ls.png" />
+                            <div class="design-text">连锁店管理</div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img class="design-icon" src="@(cdnFileRoot)/mobile/image/4.0/ka/icon.jm.png" />
+                            <div class="design-text">加盟店管理</div>
+                        </div>
+                    </div>
+                    <div class="section-expandpane">
+                        <div class="expand-text expand-cmd" data-name="a">点击展开以了解更多信息</div>
+                        <img class="expand-btn expand-cmd" data-name="a" src="@(cdnFileRoot)/mobile/image/4.0/ka/expand.btn.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--连锁加盟 展开-->
+        <div class="section-extend hidden">
+            <div class="image-pattern" style="padding-top:3em;">
+                <img class="image-pattern-jm" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/jiameng2.png" />
+            </div>
+            <div class="section-item section-item-jm" style="    padding-top: 3.5em;">
+                <div class="section-item-content">
+                    <h4 class="font-40">掌握加盟商（门店）库存及销售数据</h4>
+                    <div class="font-30 item-subtitle font-lighterr">Controlling data of stocks and sales</div>
+                    <div class="section-line"></div>
+                    <div class="section-intro font-32">在企业管理中对于库存和销量数据的把控尤为重要，当你在为不能及时了解这些数据而苦恼的时候，我们的研发人员早已运用先进云技术为您特制出一套能随时查看门店销售、库存、利润的系统，完美解决您的各项需求。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-jm" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/jma1.1.jpg?v=1129" />
+                </div>
+            </div>
+            <div class="section-item section-item-jm">
+                <div class="section-item-content">
+                    <h4 class="font-40">坐拥一体化系统</h4>
+                    <div class="font-30 item-subtitle font-lighterr">The system of intergration</div>
+                    <div class="section-line"></div>
+                    <div class="section-intro font-32">每一个注册的连锁企业都将拥有一套独立进销存+商城一体化的专业系统，不仅能独立核算各项数据，还可以直接通过系统向厂家订货。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-jm" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/jmb1.1.jpg?v=1129" />
+                </div>
+            </div>
+            <div class="section-item section-item-jm">
+                <div class="section-item-content">
+                    <h4 class="font-40">连锁店/加盟店权限划分</h4>
+                    <div class="font-30 item-subtitle font-lighterr">Rights management control</div>
+                    <div class="section-line"></div>
+                    <div class="section-intro font-32">作为连锁企业的总店，能够随时统计查询所有连锁分店的收发货，经营状况，利润等数据，并可以对这些数据进行详细的分析，制定出新的营销策略。而加盟商可根据实际情况，选择性的向总部共享数据，充分体现出加盟商的自主独立性。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-jm" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/jmc1.1.jpg?v=1129" />
+                </div>
+            </div>
+        </div>
+        <!--总代+分销-->
+        <div class="section">
+            <div class="section-bg" style="padding: 77.2% 0%;">
+            </div>
+
+            <div class="section-bg section-fixed-image image-design-abg" data-width="750" data-height="1158" style="padding: 77.2% 0%;">
+                @*<img data-original="@(cdnFileRoot)/mobile/image/4.0/ka/bbg1.1.jpg?v=1129" />*@
+                <div class="section-image" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/bbg1.1.jpg?v=1207"></div>
+                <div class="section-image-cover"></div>
+            </div>
+            <div class="section-content-bg" style="padding: 57.2% 0%;">
+                <div class="section-content text-center">
+                    <div class="design-a-box">
+                        <div class="font-56">总代+分销模式解决方案</div>
+                        <div class="font-28">经营管理智能化&emsp;销售方式多元化</div>
+                    </div>
+                    <div class="design-icons row">
+                        <div class="col-xs-4">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.cj.png" />
+                            <div class="design-text">厂家</div>
+                        </div>
+                        <div class="col-xs-4">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.zd.png" />
+                            <div class="design-text">总代</div>
+                        </div>
+                        <div class="col-xs-4">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.fx.png" />
+                            <div class="design-text">分销商</div>
+                        </div>
+                    </div>
+                    <div class="section-expandpane">
+                        <div class="expand-text expand-cmd" data-name="b">点击展开以了解更多信息</div>
+                        <img class="expand-btn expand-cmd" data-name="b" src="@(cdnFileRoot)/mobile/image/4.0/ka/expand.btn.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--总代+分销 展开-->
+        <div class="section-extend hidden">
+            <div class="image-pattern">
+                <div class="pattern-title font-40">总代/厂商+分销模式</div>
+                <img class="image-pattern-zd" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/fenxiao.png" />
+            </div>
+            <div class="section-item section-item-zd clearfix" style=" margin-top: 4em;">
+                <img class="titleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/n1.png" />
+                <div class="section-item-content">
+                    <h4 class="font-40">专属私享微商城</h4>
+                    <div class="section-intro font-32">我们深刻的明白您十分需要一个属于自己的空间，可以独立开展推广、促销等多样的线上活动，利用专属的微商城来吸引更多的会员客户。来肯作为一家专业的服务商，这些需求我们皆能为您提供。</div>
+                </div>
+                <img class="section-item-bg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/cube1.1.jpg?v=1129" />
+            </div>
+            <div class="section-item section-item-zd clearfix">
+                <img class="titleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/n2.png" />
+                <div class="section-item-content">
+                    <h4 class="font-40">实时了解市场变化</h4>
+                    <div class="section-intro font-32">总代/厂商能通过自己的订货商城接收经销商订单，保证随时供应经销商货品需求；还可通过监管经销商的经营情况，有效分析市场产品走向，及时跟上市场发展趋势。</div>
+                </div>
+                <img class="section-item-bg section-item-bg2" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/chart1.1.jpg?v=1129" />
+            </div>
+            <div class="section-item section-item-zd clearfix" style="padding-bottom:1em">
+                <img class="titleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/n3.png" />
+                <div class="section-item-content">
+                    <h4 class="font-40">牢牢锁住会员</h4>
+                    <div class="section-intro font-32">针对长久以来的会员管理问题，建立统一大会员体系，掌握商家会员，避免分销商流失而导致会员流失。通过系统提供的大数据分析、客户分析、消费爱好分析、消费水平分析等准确信息，为企业经营决策提供数据支撑。</div>
+                </div>
+                <img class="section-item-bg section-item-bg3" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/lock1.1.jpg?v=1129" />
+            </div>
+            <div style="height:4em;"></div>
+        </div>
+        <!--多门店-->
+        <div class="section">
+            <div class="section-bg" style="padding: 77.2% 0%;">
+            </div>
+            <div class="section-bg section-fixed-image image-design-abg" data-width="750" data-height="1158" style="padding: 77.2% 0%;">
+                <div class="section-image" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/cbg1.1.jpg?v=1207"></div>
+                <div class="section-image-cover"></div>
+            </div>
+            <div class="section-content-bg" style="padding: 57.2% 0%;">
+                <div class="section-content text-center">
+                    <div class="design-a-box">
+                        <div class="font-56">多门店经营解决方案</div>
+                        <div class="font-28">让门店管理更加细致入微</div>
+                    </div>
+                    <div class="design-icons row">
+                        <div class="col-xs-6">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.leval.png" />
+                            <div class="design-text">跨层级管理</div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.zh.png" />
+                            <div class="design-text">跨区域管理</div>
+                        </div>
+                    </div><div class="section-expandpane">
+                        <div class="expand-text expand-cmd" data-name="c">点击展开以了解更多信息</div>
+                              <img class="expand-btn expand-cmd" data-name="c" src="@(cdnFileRoot)/mobile/image/4.0/ka/expand.btn.png"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--多门店 展开-->
+        <div class="section-extend hidden">
+            <div class="image-pattern">
+                <div class="pattern-title font-40">多门店经营模式</div>
+                <img class="image-pattern-md" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mendian2.png" />
+            </div>
+
+            <div class="section-item section-item-md section-item-md-a" style="padding-top:3em;">
+
+                <div class="font-30 item-subtitle font-lighterr">Regulatory stores<img class="mdtitleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/a.png" /></div>
+                <h4 class="font-40">全方位监管门店</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">从研发开始，我们就充分为您考虑到门店监管所面临决的各种问题。通过来肯，您不仅可以轻松查询下级门店的经营、排名、利润情况，还能通过来肯大数据功能对市场偏好商品进行重点管理，大幅度提升企业管理水平。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-md" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mdb1.1.jpg?v=1129" />
+                </div>
+            </div>
+
+            <div class="section-item section-item-md section-item-md-b" >
+
+                <div class="font-30 item-subtitle font-lighterr">Master the operating conditions<img class="mdtitleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/b.png" /></div>
+                <h4 class="font-40">多维度掌控省区经营状况</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">每一个大区的管理者，可以随时查询本区域内各省区和门店的经营、排名、利润等情况，并能进行各数据独立核算，及时处理门店对于货品订购和调配的申请。</div>
+                </div>
+                <div class="text-left">
+                    <img class="image-md" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mda1.1.jpg?v=1129" />
+                </div>
+            </div>
+
+            <div class="section-item section-item-md section-item-md-c">
+
+                <div class="font-30 item-subtitle font-lighterr">Query stores all kinds of information<img class="mdtitleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/c.png" /></div>
+                <h4 class="font-40">查询管理门店各类信息</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">若需要管理省区，我们的多门店经营解决方案能及时满足你查询本区域内各门店经营、排名、利润情况的需要。此外，您省区的数据也能独立核算，还能随时为门店对货品的需求与大区进行沟通申请。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-md" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mdd1.1.jpg?v=1129" />
+                </div>
+            </div>
+
+            <div class="section-item section-item-md section-item-md-d">
+
+                <div class="font-30 item-subtitle font-lighterr">Easily cope with demand<img class="mdtitleimg" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/d.png" /></div>
+                <h4 class="font-40">货品需求轻松应对</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">每个门店都拥有一套能解决进销存，往来账务，零售管理业务的一体化系统，对于货品的调配和补充能随时向上级或其他门店提交申请，保证货品充足。</div>
+                </div>
+                <div class="text-left">
+                    <img class="image-md" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mdc1.1.jpg?v=1129" />
+                </div>
+            </div>
+
+        </div>
+        <!--自主商城-->
+        <div class="section">
+            <div class="section-bg" style="padding: 77.2% 0%;">
+            </div>
+            <div class="section-bg section-fixed-image image-design-abg" data-width="750" data-height="1158" style="padding: 77.2% 0%;">
+                <div class="section-image" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/dbg1.1.jpg?v=1207"></div>
+                <div class="section-image-cover"></div>
+            </div>
+            <div class="section-content-bg" style="padding: 57.2% 0%;">
+                <div class="section-content text-center">
+                    <div class="design-a-box">
+                        <div class="font-56">自主商城解决方案</div>
+                        <div class="font-28">建立供需纽带&emsp;降低资金库存压力</div>
+                    </div>
+                    <div class="design-icons row">
+                        <div class="col-xs-6">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.gys.png" />
+                            <div class="design-text">供应商入驻</div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.jxs.png" />
+                            <div class="design-text">经销商入驻</div>
+                        </div>
+                    </div>
+                    <div class="section-expandpane">
+                        <div class="expand-text expand-cmd" data-name="d">点击展开以了解更多信息</div>
+                        <img class="expand-btn expand-cmd" data-name="d" src="@(cdnFileRoot)/mobile/image/4.0/ka/expand.btn.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--自主商城 展开-->
+        <div class="section-extend hidden">
+            <div class="image-pattern">
+                <div class="pattern-title font-40">自主商城模式</div>
+                <img class="image-pattern-sc" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mall.png" />
+            </div>
+            <div class="section-item section-item-sc" style="margin-top:2em;">
+                <img class="sctitleimg sctitleimg-a" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/ma.png" />
+                <h4 class="font-40">无限匹配各类需求</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">我们为不同的客户定制出最贴合他们的软件，无论任何种类、任何产品特性，我们皆能量身定制，满足实际情况的适合性。同时，您完全能够自由的进行客户订单的收取和供应商订单的分配，一切都变得如此契合。</div>
+                </div>
+            </div>
+
+            <div class="section-item section-item-sc">
+                <img class="sctitleimg sctitleimg-b" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mc.png" />
+                <h4 class="font-40 text-right">轻松下达订单</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">当对商品有订货需求的时候，客户只需直接进入商城，就能看到琳琅满目的货品资源，根据自己的需求，筛选出自己满意的商品并提交货品订单申请就能轻松搞定货品采购，坐享收货。</div>
+                </div>
+            </div>
+
+            <div class="section-item section-item-sc">
+                <img class="sctitleimg sctitleimg-c" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/mb.png" />
+                <h4 class="font-40 ">从此不再货品堆积</h4>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">您只需入驻商城就能被商城中大量有需求的客户所检索到，进而能从经销商处获得源源不断的货品订单，仓库陆续发货，再也不用担心滞留问题，成交量随之扶摇直上。</div>
+                </div>
+            </div>
+
+        </div>
+        <!--商业市场-->
+        <div class="section">
+            <div class="section-bg" style="padding: 77.2% 0%;">
+            </div>
+            <div class="section-bg section-fixed-image image-design-abg" data-width="750" data-height="1158" style="padding: 77.2% 0%;">
+                <div class="section-image" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/ebg1.1.jpg?v=1207"></div>
+                <div class="section-image-cover"></div>
+            </div>
+            <div class="section-content-bg" style="padding: 57.2% 0%;">
+                <div class="section-content text-center">
+                    <div class="design-a-box">
+                        <div class="font-56">商业市场解决方案</div>
+                        <div class="font-28">接轨电商，依托互联网盘活传统市场</div>
+                    </div>
+                    <div class="design-icons row">
+                        <div class="col-xs-6">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.gys.png" />
+                            <div class="design-text">批发城管理</div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img class="design-icon" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/icon.jxs.png" />
+                            <div class="design-text">专业市场</div>
+                        </div>
+                    </div><div class="section-expandpane">
+                        <div class="expand-text expand-cmd" data-name="e">点击展开以了解更多信息</div>
+                              <img class="expand-btn expand-cmd" data-name="e" src="@(cdnFileRoot)/mobile/image/4.0/ka/expand.btn.png"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--商业市场 展开-->
+        <div class="section-extend hidden">
+            <div class="image-pattern">
+                <div class="pattern-title font-40">商业市场模式</div>
+                <img class="image-pattern-sc" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/shangye.png" />
+            </div>
+            <div class="section-item section-item-sy" style="padding-top:5em;">
+                <img class="sytitleimg sytitleimg-a" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/x1.png" />
+                <h4 class="font-40">打通线上线下</h4>
+                <div class="font-24 item-subtitle font-lighterr">Online+Offonline</div>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">历经三年的时间，我们搜集了千万的客户需求，不断的推陈出新。如果您想跟上电商的步伐同时也想兼顾扩展渠道拥有更多的客户资源，那么这一次，您将有机会将这二者共揽囊中。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-sy" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/sya1.1.jpg?v=1129" />
+                </div>
+            </div>
+            <div class="section-item section-item-sy">
+                <img class="sytitleimg sytitleimg-b" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/x2.png" />
+                <h4 class="font-40 text-right">相互引流</h4>
+                <div class="font-24 item-subtitle font-lighterr text-right">Mutual cooperation</div>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">每位商家都拥有一个自己的小商城，可以直接连接到市场方大商城，在市场方展示自有商品的同时，也会随之展示各店铺的商品信息，实现大小商城相互引流，共赢共生。</div>
+                </div>
+                <div class="text-left">
+                    <img class="image-sy" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/syb1.1.jpg?v=1129" />
+                </div>
+            </div>
+            <div class="section-item section-item-sy">
+                <img class="sytitleimg sytitleimg-c" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/x3.png" />
+                <h4 class="font-40">发展途径多样</h4>
+                <div class="font-24 item-subtitle font-lighterr">Development path diversity</div>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">管理方能统一后台，随时监管商家各项经营数据，利用抽佣、减租等方式吸引更多商家入驻，不仅能享受商家带来线上流量，还能让数据分析、排名、互联网金融等多种赢利模式并存。</div>
+                </div>
+                <div class="text-right">
+                    <img class="image-sy" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/syc1.1.jpg?v=1129" />
+                </div>
+            </div>
+            <div class="section-item section-item-sy" style="padding-bottom: 5em;">
+                <img class="sytitleimg sytitleimg-d" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/x4.png" />
+                <h4 class="font-40 text-right">统一会员</h4>
+                <div class="font-24 item-subtitle font-lighterr text-right">Unified VIP</div>
+                <div class="section-item-content">
+                    <div class="section-intro font-32">市场方可以统计所有入驻商家旗下的会员信息，以此为依据建立统一的大会员体系，把每一位会员客户都牢牢掌握，以此来确保即便商家流失而会员不会随之流失。</div>
+                </div>
+                <div class="text-left">
+                    <img class="image-sy" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/syd1.1.jpg?v=1129" />
+                </div>
+            </div>
+        </div>
+        <!--您的诉求-->
+        <div class="section">
+            <div class="section-bg image-design-abg" data-width="750" data-height="569" style="padding: 37.9333% 0%;" data-original="@(cdnFileRoot)/mobile/image/4.0/ka/sq1.1.jpg?v=1129">
+            </div>
+            <div class="section-content text-center" style="color:#333;">
+                <div class="design-sq-box">
+                    <div class="font-44">您的诉求 我们将竭力为您满足</div>
+                    <div class="font-22">All  for your demand searching for data in anytime</div>
+                </div>
+            </div>
+            <div class="section-btnpane section-sqbtnpane">
+                <a class="link-apply" href="CustomizedApply?sourceflag=@Request["sourceflag"]">立即获取方案</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:58px;"></div>
+@*<script>
+        $('.section-bg').each(function () {
+            var width = parseInt(this.getAttribute("data-width")), height = parseInt(this.getAttribute("data-height"));
+            if (width && height) {
+                this.style.padding = height / width * 50 + '% 0%';
+            }
+        })
+    </script>*@
+<script src="@(cdnFileRoot)/Scripts/jquery.lazyload.js?v=10091"></script>
+<script src="@(cdnFileRoot)/mobile/swiper/swiper.min.js?v=10091"></script>
+<script src="@(cdnFileRoot)/mobile/iscroll/iscroll.min.js?v=10091"></script>
+<script>
+    var lazySwiperImage = function (swiper, n) {
+        swiper.activeIndex < swiper.wrapper.children().length - n && swiper.wrapper.children().eq(swiper.activeIndex + n).find('img').each(function () {
+            !this.src && (this.src = this.getAttribute("data-src"));
+        })
+    };
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        onSlideNextStart: function () {
+            lazySwiperImage(swiper, 1)
+        },
+        onSlideChangeStart: function () {
+            lazySwiperImage(swiper, 0)
+        }
+    });
+    setTimeout(function () {
+        lazySwiperImage(swiper, 1)
+    }, 300);
+
+    var debounce = function (cb, wait) {
+        var timer;
+        return function () {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            var self = this;
+            var a = arguments;
+            timer = setTimeout(function () {
+                cb.apply(self, a);
+            }, wait);
+        };
+    };
+
+    scrollview = new IScroll('#scrollview', {
+        probeType: 3,
+        mouseWheel: true,
+        tap:true,
+        bounce: false
+    });
+
+    $('.swiper-container').delegate('.swiper-pagination-bullet', 'tap', function () {
+        swiper.slideTo(    $(this).index())
+    })
+
+    scrollview.on('scroll', function () {
+        scrollToView(this.y,true);
+        triggerLazy(this.y);
+    });
+    scrollview.on('scrollend', function () {
+        triggerLazy(this.y)
+    });
+    //scrollview.on('flick', function () {
+    //    debounce;
+    //})
+
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+    var $scroll = $('#scrollview').on('tap', function () {
+        if (event.target.tagName === 'A') {
+            location.href = event.target.href;
+        }
+    }), triggerLazy = (function () {
+        var _y = 0;
+        return function (y, a) {
+            (Math.abs(y - _y) > 100||!a)&&$scroll.trigger('scroll');
+            _y = y;
+        }
+    })();
+
+    //可见和隐藏的第一张
+    $('#lazyloadpoint').nextAll().find('[data-original]:visible,.image-pattern img').lazyload({
+        container: $scroll,
+        threshold: 400
+    });
+
+    var sections = $('.section'), isExpand = true, sectionJson = {}, sectionAay = [], headerHeight = 63;
+    sections.each(function (i) {
+        var this$ = $(this),
+            extend$ = this$.next(),
+            nextSection$ = extend$.next(),
+            fixedImage$ = this$.find('.section-fixed-image'),
+            sectionImage$ = this$.find('.section-image'),
+                cover$ = this$.find('.section-image-cover'),
+            sectionContent$ = this$.find('.section-content'),
+            btn$ = this$.find('.expand-cmd'),
+            key = btn$.attr("data-name");
+
+        sectionAay.push({
+            btn$: btn$,
+            btn: btn$.get(0),
+            pane$: btn$.parent(),
+            pane: btn$.parent().get(0),
+            section: this,
+            section$: this$,
+            parent$: this$.parent(),
+            prevAll$: this$.prevAll(),
+            extend: extend$.get(0),
+            extend$: extend$,
+            nextSection$: nextSection$,
+            nextSection: nextSection$.get(0),
+            fixedImage$: fixedImage$,
+            fixedImage: fixedImage$.get(0),
+            sectionImage$: sectionImage$,
+            sectionImage: sectionImage$.get(0),
+            sectionContent$: sectionContent$,
+            sectionContent: sectionContent$.get(0),
+            cover$: cover$,
+            cover: cover$.get(0),
+            key: key,
+            index: i,
+            duration: 1100,
+            offsetTop: 100,
+            top: 0,
+            isOpen: false,
+            isFixedPane: false,
+            isFixedBg: false,
+            lazyloaded: false,
+            lazyloadExtend: function () {
+                !this.lazyloaded && (this.extend$.find('img').lazyload({
+                    container: $scroll,
+                    threshold: 400
+                }), this.lazyloaded = true)
+            },
+            getNextVisibleAll: function () {
+                return this.section$.nextAll(':visible')
+            },
+            getSectionTop: function (b) {
+                var top = !b ? -this.section.getBoundingClientRect().top : 0;//, top = rect.top + rect.height;
+                this.prevAll$.each(function () {
+                    top += this.getBoundingClientRect().height
+                });
+                return top;
+            },
+            offOverView: function () {
+                scrollview.disable()
+               // document.body.style.overflow = 'hidden';
+               // this.parent$.css({ height: this.parent$.height() });
+            },
+            onOverView: function () {
+                scrollview.enable()
+               // document.body.style.overflow = '';
+               // this.parent$.css({ height: '' })
+            }
+        })
+    });
+    sectionAay.forEach(function (item) {
+        sectionJson[item.key] = item;
+    });
+
+    var scrollY = function (y) {
+        if (y > -1) {
+            (scrollview.scrollTo(0,-y, 0))
+        } else {
+            return scrollview.y
+        }
+    }
+
+    $('.expand-cmd').on('tap', function () {
+        if (!isExpand) {
+            return
+        }
+        isExpand = false;
+
+        var k = this.getAttribute("data-name"),
+            section = sectionJson[k],
+            nextAll = section.getNextVisibleAll();
+        section.lazyloadExtend();
+        section.offOverView();
+
+        nextAll.each(function (i) {
+            var rect = this.getBoundingClientRect();//
+            $(this).data({ position: 'absolute', top: rect.top - headerHeight + (i == 0 && section.isOpen ? section.offsetTop : 0) - scrollview.y, left: rect.left, width: rect.width, height: rect.height });
+        }).each(function () {
+            $(this).css($(this).data());
+        });
+
+        if (section.isOpen) {
+            if (section.isFixedPane) {
+                var pane = section.pane;
+                pane.style.position = '';
+                pane.style.top = '';
+                pane.style.marginTop = '';
+
+                var srect = section.section.getBoundingClientRect(),
+                    nrect = section.nextSection.getBoundingClientRect(),
+                    height = $scroll.height(),
+                        space = height * 0.2;
+
+                section.top = 0;
+
+                section.prevAll$.each(function () {
+                    if (this.style.marginTop == section.offsetTop + 'px') {
+                        section.top=section.offsetTop
+                    }
+                });
+
+                if (nrect.top > height + headerHeight) {
+                    section.section$.css({ top: -scrollview.y - (srect.height * 2 - (height - space)), left: srect.left, width: srect.width, height: srect.height }).addClass("close-section");
+                    section.nextSection$.css({ top: -scrollview.y+(height-space)+nrect.height }).addClass("up-section");
+                } else {
+                    section.nextSection$.css({ zIndex: 1 });
+                    section.section$.css({ top: -scrollview.y - (srect.height*2 - (nrect.top - headerHeight)), left: srect.left, width: srect.width, height: srect.height }).addClass("close-section");
+                }
+            } else {
+
+                section.nextSection$.css({ marginTop: -section.extend$.height() + section.nextSection$.height() + section.offsetTop }).addClass("up-section");
+            }
+            section.section$.removeClass('open-section');
+            section.sectionImage.style.transform = '';
+            section.extend$.addClass('hide-section');
+        } else {
+            section.section$.addClass('open-section');
+            section.extend$.removeClass('hidden');
+            section.nextSection$.addClass("down-section");
+            section.fixedImage$.css({ position: 'absolute', bottom: '0px', top: 'initial' });
+            setTimeout(function () { section.extend$.addClass('show-section') }, 50);
+        }
+        setTimeout(function () {
+            nextAll.each(function () {
+                $(this).css({ position: '', top: '', left: '', width: '', height: '' })
+            });
+            if (section.isOpen) {
+                var scrollTop;
+                if (section.isFixedPane) {
+                    scrollTop = section.getSectionTop() + headerHeight + section.top;
+                    section.section$.removeClass("close-section").css({ top: '', left: '', width: '', height: '' });
+                }
+
+                section.extend.style.marginTop = '';
+                section.extend$.addClass('hidden').removeClass('hide-section');
+                section.nextSection$.removeClass('up-section').css({ zIndex: '' });
+                section.nextSection.style.marginTop = '';
+                section.isFixedPane && scrollY(scrollTop);
+            } else {
+                section.extend$.css({ marginTop: -section.offsetTop }).removeClass('show-section');
+                section.nextSection$.removeClass("down-section").css({ zIndex: '' });
+            }
+            section.isOpen = !section.isOpen;
+            isExpand = true;
+            section.isFixedPane = false;
+            section.onOverView();
+            scrollview.refresh();
+        }, section.duration)
+    });
+
+    var scrollToView = (function () {
+
+        var _y = -1, y, i = 0, progress, section, nextSection,imgStyle, length = sectionAay.length - 1, rect, pane, prect, top, imgHeight, contentHeight;
+        return function (y) {
+            //y = scrollY();
+            if (y != _y) {
+                _y = y;
+                // console.log(y);
+                for (i = 0; i < length; i++) {
+                    section = sectionAay[i];
+                   
+                    if (section.isOpen) {
+                        rect = section.extend.getBoundingClientRect();
+                        pane = section.pane;
+                        prect = pane.getBoundingClientRect();
+                        section.isFixedPane = rect.top - headerHeight-35 < 1;
+
+                        if (prect.height > rect.height + rect.top - headerHeight) {
+                            top = rect.bottom - prect.height - headerHeight;
+                            pane.style.marginTop = (top < -prect.height ? -prect.height : top) + 'px';
+                        }
+
+                        if (section.isFixedPane) {
+                            pane.style.position = 'fixed';
+                            pane.style.top = -y+'px';//-section.sectionContent.getBoundingClientRect().top+headerHeight + 'px';
+                        } else {
+                            pane.style.position = '';
+                            pane.style.top = '';
+                        }
+                    }
+                    nextSection = sectionAay[i + 1];
+                    if (nextSection && section.fixedImage) {
+                        rect = section.section.getBoundingClientRect();
+                        imgStyle = section.fixedImage.style;
+                        if (rect.top <= 0) {//<=headerHeight
+                            imgHeight = rect.width * 2 * 0.772;
+
+                            top = rect.height - imgHeight + rect.top;//-headerHeight
+                            if (top > 0) {
+                                section.fixedImage.style.position = 'fixed';
+                                section.fixedImage.style.top = -y-headerHeight+'px' //'0';//headerHeight+'px'
+                                section.fixedImage.style.removeProperty('bottom');
+
+                                contentHeight = rect.height - imgHeight;
+                                progress = 1 - top / contentHeight;
+
+                                section.sectionImage.style.transform = 'translate3d(0,-' + progress * contentHeight * 0.05 + 'px,0)';
+                                section.sectionContent.style.opacity = progress < 0.1 ? 0 : (progress > 0.3 ? 1 : (progress - 0.1) * 5);
+                                section.cover.style.opacity = progress;
+                            } else {
+                                section.fixedImage.style.position = 'absolute';
+                                section.fixedImage.style.top = 'initial';
+                                section.fixedImage.style.bottom = '0';
+                                
+                                section.sectionContent.style.opacity = 1;
+                                section.cover.style.opacity = 1;
+                            }
+                        } else {
+ 
+                            section.fixedImage.style.removeProperty('position');
+                            section.fixedImage.style.removeProperty('top');
+                            section.fixedImage.style.removeProperty('bottom');
+
+                            section.sectionContent.style.opacity = 0;
+                            section.cover.style.opacity = 0;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    })();
+
+    $(window).on({
+        load: function () {
+            headerHeight = $('#height').height();
+            scrollview.refresh();
+        },
+        resize: function () {
+            scrollview.refresh()
+        }
+    });
+
+
+
+</script>
+<div class="footerLink">
+    <ul>
+        <li>
+            <a href="tel://13547968152"><i class="iconfont icon-navphone"></i>13547968152</a>
+        </li>
+        <li><span></span></li>
+        <li>
+            <a href="CustomizedApply?agentid=@Request["agentid"]&salerid=@Request["salerid"]&sourceflag=@Request["sourceflag"]"><i class="iconfont icon-navuser"></i>立即获取方案</a>
+        </li>
+    </ul>
+    <div class="clear"></div>
+</div>

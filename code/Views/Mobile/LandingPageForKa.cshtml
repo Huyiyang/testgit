@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "来肯云商";
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+    string cdnFileRoot = ViewData["cdnFileRoot"] == null ? "" : ViewData["cdnFileRoot"].ToString();  
+}
+<style>
+    h1 {
+        font-weight: bold;
+        font-size: 50px;
+        background-color: #010101;
+        font-family: '微软雅黑';
+    }
+
+    .text-gradient {
+        display: inline-block;
+        font-family: '微软雅黑';
+        position: relative;
+    }
+
+        .text-gradient[data-text]::after {
+            content: attr(data-text);
+            color: #f7d9b6;
+            position: absolute;
+            left: 0;
+            z-index: 2;
+            -webkit-mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#a97f55), to(rgba(169, 127, 85, 0)));
+        }
+</style>
+<div class="LandingPageForKa" style="font-family:'微软雅黑'">
+    <div class="LandingPage_ban">
+        <div class="baby_logo"><img src="~/mobile/image/3.0/product4.0/baby_logo.png" /></div>
+        <div class="baby_industry">母婴行业</div>
+        <div class="baby_function">专属经营解决方案</div>
+        <div class="baby_in">Maternal and infant industry exclusive solution</div>
+        <div class="baby_list">
+            <span class="span-1"><img src="~/mobile/image/3.0/product4.0/baby-1.png" />婴幼儿各年龄段产品整合管理</span>
+            <span class="span-2"><img src="~/mobile/image/3.0/product4.0/baby-2.png" />妈妈+宝宝双档案维护会员信息</span>
+            <span class="span-3"><img src="~/mobile/image/3.0/product4.0/baby-3.png" />一手掌握各分销渠道经营动态</span>
+            <span class="span-4"><img src="~/mobile/image/3.0/product4.0/baby-4.png" />强大云数据解决商品进销存难题</span>
+        </div>
+        <div class="baby_programme "><a href="/mobile/CustomizedApply?sourceflag=@Request["sourceflag"]" class=" " style="box-shadow:none;color:#fff;  ">立即获取方案</a></div>
+    </div>
+    <div class="more-choice">
+        <div class="more_title">
+            <div class="sec_cont">二胎政策下，母婴行业正在崛起</div>
+            <div class="second_problem">也许您的企业正面临这些问题</div>
+        </div>
+        <div class="second-img"><img src="~/mobile/image/3.0/product4.0/second_1.png" class="img-responsive" /> </div>
+        <div class="second_produce">
+            <div class="second_produce_left">
+                <img src="~/mobile/image/3.0/product4.0/second_2.png" class="img-responsive" />
+            </div>
+            <div class="second_produce_right">
+                <p>采购体系不完善</p>
+                <span>母婴产品货源多样化、商品多元化的特点导致后台数据凌乱，不方便统一管理。</span>
+            </div>
+        </div>
+        <div class="second_produce">
+            <div class="second_produce_left">
+                <img src="~/mobile/image/3.0/product4.0/second_2.png" class="img-responsive" />
+            </div>
+            <div class="second_produce_right">
+                <p>库存管理混乱</p>
+                <span>母婴类商品品类与其他行业存在较大的特殊性，从而导致库存管理很困难。</span>
+            </div>
+        </div>
+        <div class="second_produce">
+            <div class="second_produce_left">
+                <img src="~/mobile/image/3.0/product4.0/second_2.png" class="img-responsive" />
+            </div>
+            <div class="second_produce_right">
+                <p>销售与管理脱节</p>
+                <span>面对下游各渠道，不能及时了解各个分销渠道的经营情况从而影响商业决策。</span>
+            </div>
+        </div>
+        <div class="second_produce">
+            <div class="second_produce_left">
+                <img src="~/mobile/image/3.0/product4.0/second_2.png" class="img-responsive" />
+            </div>
+            <div class="second_produce_right">
+                <p>会员难以维护</p>
+                <span>母婴2大用户群体（母亲和孩子）的特殊性使会员管理和维护成为难题。</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="solution" style="background-color:#fff;">
+         <div class="more_title">
+            <div class="sec_cont">现在，为您提供针对性的行业解决方案</div>
+            <div class="second_problem">中小型母婴企业的智能管理专家</div>
+        </div>
+        <div class="second_triangle"><img src="~/mobile/image/3.0/product4.0/second_sanjiao.png" class="img-responsive"/> </div>
+        <div class="solution_topImg"><img src="~/mobile/image/3.0/product4.0/programme-0.png" class="img-responsive" /> </div>
+        <div class="solution_word">
+            <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/programme-1.png" class="programme_img" />
+            <span class="word_span">面向多渠道的<span>订货管理</span></span>
+            <p class="word_p">对供应商：将平台分配的订单合并，统一整理发货；对代理商：第一时间接收订单及时发货。<br />所有订单数据及时匹配商品库存，在保证商品高效流通的同时更能帮助企业至少节省50%的人力成本！</p>
+        </div>
+        <div class="solution_word">
+            <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/programme-2.png" class="programme_img" />
+            <span class="word_span">针对性母婴类<span>商品管理</span></span>
+            <p class="word_p">不仅限于童装颜色尺码、纸尿裤尺码批次、奶粉保质期管理；更针对服饰适用年龄、奶粉阶段、品牌、产地、配方等信息，定制更全面的商品信息管理；</p>
+        </div>
+        <div class="solution_word">
+            <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/programme-3.png" class="programme_img" />
+            <span class="word_span">下设母婴店与<span>连锁加盟统一管理</span></span>
+            <p class="word_p">总部一手掌握各个下设门店与连锁加盟店的商品进销存情况。各店成本利润分开核算，总部能清晰了解各分销渠道经营状况，方便商业决策；</p>
+        </div>
+        <div class="solution_word">
+            <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/programme-4.png" class="programme_img" />
+            <span class="word_span">独特的母婴行业用户<span>会员管理</span></span>
+            <p class="word_p">采用妈妈+宝宝双档案数据管理，方便商家更快、更有效进行用户会员维护；</p>
+        </div>
+
+    </div>
+    <div class="survey">
+          <div class="more_title">
+            <div class="second_problem">全渠道定制解决方案</div>
+            <div class="sec_cont">呈上所有您可能需要的以供选择</div>
+        </div>
+        <div class="second_triangle"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/second_sanjiao.png" class="img-responsive"/> </div>
+        <div class="more-chart"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/more-chart3.png" class="img-responsive" /></div>
+
+    </div>
+    <div class="solve">
+        <div class="more_title">
+            <div class="second_problem">关于来肯</div>
+            <div class="sec_cont">ABOUT US</div>
+        </div>
+
+        <div class="second_triangle"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/second_sanjiao.png" class="img-responsive" /> </div>
+        <div class="about_img"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/about_1.png" class="img-responsive" /></div>
+        <div class="about_absorbed">专注于服务中小企业的云端ERP管理专家</div>
+        <div class="about_the"><img src="~/mobile/image/3.0/product4.0/about_3.png" class="img-responsive"/>
+        </div>
+        <div class="about_more">一切努力只为让中小型企业更加快速成长</div>
+        <div class="about_word">
+            <p>
+                致力于为母婴、服装、数码、生鲜等行业提供多种定制化解决方案，采用匠心独运的一套系统，帮助母婴及其他行业更好一体化经营；
+            </p>
+            <p>
+                从进销存ERP、订货商城、B2C零售商城以及客户协作办公四大模块帮助母婴等行业将管理与销售完美结合。
+            </p>
+        </div>
+        <div class="survey-btn"><a class="survey-gradient" href="/mobile/CustomizedApply?sourceflag=@Request["sourceflag"]" style="box-shadow:none;">立即获取方案</a></div>
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#height").hide();
+        $(".mobileIndex").hide();
+        $(".LandingPage_ban").height($(window).height());
+    })
+    setInterval(function () {
+        $(".footerLink").hide();
+    }, 10)
+    $('.solution-chart img').load(function () {
+        $('.solution-chart').width($('.solution-chart img').width());
+    })
+    $(window).resize(function () {
+        $(".LandingPage_ban").height($(window).height());
+    })
+</script>

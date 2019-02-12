@@ -1,0 +1,249 @@
+﻿@using CC.InnerBLL.Enum
+@using CC.InnerBLL;
+@{
+    ViewBag.Title = "来肯云商注册";
+    ViewBag.BannerTitle = "注册";
+    Layout = "~/Views/Shared/_MAccountLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+
+    string httpPre = string.Format("{0}{1}", CC.ERP.Portal.Global.SurpportpassportSSL ? "https://" : "http://", Request.Url.Host.ToString());
+
+    bool is_must_companyrealname, is_must_contact, show_register_cellphone_remind_text;
+    bool.TryParse(Tools.LoadInnerCfg("is_must_companyrealname"), out is_must_companyrealname);
+    bool.TryParse(Tools.LoadInnerCfg("is_must_contact"), out is_must_contact);
+    bool.TryParse(Tools.LoadInnerCfg("show_register_cellphone_remind_text"), out show_register_cellphone_remind_text);
+}
+
+<style>
+    section .block_version ul li {
+        width: 100%;
+        margin: 5px 0;
+        height: 4.3em;
+    }
+    .check1 {
+        display: block;
+        font-weight:normal;
+}
+     .tel_remarks {
+        letter-spacing: 1px;
+        margin: 10px auto 16px;
+        color: #e26a0e;
+        font-size: 12px;
+        padding-left:1.2em;
+    }
+
+        .tel_remarks:before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #e26a0e;
+            display:inline-block;
+            margin-right:7px;
+        }
+</style>
+<script src="@(cdnFileRoot)/mobile/mobile.js?v=20170614"></script>
+<div class="mobileRegister">
+
+    <form id="registerform" method="post">
+        <section id="step1">
+            <div class="registerTitle">
+                <a href="/mobile/index"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/topbarIcon.png" /></a>
+                注册来肯云商
+            </div>
+            <div class="input_div">
+                @Html.TextBox("cellphone", string.Empty, new { autocomplete = "off", placeholder = "请输入手机号码", notype = "" })
+            </div>
+            @if (show_register_cellphone_remind_text)
+            {
+                <div class="tel_remarks">我们将在一个工作日内与您回电，请保持电话畅通</div>
+            }
+            <div class="input_div">
+                @Html.TextBox("imgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入图片验证码" })
+                <span class="picCode"><img src="/account/GetValidateCode" id="picCode" onclick="this.src = '/account/GetValidateCode?r=' + Math.random()" /></span>
+            </div>
+            <div class="input_div">
+                @Html.TextBox("msgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入短信验证码", notype = "" })
+                <input id="btn_code" codetype="" class="btn" type="button" value="获取验证码" />
+            </div>
+            <div class="input_div">
+                @Html.Password("password", string.Empty, new { autocomplete = "off", placeholder = "请输入登录密码" })
+            </div>
+            <div class="input_div">
+                @Html.TextBox("promoteCode", Request["promoteCode"], new { autocomplete = "off", placeholder = "请输入推广码,非必填" })
+            </div>
+            <div class="button_div">
+                <input type="button" class="btn" id="btn_register" value="注 册" style="background-color:#38acff;" />
+            </div>
+        </section>
+        <section id="step2" style="display:none;">
+            <div class="registerTitle">
+                <a id="backFirst"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/topbarIcon.png" /></a>
+                完善公司信息
+            </div>
+            <div class="input_div">
+                @Html.TextBox("companyname", string.Empty, new { autocomplete = "off", placeholder = "请输入您的公司名称" })
+            </div>
+            <div class="input_div">
+                @Html.TextBox("contactName", string.Empty, new { autocomplete = "off", placeholder = "请输入联系人姓名" })
+            </div>
+            <div class="input_div">
+                <div class="rightIcon"><span></span></div>
+                <div id="input_industrytext" class="input_divtext">选择所属行业</div>
+                <input class="input_divinput" id="industry" name="industry" type="text" value="" placeholder="选择所属行业" />
+                <div class="rightPanle industryPanle">
+                    <div class="rightPanle_wra">
+                        <div class="rightPanle_title">选择行业</div>
+                        <div class="industryPanle_content" id="industryItem">
+                            <ul>
+                                <li title="40">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon1.png" /><span>通用行业</span>
+                                </li>
+                                <li title="30">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon2.png" /><span>食品快消品</span>
+                                </li>
+                                <li title="20">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon3.png" /><span>服装鞋帽</span>
+                                </li>
+                                <li title="41">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon4.png" /><span>五金建材</span>
+                                </li>
+                                <li title="10">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon5.png" /><span>手机通讯</span>
+                                </li>
+                                <li title="42">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon6.png" /><span>机械机电</span>
+                                </li>
+                                <li title="43">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon7.png" /><span>汽配汽修</span>
+                                </li>
+                                <li title="11">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon8.png" /><span>数码家电</span>
+                                </li>
+                                <li title="31">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon9.png" /><span>医药制品</span>
+                                </li>
+                                <li title="32">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon10.png" /><span>个护化妆</span>
+                                </li>
+                                <li title="33">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon11.png" /><span>生鲜农贸</span>
+                                </li>
+                                <li title="21">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon12.png" /><span>母婴用品</span>
+                                </li>
+                                <li title="12">
+                                    <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/industryIcon13.png" /><span>珠宝钟表</span>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input_div input_div1">
+                <div class="rightIcon"><span></span></div>
+                <div id="input_businesstext" class="input_divtext">选择业务性质</div>
+                <input class="input_divinput" id="business" name="business" type="text" value="" placeholder="选择业务性质" />
+                <div class="rightPanle businessPanle" style="display:none;">
+                    <div class="rightPanle_wra">
+                        <div class="rightPanle_title">业务性质</div>
+                        <div class="businessPanle_content" id="businessItem">
+                            <div title="2">批发</div>
+                            <div title="1">零售</div>
+                            <div title="3">批零兼做</div>
+                            <div title="4">生产</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input_div input_div1">
+                <div class="rightIcon"><span></span></div>
+                <div id="input_stafftext" class="input_divtext">选择员工数量</div>
+                <input class="input_divinput" id="staff_size" name="staff_size" type="text" value="" placeholder="选择员工数量" />
+                <div class="rightPanle staffSizePanle" style="display:none;">
+                    <div class="rightPanle_wra">
+                        <div class="rightPanle_title">员工数量</div>
+                        <div class="staffSizePanle_content" id="staffSizeItem">
+                            <div title="1">1~5名</div>
+                            <div title="2">6~10名</div>
+                            <div title="3">11~50名</div>
+                            <div title="4">51~100名</div>
+                            <div title="5">101~500名</div>
+                            <div title="6">>500名</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input_div  checkbox_wra">
+                <div class="rightIcon"><span></span></div>
+                <div id="manageType_text" class="input_divtext">您最需要管理的业务</div>
+                <input class="input_divinput" type="text" value="" placeholder="您最需要管理的业务" />
+                <div class="rightPanle manageTypePanle" style="display:none;">
+                    <div class="rightPanle_wra bg_fff">
+                        <div class="rightPanle_title">您最需要管理的业务（多选）</div>
+                        <div class="manageType_content" id="rightPanle" style="background:#fff;">
+                            <ul style="background:#fff;">
+                                <li class="selected">
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.KCGL))" /><span>库存</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.XSGL))" /><span>销售</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.CGGL))" /><span>采购</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"> <input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.CWGL))" /><span>财务</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.HYGL))" /><span>会员</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.WLDZ))" /><span>往来账</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.YDBG))" /><span>全流程移动支持</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.XSWQ))" /><span>外勤人员监管</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"> <input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.DMD))" /><span>多门店、多仓库、异地多点协同管理</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.LSSC))" /><span>零售商城</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"> <input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.PFSC))" /><span>订货商城[经销商订货]</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.JXSKCGL))" /><span>下级库存统计</span></label>
+                                </li>
+                                <li>
+                                    <label class="check1"><input class="iconfont" type="checkbox" name="manage_busniness" value="@(ShowEnumName.GetEnumName<ManageBusiness>((int)ManageBusiness.JXSXSGL))" /><span>终端销量查询</span></label>
+                                </li>
+                            </ul>
+                            <div class="button_div" style="margin-top:50px;">
+                                <input id="manageType" class="btn" type="button" name="name" value="确 定" style="background-color:#38acff;" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="button_div complete_btn" style="position: fixed; bottom: 0;">
+                <input type="button" class="btn" id="btn_begin" value="完成" style="background-color:#38acff;margin:0 2%" />
+            </div>
+            <div class="register_down"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/register_down.png" class="register_down_btn" /></div>
+
+        </section>
+        @Html.Hidden("parentid", Request.QueryString["parentid"])
+        @Html.Hidden("is_must_companyrealname", is_must_companyrealname)
+        @Html.Hidden("is_must_contact", is_must_contact)
+        @Html.Hidden("show_register_cellphone_remind_text", show_register_cellphone_remind_text)
+    </form>
+</div>
+

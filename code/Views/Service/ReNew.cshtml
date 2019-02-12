@@ -1,0 +1,94 @@
+﻿@using CC.Public
+@using CC.InnerBLL.Enum;
+@{
+    ViewBag.Title = "产品续费";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+<link href="@(cdnFileRoot)/Content/service.css?v=0525" rel="stylesheet" />
+<script src="@(cdnFileRoot)/Scripts/knockout-3.1.0.js"></script>
+<script src="@(cdnFileRoot)/Scripts/service/renew.js"></script>
+@{
+    HashObject info = Model["info"];
+    HashObject customer = Model["customer"];
+}
+
+<div id="help">
+
+    <div class="banner" style="height:70px;"></div>
+
+    <div class="panel">
+        <div class="container">
+            <div class="wrapperPage">
+                <div class="content">
+                    <div class="title"><img src="../images/系统服务购买.jpg" alt="Alternate Text" /><span class="title-font">基础服务续费</span></div>
+                    <!--基础资料表格-->
+                    <table cellpadding="0" cellspacing="0" class="base-material-table base-table">
+                        <thead>
+                            <tr>
+                                <td>基础资料</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>公司名称：@customer["companyrealname"]</td>
+                                <td>联系电话：@customer["cellphone"]</td>
+                                <td>客户类型：@(ShowEnumName.GetEnumName<CustomerType>(customer.GetInt("customertype")))</td>
+                            </tr>
+                            <tr>
+                                <td>注册时间：@customer.GetDateTime("addtime").ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                <td>当前服务商：@customer["agentrealname"]</td>
+                                <td>到期时间：@customer.GetDateTime("expiredate").ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            </tr>
+                            <tr>
+                                <td>当前版本：@(ShowEnumName.GetEnumName<BaseServiceFlag>(customer.GetInt("productversion")))</td>
+                                <td colspan="2">用 户 数：@customer["usercount"]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--基础资料表格-->
+                    <form action="/service/renew" method="post" style="margin:0;">
+                        <input type="hidden" id="productid" value="@info["productid"]" />
+                        <input type="hidden" id="scale" value="@info["scale"]" />
+                        <!--类型列表表格-->
+                        <table  cellpadding="0" cellspacing="0" class="service-table base-table">
+                            <thead>
+                                <tr>
+                                    <td>产品类型</td>
+                                    <td>产品名称</td>
+                                    <td>@(info.GetString("scale_name") == "" ? "属性" : info["scale_name"])</td>
+                                    <td>有效期</td>
+                                    <td>金额</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="service-title-tr" id="serviceInfo">
+                                    <td><a class="green" href="/service/productdetail?id=@info["productid"]" target="_blank">@info["type_name"]</a></td>
+                                    <td>@info["product_name"]</td>
+                                    <td class="green">@info["scale"]@info["scale_unit"]</td>
+                                    <td>
+                                        <select name="selectprice" class="yearSelct" data-bind="options:list,optionsText:'period_info',optionsValue:'priceid',value:selectedPeriod"></select>
+                                    </td>
+                                    <td>
+                                        <strong class="price-font money everyPrice">￥<span id="price"></span></strong>
+                                        <h6 id="oldprice_info"><span style="text-decoration:line-through;" class="original-price little-font">原价:￥<span id="oldprice"></span></span></h6>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--类型列表表格-->
+                        <h1 style="text-align:center;"><input type="submit" name="name" value="续费" class="upgradeBtn submitBtn" /></h1>
+                        <input type="hidden" id="viewMessage" value="@ViewBag.ErrorMsg" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

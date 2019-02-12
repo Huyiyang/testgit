@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "云ERP|进销存|SAAS|仓库管理系统|库存管理软件";
+    ViewBag.Keywords = "在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,免费进销存,来肯云商,来肯";
+    ViewBag.description = "来肯云商,云ERP管理专家。实现“进销存+商城”一体化!功能涵盖:仓库管理系统,销售管理系统,会员分销,移动办公,财务系统,报表系统,商城系统等!强大功能让您的经营更简单!";
+
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<div id="container">
+    <div class="mobileNew flexboxpage">
+        <div class="new_Content1">
+            <div class="new_title1">把门店开到客户的手机里</div>
+            <div class="new_title2_1">增加收益<span>30%</span>以上</div>
+            <img src="@(cdnFileRoot)/mobile/image/home/new/newTop_phone.png" class="new_banner" />
+            <div class="new_title3">来肯云商打造的云端ERP，<br />免除了客户的硬件和IT成本，<br />产品的灵活性和稳定性提供了优质的客户体验。</div>
+            <a class="new_Btn" href="/mobile/register?agentid=@Request["agentid"]&salerid=@Request["salerid"]&sourceflag=@Request["sourceflag"]">注册试用</a>
+            <div class="new_title4">无需下载安装</div>
+        </div>
+        <div class="new_Content2">
+            <div class="title">"也许，<span>您正在遭受这些问题的困扰"</span></div>
+            <div class="title1">
+                <span>多个仓库或门店间数据无法协同；</span>
+                <span>库存数据不清晰，业务绊手绊脚；</span>
+                <span>外勤工作，天高皇帝远，无从监管；</span>
+                <span>怎么报价、库存多少，一问三不知；</span>
+                <span>老人流失业务停滞、新人上手慢影响收入；</span>
+                <span>新客拓展难，老客维护难，业绩难增长；</span>
+                <span>办公地域受限，无法随时随地掌控企业状况；</span>
+                <span style="padding-left: 36px;text-indent: -12px;line-height: 28px;">财务工作量大，所以无精力进行预算、成本<br />控制、合理避税、短期投资和政府扶持政策<br />申请等工作。</span>
+            </div>
+        </div>
+        <div class="new_Content3">
+            <div class="title">来肯云商—云端进销存ERP帮您解决</div>
+            <div class="new_list">
+                <div class="new_ltft">
+                    <img src="@(cdnFileRoot)/mobile/image/home/new/newContent3_01.png" />
+                </div>
+                <div class="new_right">
+                    <div>多终端掌控业务</div>
+                    <p>PC、Web、PAD、IOS、安卓、微信多终端接入；随时随地掌控业务状况。</p>
+                </div>
+            </div>
+            <div class="new_list">
+                <div class="new_ltft">
+                    <img src="@(cdnFileRoot)/mobile/image/home/new/newContent3_02.png" />
+                </div>
+                <div class="new_right">
+                    <div>多点异地协同</div>
+                    <p>轻松实现多仓库、多门店管理，让异地数据协同不再是难题。</p>
+                </div>
+            </div>
+            <div class="new_list">
+                <div class="new_ltft">
+                    <img src="@(cdnFileRoot)/mobile/image/home/new/newContent3_03.png" />
+                </div>
+                <div class="new_right">
+                    <div>按需启用行业配置</div>
+                    <p>支持行业属性配置，颜色/尺码、批次/保质期、序列号、多计量单位等。</p>
+                </div>
+            </div>
+            <div class="new_list">
+                <div class="new_ltft">
+                    <img src="@(cdnFileRoot)/mobile/image/home/new/newContent3_04.png" />
+                </div>
+                <div class="new_right">
+                    <div>启用微商城业绩翻倍</div>
+                    <p>可在云端进销存的基础上启用微商城，帮您拓展线上销售渠道，提升业绩。</p>
+                </div>
+            </div>
+        </div>
+        <div class="new_Content4">
+            <h1 class="title">库存管理</h1>
+            <div class="subtitle">多仓库（门店）间数据协同难</div>
+            <p>多门店或多仓库一般不在同一位置，很难协同；来肯完美解决仓库或门店间的数据同步及相互调货问题。</p>
+            <div class="subtitle">库存数据不清楚</div>
+            <p>有没有货，值多少钱，能不能按时发货，通过系统查询就能一清二楚。</p>
+            <div class="subtitle">库存数量上下限控制难  </div>
+            <p style="margin-bottom:0;">下限，确保最低库存量，避免有单无货；</p>
+            <p style="margin-top:0;">上限，保证最高库存量，防止占用资金；</p>
+            <div class="subtitle">仓库盘点费时耗力 </div>
+            <p>采用不定期抽盘以及分量盘点，填入盘点数据系统自动算出盈亏数量及金额，完全不影响业务开展。</p>
+            <div class="subtitle">数据分析难</div>
+            <p>系统自动生成各种报表：库存状况表、库存数量排行、金额排行、周转率分析、报损报溢分析...应有尽有。</p>
+            <img src="@(cdnFileRoot)/mobile/image/home/new/new_01.png" class="new_icon" />
+        </div>
+        <div class="new_Content5">
+            <h1 class="title">销售管理</h1>
+            <div class="subtitle">报价难，往来管理难 </div>
+            <p>不同客户不同价格，轻松解决报价问题，即便新人也能分分钟上手；客户欠款轻松管理。</p>
+            <div class="subtitle">销售外勤监管难</div>
+            <p>外勤工作，天高皇帝远，无从监管；GPS签到、拍照上图，轻松搞定外勤监管。</p>
+            <div class="subtitle">移动销售（车销），效率低下</div>
+            <p>白天业务员移动销售，晚上回公司对货、对钱、对账，效率极低；移动销售的同时将数据实时传回总部，效率提高10倍以上。</p>
+            <div class="subtitle">以销订购解决库存积压难题 </div>
+            <p>根据接收到的客户订单情况，决定向供应商采购货品的数量，在销售流程上降低库存加压风险。</p>
+            <div class="subtitle">客户/会员管理难</div>
+            <p>新客户/会员拓展难，老客户/会员维护难，来肯帮您解决新客户拓展、老客户维护问题。</p>
+            <div class="subtitle">销售数据分析决策难</div>
+            <p>来肯自动为您生成：销售日月年报、订单分析、各种销售排行...助您业绩大幅提升</p>
+            <img src="@(cdnFileRoot)/mobile/image/home/new/new_02.png" class="new_icon" />
+        </div>
+        <div class="new_Content6">
+            <h1 class="title">采购管理</h1>
+            <div class="subtitle">往来欠款、支付款项清晰把握</div>
+            <p>往来账、预付款、返点、付款历史等数据都可以通过系统清晰的记录下来，再也不是供应商说了算。</p>
+            <div class="subtitle">以数据为依托，降低采购成本</div>
+            <p>在采购报表中可查询到在哪些供应商那里采购了多少货品；这就是与供应商议价降低采购成本的资本。</p>
+            <div class="subtitle">历史成本怎么样，不清楚</div>
+            <p>历史成本走势，便于我们决策分析</p>
+            <div class="subtitle">采购数据分析决策难</div>
+            <p>来肯自动为您生成：采购分析、各种采购排行...依托数据，助您轻松决策</p>
+            <img src="@(cdnFileRoot)/mobile/image/home/new/new_03.png" class="new_icon" />
+        </div>
+        <div class="new_Content7">
+            <h1 class="title">财务管理</h1>
+            <div class="subtitle">业务员录入凭证，财务只需审核</div>
+            <p>所有原始业务凭证由业务部门通过系统直接录入，财务人员只需要在系统中审核凭证即可。</p>
+            <div class="subtitle">财务人员不再需要编制各类报表</div>
+            <p>所有收入、成本费用、往来账等数据均由系统自动统计，各类报表也由系统自动生成。</p>
+            <div class="subtitle">让财务做更有利于企业发展的事</div>
+            <p>将财务人员从繁琐重复性的工作中解放出来后，可以为企业做更多有意义的事，比如控制成本及预算、合理避税、短期投资、获取政府支持等。</p>
+            <img src="@(cdnFileRoot)/mobile/image/home/new/new_04.png" class="new_icon" />
+        </div>
+        <div class="new_Content8">
+            <h1 class="title">客户管理和协同办公</h1>
+            <div class="subtitle">随时随地查询客户信息</div>
+            <p>客户基本信息、客户等级、客户合同内容、客户跟进状态等都一一记录在案，轻松实现客户管理，并且不用担心客户信息丢失的问题。</p>
+            <div class="subtitle">协同办公让工作更有条理</div>
+            <p>将每天的工作计划记录在日程中，可自由设定提醒时间，保证工作计划有序进行；将每天的工作情况记录在动态中，包括今日工作总结及明日工作计划，提升工作效率。</p>
+            <img src="@(cdnFileRoot)/mobile/image/home/new/new_05.png" class="new_icon" />
+        </div>
+    </div>
+    <div class="new_Content9">
+        <img src="@(cdnFileRoot)/mobile/image/3.0/lkage/banner_bg7.png" class="img-responsive" />
+        <div class="title1">
+            100000<span>家商贸企业</span>
+        </div>
+        <div class="shangmao"> <img src="@(cdnFileRoot)/mobile/image/3.0/lkage/shangmao.png" class="img-responsive" /></div>
+        <div class="sm_icon">WITH PROFESSIONAL ACHIEVEMENT QUALITY</div>
+    </div>
+</div>
+

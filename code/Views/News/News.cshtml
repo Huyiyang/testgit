@@ -1,0 +1,153 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "进销存博客|进销存管理软件|来肯进销存软件";
+    ViewBag.Keywords = "进销存博客,进销存咨询";
+    ViewBag.description = "进销存博客|免费进销存软件哪个好?50人的企业适合什么企业管理软件?进销存表格等任何进销存相关问题,只要您有需求,联系我们,来肯云商都会尽量为您解答。中小微企业互联网SAAS供应商博客分享!";
+    
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+@model CC.Public.HashObject
+@using CC.Public
+@{
+    HashObjectList list = Model.GetValue<HashObjectList>("itemslist", new HashObjectList());
+    HashObjectList pagesList = Model.GetValue<HashObjectList>("pageslist", new HashObjectList());
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+}
+
+<style>
+    .page a {
+        width: 40px !important;
+    }
+</style>
+
+<div class="News_wra">
+    <div class="blogs_topbg">
+        <div class="text1"><span>从这里</span>读懂来肯</div>
+        <div class="text2"><span>透视互联网</span>关注企业服务创新</div>
+    </div>
+    <div class="blogs_subnav">
+        <ul>
+            <li classid="0" id="allnews">全部</li>
+            <li classid="4">公司动态</li>
+            <li classid="6" style="display:none;">SAAS说事</li>
+            <li classid="7">用户案例</li>
+            <li classid="1">发版公告</li>
+            <li classid="2">行业快讯</li>
+        </ul>
+    </div>
+    <div class="news_content">
+        <ul>
+            @for (int i = 1; i <= list.Count; i++)
+            {
+                HashObject news = list[i - 1];
+                <li class="news_textli">
+                    <div class="news_img">
+                        <a href="/news/newscontent/@news["classid"]-@(news["id"])">
+                            <img src="@(CC.ERP.Portal.Global.webhost)/@news["pic"]" style="width:431px;height:275px;" onerror="javascript:this.src='@(cdnFileRoot)/Images/3.0/common/news.jpg'" />
+                        </a>
+                    </div>
+                    <div class="news_textwra">
+                        <div class="news_time">
+                            <span>@(news["modifytime"] == null ? "" : news.GetDateTime("modifytime").ToString("MM.dd"))</span>
+                            <div>@(news["modifytime"] == null ? "" : news.GetDateTime("modifytime").ToString("yyyy"))</div>
+                        </div>
+                        <div class="news_text">
+                            <div><i class="iconfont"></i><a href="/news/newscontent/@news["classid"]-@(news["id"])"><span>@news["title"]</span></a><a href="/news/newscontent/@news["classid"]-@(news["id"])" class="more_btn">了解详情<img src="@(cdnFileRoot)/Images/3.0/blogs/news_icon.jpg" /></a></div>
+                            <p>@news["smalltext"]</p>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div>
+            <div id="new_pagesList" style="margin:0 auto 70px;">
+                @foreach (HashObject pager in pagesList)
+                {
+                    <div class="@pager["class"]">
+                        @if (pager.GetString("url") != "")
+                        {
+                            <a href="/news/news/@Model["classid"]-@pager["url"]">@pager["pagetext"]</a>
+                        }
+                        else
+                        {
+                            <div>@pager["pagetext"]</div>
+                        }
+                    </div>
+                }
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="news_botcontent">
+        <ul>
+            @if (Model.GetValue<long>("cid1", 0) > 0)
+            {
+                <li>
+                    <div class="botcontent_wra">
+                        <span class="botcontent_title classtitle" id="@(Model["cid1"])">行业快讯</span>
+                        @foreach (HashObject news in Model.GetValue<HashObjectList>("list1", new HashObjectList()))
+                        {
+                            <div>
+                                <a href="/news/newscontent/@news["classid"]-@(news["id"])"><span class="text_title">@news["title"]</span><span class="text_time">@(news["modifytime"] == null ? "" : news.GetDateTime("modifytime").ToString("yyyy-MM-dd"))</span></a>
+                            </div>
+                        }                        
+                    </div>
+                </li>
+            }
+            @if (Model.GetValue<long>("cid2", 0) > 0)
+            {
+                <li>
+                    <div class="botcontent_wra">
+                        <span class="botcontent_title classtitle" id="@(Model["cid2"])">发版公共</span>
+                        @foreach (HashObject news in Model.GetValue<HashObjectList>("list2", new HashObjectList()))
+                        {
+                            <div>
+                                <a href="/news/newscontent/@news["classid"]-@(news["id"])"><span class="text_title">@news["title"]</span><span class="text_time">@(news["modifytime"] == null ? "" : news.GetDateTime("modifytime").ToString("yyyy-MM-dd"))</span></a>
+                            </div>
+                        }        
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+@Html.Hidden("classid", @Model["classid"])
+
+<script>
+    $(function () {
+        var classid = $("#classid").val();
+        if (classid > 0) {
+            $(".blogs_subnav li").each(function (i, n) {
+                if ($(this).attr("classid") == classid) {
+                    $(this).css('color', '#62d1ff')
+                }
+            })
+        } else {
+            $("#allnews").css('color', '#62d1ff');
+            $(".news_botcontent").css("display", "none");
+        }
+
+        $(".classtitle").each(function (i, n) {
+            var id = $(this).attr("id");
+            $(this).text($("[classid=" + id + "]").text());
+        });
+
+        var list_page = $("#new_pagesList .page").size();
+        var list = $("#new_pagesList .pageindex").size();
+        $("#new_pagesList").width(list * 32 + list_page * 45)
+    });
+
+    $(".blogs_subnav li").click(function () {
+        $(".blogs_subnav li").each(function (i, n) {
+            $(this).css('color', '#fff')
+        })
+        $(this).css('color', '#62d1ff')
+        var classid = $(this).attr("classid");
+        location.href = "@(urlprefix)/news/news/" + classid + "-0";
+    })
+</script>

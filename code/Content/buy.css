@@ -1,0 +1,79 @@
+﻿.row {
+    margin-bottom: 15px;
+}
+
+.select_list {
+    zoom: 1;
+}
+
+    .select_list li {
+        position: relative;
+        float: left;
+        display: inline;
+        margin: 0 20px 0 0;
+        line-height: 22px;
+    }
+
+    .select_list a {
+        float: left;
+        height: 25px;
+        padding: 0 10px;
+        border: 1px solid #c8c8c8;
+        background: #F6F6F6;
+        white-space: nowrap;
+    }
+
+        .select_list a:hover, .select_list .selected a, .select_list .selected a:hover {
+            position: relative;
+            text-decoration: none;
+            color: #555;
+            border: 2px solid #ff6701;
+        }
+
+    .select_list i {
+        display: none;
+    }
+
+    .select_list .selected i {
+        position: absolute;
+        right: 0;
+        bottom: 2px;
+        display: block;
+        width: 15px;
+        height: 12px;
+        line-height: 50px;
+        font-size: 0;
+        overflow: hidden;
+        background-position: -4px -3px;
+    }
+
+    .select_list .selected i {
+        background: url('/images/select.png') no-repeat;
+    }
+
+.total {
+    padding-right: 18px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.total strong {
+    color: #e4393c;
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+    .total strong {
+        color: #e4393c;
+        font-size: 20px;
+        vertical-align: middle;
+        font-weight: normal;
+    }
+
+.table th {
+    background-color:#F8F8F8;
+}
+.table_content td{
+    background-color:#F7F9FB;
+}

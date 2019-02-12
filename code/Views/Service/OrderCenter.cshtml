@@ -1,0 +1,102 @@
+﻿@using CC.Public
+@using CC.InnerBLL.Enum
+@{
+    ViewBag.Title = "订单中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<link href="@(cdnFileRoot)/Content/service.css?v=0525" rel="stylesheet" />
+<script src="@(cdnFileRoot)/Scripts/service.js"></script>
+@{
+    HashObject sumData = Model["sum"];
+}
+<style>
+    #wrapper{
+        margin-top:70px;
+    }
+</style>
+<div class="orderCenter_wrapper">
+    <div class="userCenter_topbar">
+        <div class="userCenter_topbar_wra">
+            <span>我的订单</span>
+        </div>
+    </div>
+    <div class="orderCenter_content">
+        <table cellpadding="0" cellspacing="0" class="base-table orderCenter-table">
+            <thead>
+                <tr>
+                    <td>订单号</td>
+                    <td style="width:86px;">订单金额</td>
+                    <td style="width:90px;">状态</td>
+                    <td style="width:122px;">订单类型</td>
+                    <td>下单日期</td>
+                    <td>付款日期</td>
+                    <td style="text-align:center;width:160px;">操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (HashObject obj in Model["list"])
+                {
+                    <tr class="orderDetai-tr">
+                        <td><a class="green" target="_blank" href="/service/orderdetail?id=@obj["orderid"]">@obj["orderid"]</a></td>
+                        <td class="price">@obj["totalmoney"]</td>
+                        <td class="state">
+                            @(ShowEnumName.GetEnumName<OrderStatus>(obj.GetInt("status")))
+                        </td>
+                        <td>
+                            @(ShowEnumName.GetEnumName<OrderType>(obj.GetInt("ordertype")))
+                        </td>
+                        @*<td>
+                                @if (obj.GetInt("status") == (int)OrderStatus.Finished)
+                                    {
+                                        if (obj.GetInt("excuteresult") == (int)OrderExcuteResult.Anomaly)
+                                        {
+                                <span>异常,请联系客户</span>
+                                        }
+                                        else
+                                        {
+                                <span>执行成功</span>
+                                        }
+                                    }
+                            </td>*@
+                        <td>@obj.GetDateTime("createtime").ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@(obj["paytime"] == "" ? "" : obj.GetDateTime("paytime").ToString("yyyy-MM-dd HH:mm:ss"))</td>
+                        <td>
+                            @if (obj.GetInt("status") == (int)OrderStatus.UnPay)
+                            {
+                                <a onclick="showDialog(this)" class="cancel_btn" style="cursor:pointer;" id="@obj["orderid"]">取消</a><a class="pay_btn" href="@Url.Action("BuySuccess", "Order")?orderid=@obj["orderid"]">付款</a>
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div><!--弹出框-->
+<div class="dialogDiv">
+    <div class="promptDialog">
+        <h4><span class="payMessage"><img src="@(cdnFileRoot)/Images/warning.jpg" alt="Alternate Text" class="warningImg" />提示信息</span><a onclick="closeDialog(this)" class="closeBtn closeDialogBtn">×</a></h4>
+        <h5 id="message">您确定要取消该订单吗？</h5>
+        <input type="hidden" id="cancel_orderid" />
+        <p><button onclick="canelOrder()" class="sureBtn closeDialogBtn" style="width:60px;">是的</button><button onclick="closeDialog(this)" style="width:60px;margin-left:15px;" class="cancelPromptDialoBtn closeDialogBtn">点错了</button></p>
+    </div>
+</div>
+<!--弹出框-->
+
+<script>
+    function showDialog(e) {
+        $("#cancel_orderid").val($(e).attr("id"));
+        $('.dialogDiv').css('display', 'block');
+    }
+
+    function canelOrder() {
+        $.post("/order/cancle", { orderid: $("#cancel_orderid").val() }, function () {
+            alert("订单取消成功");
+            location.href = location.href;
+        });
+    }
+</script>

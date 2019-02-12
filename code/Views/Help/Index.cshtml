@@ -1,0 +1,151 @@
+﻿@using CC.Public
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rootdomain = System.Configuration.ConfigurationManager.AppSettings["rootdomain"];
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+@model HashObject
+
+<script src="@(cdnFileRoot)/Scripts/knockout-3.1.0.js"></script>
+@{
+    var condition = Model.GetValue<HashObject>("condition", new HashObject());
+    var productCondition = condition.GetValue<HashObject>("product", new HashObject());
+    var subcats = Model.GetValue<HashObjectList>("subcats", new HashObjectList());
+    var articels = Model.GetValue<HashObject>("articels", new HashObject());
+}
+<script type="text/javascript">
+    function M() {
+        var self = this;
+        this.selectedProduct = { id: ko.observable(@(productCondition.GetInt("id"))), text: ko.observable("@(productCondition.GetString("title"))") };
+        this.selectProduct = function (d, e) {
+            self.selectedProduct.id($(e.target).attr("data-id"));
+            self.selectedProduct.text($(e.target).text());
+        };
+        this.search = function (data) {
+            var url = "http://www." + "@(rootdomain)" + "/help/index?productid=" + 4;
+            location.href = url;
+        }
+    }
+    $(function () {
+        ko.applyBindings(new M());
+    });
+</script>
+<style>
+    #help a{
+        color:#333 !important;
+    }
+</style>
+
+<div id="help">
+
+    <div class="banner" style="height:70px;"></div>
+
+    <div class="panel">
+        <div class="container" style="height:auto;margin:40px auto !important;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="">
+                        <div style="float: left; width: 150px;">
+                            <div style="font-size: 19pt; height: 46px; line-height: 46px;"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;<span>帮助中心</span></div>
+                        </div>
+                        <div style="margin-left: 360px;">
+                            <form>
+                                <input type="hidden" name="productid" data-bind="value: selectedProduct.id" />
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span data-bind="text: selectedProduct.text"></span>&nbsp;&nbsp;<span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var p in Model.GetValue<HashObject>("catroot", new HashObject()).GetValue<HashObjectList>("children", new HashObjectList()))
+                                            {
+                                                <li><a href="#" data-bind="click: selectProduct" data-id="@(p.GetInt("id"))">@p.GetString("title")</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <input type="text" class="form-control" name="key" value="@Request["key"]">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="panel-group" id="accordion">
+                                @foreach (var p in Model.GetValue<HashObject>("catroot", new HashObject()).GetValue<HashObjectList>("children", new HashObjectList()))
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" style="text-decoration:none" href="#collapseOne@(p.GetInt("id"))" data-bind='click: function () { location.href = "http://www.@(rootdomain)/help/index?productid=@(p.GetInt("id"))"; }'>
+                                                    @p.GetString("title")
+                                                </a>
+                                            </h4>
+                                        </div>
+
+                                        <div id="collapseOne@(p.GetInt("id"))" class="panel-collapse collapse @( p.GetInt("id") == productCondition.GetInt("id") ? "in" : "")">
+                                            <div class="panel-body">
+                                                @foreach (var p1 in p.GetValue<HashObjectList>("children", new HashObjectList()))
+                                                {
+                                                    <div>
+                                                        <a href="?cid=@(p1.GetInt("id"))&productid=@(p.GetInt("id"))">@(p1.GetString("title"))</a>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-xs-9">
+                            <ul class="nav nav-tabs">
+                                <li class="@((Request["subid"] != "2" && Request["subid"] != "3") ? "active" : "")"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;用户手册&nbsp;&nbsp;<span class='badge badge-inverse'>@((articels["1"] as HashObjectList).Count)</span></a></li>
+                                <li class="@(Request["subid"] == "2" ? "active" : "")"><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;常见问题&nbsp;&nbsp;<span class='badge badge-inverse'>@((articels["2"] as HashObjectList).Count)</span></a></li>
+                                <li class="@(Request["subid"] == "3" ? "active" : "")"><a href="#messages" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;&nbsp;视频资料&nbsp;&nbsp;<span class='badge badge-inverse'>@((articels["3"] as HashObjectList).Count)</span></a></li>
+                            </ul>
+                            <div class="tab-content" style="border: 1px solid #ddd; padding: 5px; border-top: none; border-radius: 4px; border-top-left-radius: 0; border-top-right-radius: 0">
+                                <div class="tab-pane @((Request["subid"] != "2" && Request["subid"] != "3") ? "active" : "")" id="home">
+                                    <table style="width: 100%;">
+                                        @foreach (var ho in articels["1"] as HashObjectList)
+                                        {
+                                            <tr>
+                                                <td style="padding: 8px;"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;<a href="/help/detail/@ho["id"]">@ho["title"]</a></td>
+                                                <td style="padding: 8px; width: 150px; text-align: right"><span>@ho.GetDateTime("modifytime").ToString("yyyy/MM/dd")</span></td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                                <div class="tab-pane @(Request["subid"] == "2" ? "active" : "")" id="profile">
+                                    <table style="width: 100%;">
+                                        @foreach (var ho in articels["2"] as HashObjectList)
+                                        {
+                                            <tr>
+                                                <td style="padding: 8px;"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;<a href="/help/detail/@ho["id"]">@ho["title"]</a></td>
+                                                <td style="padding: 8px; width: 150px; text-align: right"><span>@ho.GetDateTime("modifytime").ToString("yyyy/MM/dd")</span></td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                                <div class="tab-pane @(Request["subid"] == "3" ? "active" : "")" id="messages">
+                                    <table style="width: 100%;">
+                                        @foreach (var ho in articels["3"] as HashObjectList)
+                                        {
+                                            <tr>
+                                                <td style="padding: 8px;"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;<a href="/help/detail/@ho["id"]">@ho["title"]</a></td>
+                                                <td style="padding: 8px; width: 150px; text-align: right"><span>@ho.GetDateTime("modifytime").ToString("yyyy/MM/dd")</span></td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

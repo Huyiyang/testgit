@@ -1,0 +1,627 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+    ViewBag.Keywords = "在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,免费进销存,来肯云商,来肯,下级经销商管理";
+   
+}
+@model HashObject
+@using CC.InnerBLL.BLL.Agent
+@using CC.Public
+<link href="@(cdnFileRoot)/Content/video.css?v=201706051" rel="stylesheet" />
+@{
+    var urlprefix_s = CC.ERP.Portal.Global.urlprefix_s;
+
+    HashObject data = (HashObject)Model;
+
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+    var register_url = string.Format("{0}/account/register", urlprefix_s);
+    var login_url = "";
+
+    if (AgentInfo.Current.IsLaiken)
+    {
+        register_url += string.Format("?salerid={0}&sourceflag={1}", Request["salerid"], Request["sourceflag"]);
+    }
+    else
+    {
+        register_url += string.Format("?agentid={0}&salerid={1}&sourceflag={2}", AgentInfo.Current.AgentID, Request["salerid"], Request["sourceflag"]);
+    }
+
+    login_url = register_url.Replace("register", "logon");
+    ViewBag.urlprefix = urlprefix;
+}
+
+@section head{
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            position: inherit;
+        }
+
+        .not_fixed {
+            position: inherit !important;
+            margin-top: 720px;
+        }
+
+        .hide_menu {
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+        }
+
+        .Nindex_content1 .content1_content .content1_center span span {
+            display: inline-block;
+            margin-bottom: 0;
+            margin-right: 7px;
+        }
+
+        .bottom_linkwrapper {
+            margin: 0px;
+        }
+
+        /*公告样式*/
+        .index_model p {
+            margin: 10px 20px auto !important;
+            line-height: 30px !important;
+            letter-spacing: 1px;
+        }
+
+        .split_p {
+            margin-left: 40px;
+        }
+
+        #wrapper, #footer-outer {
+            min-width: 1200px !important;
+        }
+    </style>
+}
+
+<div class="indexBanner">
+    <div class="indexBanner_wrapper">
+        <div class="indexBanner_w">
+            <div class="bannerTitle">让管理与销售更贴近更轻松</div>
+            <div class="bannerText">来肯云商，商贸企业专属的云端管理系统</div>
+            <div class="bannerText1"><span>云端系统 </span> <span>无需下载 </span> <span> 无需安装</span> 注册即用@(data.GetString("session"))</div>
+            <div class="bannerTel">
+                <span class="bannerTel_span"><input id="bannerTel" type="tel" name="name" value="" placeholder="请输入手机号码" /><span class="errorText" id="errorText"></span></span>
+                <a id="bannerTelBtn" onclick="CheckCellphone()" target="_blank" rel="external nofollow" style="vertical-align:-2px;">注册试用</a>
+            </div>
+            <div class="indexBanner_video" style="overflow:hidden;">
+                <img src="@(cdnFileRoot)/Images/3.0/index/video_icon.png" style=" position: absolute; width: 306px; top: 21px; left: 27px;" />
+                <img src="@(cdnFileRoot)/Images/3.0/index/index_videoPlay.png?v=0516" />
+                <a class="play_btn"><img src="@(cdnFileRoot)/Images/3.0/index/videoPlay_btn.png" /></a>
+                <div class="food_video" style="display: none;">
+                    <div class="vido-box">
+                        <video style="width:100%; height:90%;margin-top:5%" controls="controls" loop="loop">
+                            <source src="http://cdn-www.lk361.com/video/ad.mp4?v=0515" type="video/mp4" class="source">视频获取失败
+                        </video>
+                        <span class="close_btn">X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="indexContent1">
+    <div class="indexContent1_wrapper">
+        <div class="indexType_title">适用于各类商贸企业（批发、批零兼营、零售、连锁加盟、渠道分销）</div>
+        <div class="indexType_subtitle">为商贸企业注入互联网基因，专注解决商贸企业的经营管理难题</div>
+        <div class="indexType_cont">
+            <div class="indexType_list type_1">
+                <img src="@(cdnFileRoot)/Images/3.0/index/type1.png?v=0516" />
+                <span class="indexType_bottom">批发型</span>
+            </div>
+            <div class="indexType_list type_2">
+                <img src="@(cdnFileRoot)/Images/3.0/index/type2.png?v=0516" style="margin-top:28px;" />
+                <span class="indexType_bottom">批零兼营型</span>
+            </div>
+            <div class="indexType_list type_3">
+                <img src="@(cdnFileRoot)/Images/3.0/index/type3.png?v=0516" style="margin-top:9px;" />
+                <span class="indexType_bottom">零售型</span>
+            </div>
+            <div class="indexType_list type_4">
+                <img src="@(cdnFileRoot)/Images/3.0/index/type4.png?v=0516" />
+                <span class="indexType_bottom" style="font-size:18px;">连锁加盟、渠道分销型</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="indexContent3">
+    <div class="indexContent2_wrapper">
+        <div class="indexContentText">来肯云商能为您做什么？</div>
+        <div class="indexContentTitle" style="letter-spacing:1px;">“人”“钱”“业务”三大要素的信息化管理</div>
+        <div class="toValue_cont">
+            <div class="toValue_list t_1">
+                <div class="toValue_top">
+                    <span class="toValue_l">管人</span>
+                    <img src="@(cdnFileRoot)/Images/3.0/index/tovalue_01.png?v=20170522" />
+                </div>
+                <div class="toValue_title1">高效，成就卓越团队</div>
+                <div class="toValue_title2">
+                    每一个业务环节都能始终保持畅通，无论是做了10
+                    年的老员工还是新员工，都能轻松处理业务；销售
+                    人员的管理也变得轻而易举，只需要掏出手机，就
+                    能掌握客户跟进动态。
+                </div>
+            </div>
+            <div class="toValue_list t_2">
+                <div class="toValue_top">
+                    <span class="toValue_l">管钱</span>
+                    <img src="@(cdnFileRoot)/Images/3.0/index/tovalue_02.png?v=20170605" />
+                </div>
+                <div class="toValue_title1">精益求精，财务尽在掌握</div>
+                <div class="toValue_title2">
+                    轻点一下，呈现最准确的各类报表，一键拉取，历
+                    史数据一览无余；资金点滴汇入，每一笔走向都清
+                    晰明了，高效的财务工作，催生更大回报的资金决
+                    策。
+                </div>
+            </div>
+            <div class="toValue_list t_3">
+                <div class="toValue_top">
+                    <span class="toValue_l">管业务</span>
+                    <img src="@(cdnFileRoot)/Images/3.0/index/tovalue_03.png?v=20170605" />
+                </div>
+                <div class="toValue_title1"> 智能响应，引领业务未来</div>
+                <div class="toValue_title2">
+                    对货品存量了若指掌，第一时间响应订单，同时，
+                    多余的资金也得到释放；销售报表一目了然，让营
+                    销方案有据可依，与供应商的议价也变得容易起来，
+                    为企业创造更大利润。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="indexContent2">
+    <div class="indexContentTitle"><span>用互联网技术改变传统工作模式</span>让企业经营管理更高效</div>
+    <div class="indexTube_cont">
+        <div class="trbe_left">
+            <div class="left_img">
+                <img src="@(cdnFileRoot)/Images/3.0/index/left_line.png" class="line" />
+                <a class="img1" href="/product/dh#Ndh1_content3"><img src="@(cdnFileRoot)/Images/3.0/index/left_01.png" /></a>
+                <a class="img2" href="/product/dh#Ndh1_content4"><img src="@(cdnFileRoot)/Images/3.0/index/left_02.png" /></a>
+                <a class="img3" href="/product/dh#Ndh1_content5"><img src="@(cdnFileRoot)/Images/3.0/index/left_03.png" /></a>
+            </div>
+            <div class="indexTube_word">
+                <a href="/home/new#productContent2">管库存</a>
+                <div>
+                    库存数量一目了然，轻松查询库存明细，
+                </div>
+                <div>
+                    库存上下限报警，让库存不再积压。
+                </div>
+            </div>
+            <div class="indexTube_word tube2">
+                <a href="/home/new#productContent6">管采购</a>
+                <div>
+                    采购明细全程记录，与供应商之间的账目准确无误，
+                </div>
+                <div>
+                    给采购议价提供可靠依据。
+                </div>
+            </div>
+            <div class="indexTube_word tube3">
+                <a href="/product/dh#Ndh1_content3">发展新客户</a>
+                <div>
+                    突破地域和时间局限，打破新客户增长瓶颈，
+                </div>
+                <div>
+                    让客户数量快速稳步增加。
+                </div>
+            </div>
+            <div class="indexTube_word tube4">
+                <a href="/product/dh#Ndh1_content4">维系老客户</a>
+                <div>
+                    让客户关怀落到实处，维护客情关系，
+                </div>
+                <div>
+                    提升客户黏度，增加消费频率。
+                </div>
+            </div>
+            <div class="indexTube_word tube5">
+                <a href="/product/dh#Ndh1_content5">提升销售收入</a>
+                <div>
+                    全面展示商品，多种营销手段，
+                </div>
+                <div>
+                    应对不同客户需求，让促销更容易更高效。
+                </div>
+            </div>
+        </div>
+        <div class="trbe_right">
+            <div class="right_img">
+                <img src="@(cdnFileRoot)/Images/3.0/index/right_line.png" class="line" />
+                <a class="img1" href="/product/linkage#LinkageContent3"><img src="@(cdnFileRoot)/Images/3.0/index/right_01.png" /></a>
+                <a class="img2" href="/product/linkage#LinkageContent4"><img src="@(cdnFileRoot)/Images/3.0/index/right_02.png" /></a>
+                <a class="img3" href="/product/linkage#LinkageContent5"><img src="@(cdnFileRoot)/Images/3.0/index/right_03.png" /></a>
+            </div>
+            <div class="top_img">
+                <img src="@(cdnFileRoot)/Images/3.0/index/top_line.png" class="line" />
+                <a class="img1" href="/home/new#productContent6"><img src="@(cdnFileRoot)/Images/3.0/index/top_01.png" /></a>
+                <a class="img2" href="/home/new#productContent2"><img src="@(cdnFileRoot)/Images/3.0/index/top_02.png" /></a>
+                <a class="img3" href="/home/new#productContent5"><img src="@(cdnFileRoot)/Images/3.0/index/top_03.png" /></a>
+                <a class="img4" href="/home/new#productContent7"><img src="@(cdnFileRoot)/Images/3.0/index/top_04.png" /></a>
+            </div>
+            <div class=" trbeRight tube6">
+                <a href="/home/new#productContent5">管销售</a>
+                <div>
+                    实时呈现销售状况，一键查询客户报价，
+                </div>
+                <div>
+                    销售数据实时记录，销售业绩稳步提升。
+                </div>
+            </div>
+            <div class=" trbeRight tube7">
+                <a href="/home/new#productContent7">管财务</a>
+                <div>
+                    清晰记录各类费用凭证、往来账、应付应收款、
+                </div>
+                <div>
+                    欠款等原始数据，会计报表自动生成。
+                </div>
+            </div>
+            <div class=" trbeRight tube8">
+                <a href="/product/linkage#LinkageContent3">智能采购/生产计划</a>
+                <div>
+                    通过总部与下级数据协同，全盘掌握下级库
+                </div>
+                <div>
+                    存、销售数据；用数据指导采购/生产。
+                </div>
+            </div>
+            <div class=" trbeRight tube9">
+                <a href="/product/linkage#LinkageContent4">智能补货</a>
+                <div>
+                    设置下级库存预警，及时知晓下级
+                </div>
+                <div>
+                    缺货情况，并第一时间进行补货。
+                </div>
+            </div>
+            <div class=" trbeRight tube10">
+                <a href="/product/linkage#LinkageContent5">多供应商接入</a>
+                <div>
+                    下级终端支持多个供应商业务数据录入，
+                </div>
+                <div>
+                    非加盟业务也可管理。
+                </div>
+            </div>
+        </div>
+        <div class="index_center">
+            <img src="@(cdnFileRoot)/Images/3.0/index/tube_center.png" />
+
+            <a href="/product/linkage" class="tubeleft">
+                <span>经销/加盟管理</span>
+                <img src="@(cdnFileRoot)/Images/3.0/index/tubeleft_light.png" />
+
+            </a>
+            <a href="/home/new" class="tubetop">
+                <span>进销存ERP</span>
+                <img src="@(cdnFileRoot)/Images/3.0/index/tubetop_light.png" style=" left: 45px;" />
+
+            </a>
+            <a href="/product/dh" class="tuberight aa">
+                <span style="font-size:16px;">
+                    线上线下一体化O2O
+                </span>
+                <img src="@(cdnFileRoot)/Images/3.0/index/tuberight_light.png" />
+
+            </a>
+        </div>
+    </div>
+    <div class="indexContentBtnDiv">
+        <a class="indexContentBtn" target="_blank" href="@(register_url)" rel="external nofollow">
+            注册试用
+            <img src="@(cdnFileRoot)/Images/3.0/index/indexContentArrow.png" class="indexContentArrow" />
+            <img src="@(cdnFileRoot)/Images/3.0/index/indexContentArrow_light.png" class="indexContentArrow_light" />
+        </a>
+    </div>
+</div>
+<div class="indexContent2-1">
+    <div class="doMore_cont">
+        <div class="doMore_title1">来肯云商，为您做得更多</div>
+        <div class="doMore_title2">用心为企业解决最根本的问题</div>
+        <div class="doMore_video">
+            <a href="javascript:;" class="doMore_play_btn play_btn1">播放视频<img src="/Images/3.0/index/videoPlay_new.png?v=20170515"></a>
+            <div class="food_video1">
+                <div class="vido-box">
+                    <video style="width:100%; height:90%;margin-top:5%" controls="controls" loop="loop">
+                        <source src="http://cdn-www.lk361.com/video/introduce.mp4?v=0515" type="video/mp4" class="source">视频获取失败
+                    </video>
+                    <span class="close_btn1">X</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section linkNews{
+    @if (data.GetInt("newscount") > 0)
+    {
+        <div class="indexNews">
+            <div class="indexNews_cont">
+                <div class="indexNews_left">
+                    <div class="indexNews_midea">媒体关注</div>
+                    <a href="http://www.kejixun.com/article/161202/255599.shtml" target="_blank" class="indexNews_list" rel="external nofollow">
+                        <div>
+                            <img src="@(cdnFileRoot)/Images/3.0/index/indexNew_01.png" />
+                        </div>
+                        <img src="@(cdnFileRoot)/Images/3.0/index/n_logo01.png" />
+                        <div class="indexNews_left_title">
+                            从来肯云商看实体企业“互联网+”
+                        </div>
+                        <div class="indexNews_left_title">
+                            转型的核心
+                        </div>
+                    </a>
+                    <a href="http://news.sina.com.cn/o/2016-09-02/doc-ifxvqefm5376220.shtml" target="_blank" class="indexNews_list right_0" rel="external nofollow">
+                        <div>
+                            <img src="@(cdnFileRoot)/Images/3.0/index/indexNew_02.png" />
+                        </div>
+                        <img src="@(cdnFileRoot)/Images/3.0/index/n_logo02.png" />
+                        <div class="indexNews_left_title">
+                            来肯云商，软件易用性：
+                        </div>
+                        <div class="indexNews_left_title">
+                            与用户同一目标
+                        </div>
+                    </a>
+                    <a href="http://news.163.com/16/1226/11/C9773U6J00018AOP.html" target="_blank" class="indexNews_list" rel="external nofollow">
+                        <div href="javascript:;">
+                            <img src="@(cdnFileRoot)/Images/3.0/index/indexNew_03.png" />
+                        </div>
+                        <img src="@(cdnFileRoot)/Images/3.0/index/n_logo03.png" />
+                        <div class="indexNews_left_title">
+                            来肯云商解答
+                        </div>
+                        <div class="indexNews_left_title">
+                            传统企业电商梦为何总破碎
+                        </div>
+                    </a>
+                    <a href="http://www.pintu360.com/article/114338.html" target="_blank" class="indexNews_list right_0" rel="external nofollow">
+                        <div href="javascript:;">
+                            <img src="@(cdnFileRoot)/Images/3.0/index/indexNew_04.png" />
+                        </div>
+                        <img src="@(cdnFileRoot)/Images/3.0/index/n_logo04.png" />
+                        <div class="indexNews_left_title">
+                            从国内SAAS行业状态，探究
+                        </div>
+                        <div class="indexNews_left_title">
+                            来肯云商火爆内因
+                        </div>
+                    </a>
+                </div>
+                <div class="indexNews_right">
+                    <div class="indexNews_midea">新闻<a href="/news/news">+MORE</a></div>
+                    <img src="@(cdnFileRoot)/Images/3.0/index/indexNew_05.png" class="indexNew_righttop" />
+                    @foreach (HashObject news in (HashObjectList)data["nlist"])
+                    {
+                        <a href="/news/newscontent/@news["classid"]-@(news["id"])" class="indexNews_new">
+                            <div class="indexNews_titles">
+                                <div>@(news["title"])</div>
+                                <span>@(news["modifytime"] == null ? "" : news.GetDateTime("modifytime").ToString("yyyy-MM-dd"))</span>
+                            </div>
+                            <div class="indexNews_subtitle">@news.GetString("smalltext")</div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+@section linkMedia{
+    <div class="panel bottom_content2">
+        <div class="index_bottom container">
+            <div class="row">
+                <div class="col-xs-6 border_r">
+                    <div class="indexBottom_ab">About Us</div>
+                    <div class="indexBottom_slogan">
+                        用专业与专注，创造价值与品质；高质量满足客户需求，高效率提供超值服务；
+                    </div>
+                    <div class="indexBottom_slogan">
+                        成为受中小企业欢迎的SaaS整体解决方案提供商。
+                    </div>
+                    <div class="indexBottom_slogan">来肯云商主营：<h1><a href="/home/new">进销存管理软件</a>、</h1><h1><a href="/product/dh">微信商城</a>、</h1><h1><a href="/home/new">库存管理软件</a>、</h1><h1><a href="/home/new">仓库管理软件</a>、</h1><h1><a href="/product/dh">订货商城</a>、</h1><h1><a href="/product/dh">零售商城</a></h1></div>
+                    <div class="indexBottom_ab contact">联系我们</div>
+                    @if (AgentInfo.Current.IsLaiken)
+                    {
+                        <div class="indexBottom_slogan">
+                            邮 箱：　service@LK361.com
+                        </div>
+                    }
+                    <div class="indexBottom_slogan">
+                        地 址：　中国 · 成都市高新科技孵化园9号楼F座6F/8F
+                    </div>
+                    @if (AgentInfo.Current.IsLaiken)
+                    {
+                        <div class="indeBottom_tel">400-800-7683</div>
+                        <div class="indeBottom_download">
+                            <span class="indeBottom_download_span">移动客户端下载</span>
+                            <a href="javascript:;" class="indeBottom_ad">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/ad01.png" style="vertical-align:-6px;" />
+                                <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile4.0.png" class="indeBottom_img">
+                            </a>
+                            <a href="javascript:;" class="indeBottom_ad">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/ad02.png" style="vertical-align:-6px;" />
+                                <img src="/Images/3.0/common/download_mobile4.0.png" class="indeBottom_img">
+                            </a>
+                            <a href="javascript:;" class="indeBottom_ad" onclick="window.open('@(CC.ERP.Portal.Global.DownloadForClient)', '_blank');" title="点击下载电脑端">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/ad03.png" style="vertical-align:-6px;" />
+                            </a>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-xs-6 indexBottom_right">
+                    <div class="lk_code">
+                        @if (AgentInfo.Current.IsLaiken)
+                        {
+                            <img src="@(cdnFileRoot)/Images/3.0/common/lk_code.png?v=20170525" title="App下载" style="border:5px solid #fff;" />
+                            <div style="text-align:center;">扫码下载APP</div>
+                        }
+                        else
+                        {
+                            <img src="@(CC.ERP.Portal.Controllers.Public.GetAgentQrCode())" style="border:5px solid #fff;" />
+                            <div style="text-align:center;"><a id="pcDownload" href="javascript:;" target="_blank">关注来肯官方微信</a></div>
+                        }
+                    </div>
+                    <div class="indexBottom_title1">让管理与销售更贴近更轻松 </div>
+                    <div class="indexBottom_title2">来肯云商，企业专属的一体化云端ERP</div>
+                    <div class="bannerTel bottom_register">
+                        <span class="bannerTel_span"><input id="bannerTel_b" type="tel" name="name" value="" placeholder="请输入手机号码" /><span class="errorText" id="errorText_b"></span></span>
+                        <a id="bannerTelBtn_bottom" onclick="CheckTel()" target="_blank" rel="external nofollow" style="vertical-align:-2px;">注册试用</a>
+                    </div>
+
+                    @if (data.GetInt("linkcount") > 0)
+                    {
+                        int i = 1;
+                        <div class="indexBottom_ab">友情链接</div>
+                        <ul class="friendship">
+                            @foreach (HashObject obj in (HashObjectList)data["llist"])
+                            {
+                                <li><a href="@obj["url"]" target="_blank" style="font-size: 13px;color: #b3b3b3;">@obj["title"]</a></li>
+
+                                if (i < data.GetInt("linkcount"))
+                                {
+                                    <li></li>
+                                }
+                                i++;
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="indexBottom_bottom">
+            <div class="indexBottom_cp">
+                Copyright © 2016 成都来肯信息技术有限公司蜀ICP备13023892号
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<script>
+    $(function () {
+        //首页弹出框
+        $(".index_modelwrapper").css("display", "block");
+        $(".index_model_close").click(function () {
+            $(".index_modelwrapper").css("display", "none");
+            sessionStorage.setItem("model_time", "true")
+        })
+        $(".top_close").click(function () {
+            $(".index_modelwrapper").css("display", "none");
+            sessionStorage.setItem("model_time", "true")
+        })
+        if (sessionStorage.getItem("model_time") == "true") {
+            $(".index_modelwrapper").css("display", "none");
+        }
+
+
+        //首页切换
+        $(".content1_line div").hover(function () {
+            $(".content4_div_content").each(function () {
+                $(this).css("display", "none")
+            })
+            var i = $(this).index();
+            $(".content4_div_content" + i).css("display", "block")
+        });
+
+        $(".Nlkerp_content6 td div").hide();
+        $(".Nlkerp_content6 table td").hover(function () {
+            $(".Nlkerp_content6 table td").removeClass("active")
+            $(this).addClass("active");
+            $(".Nlkerp_content6 table td").children("div").hide();
+            $(this).children("div").show();
+        })
+
+        $("#bannerTel").focus(function () {
+            $("#errorText").text("");
+        });
+        $("#bannerTel_b").focus(function () {
+            $("#errorText_b").text("");
+        });
+        //首页0818
+
+        /* 元旦活动页 */
+        var nowDate = new Date();
+        $('.newyear .btn-close').click(function () {
+            $('.newyear').animate({ left: '100%', height: 0, top: '200px' }, function () {
+                $('.red-envelop').removeClass('hidden').addClass('jump');
+            });
+        });
+        $('.red-envelop').mouseenter(function () {
+            $(this).removeClass('jump');
+        });
+        $('.red-envelop').mouseleave(function () {
+            $(this).removeClass('jump').addClass('jump');
+        });
+        $('.red-envelop').click(function () {
+            $('.red-envelop').addClass('hidden').removeClass('jump');
+            $('.newyear').animate({ left: '0', height: '700px', top: '60px' });
+        });
+        /* 元旦活动结束 */
+
+        //隐藏公共底部
+        $(".bottomP").hide();
+
+        //首页友情链接"二手办公家具"添加nofollow
+        $(".friendship li a").each(function () {
+            if ($(this).html().indexOf("二手办公家具") != -1) {
+                $(this).attr("rel", "external nofollow");
+            }
+        })
+    });
+    //手机号码注册
+    function CheckCellphone() {
+        $("#bannerTelBtn").removeAttr("href");
+        var val = $("#bannerTel").val();
+        if ($.trim(val) == "" || $.trim(val) == $("#bannerTel").attr("placeholder")) {
+            $("#errorText").text("手机不能为空");
+        } else if (!/^1[3-9]{1}\d{9}$/gi.test($.trim(val))) {
+            $("#errorText").text("手机号不正确");
+        } else {
+            var href = "@(register_url)" + "&telphone=" + $.trim(val);
+            $("#bannerTelBtn").attr("href", href);
+        }
+    }
+    function CheckTel() {
+        $("#bannerTelBtn_bottom").removeAttr("href");
+        var val = $("#bannerTel_b").val();
+        if ($.trim(val) == "" || $.trim(val) == $("#bannerTel_b").attr("placeholder")) {
+            $("#errorText_b").text("手机不能为空");
+        } else if (!/^1[3-9]{1}\d{9}$/gi.test($.trim(val))) {
+            $("#errorText_b").text("手机号不正确");
+        } else {
+            var href = "@(register_url)" + "&telphone=" + $.trim(val);
+            $("#bannerTelBtn_bottom").attr("href", href);
+        }
+    }
+    //视频播放
+
+    $(".play_btn").click(function () {
+        $(".food_video").css("display", "block");
+        $(this).siblings('div').find('video').trigger('play');
+    });
+    $(".close_btn").click(function () {
+        $(".food_video").css("display", "none");
+        $('video').trigger('pause');
+    });
+    $(".play_btn1").click(function () {
+        $(".food_video1").css("display", "block");
+        $(this).siblings('div').find('video').trigger('play');
+    });
+    $(".close_btn1").click(function () {
+        $(".food_video1").css("display", "none");
+        $('video').trigger('pause');
+    });
+
+    $("#sliding-searchbox").css("top", 200);
+
+</script>

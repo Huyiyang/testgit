@@ -1,0 +1,544 @@
+﻿@using CC.ERP.Portal
+
+@{
+    Layout = "~/Views/Shared/_PassportLayout.cshtml";
+
+    ViewBag.Title = "在线进销存|登录|来肯云商";
+    ViewBag.Keywords = "在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,经销商管理,crm管理系统,免费进销存软件,进销存软件哪个好";
+    ViewBag.description = "来肯云商,在线进销存登录!即可体验:进销存,云ERP,库存管理软件,CRM,商城系统,客户管理,OA管理系统等!热线400-800-7683/028-84519709";
+
+    var passportdomain = Global.PassportDomain;
+    var action = "//" + passportdomain + "/account/auth";
+    var plugin = "http://" + passportdomain + "/product/GetPlugin";
+    var actionurl = "https://localhost.lk361.com:7801/";
+    var actionuk = actionurl + "usbkey?redirectURL=" + HttpUtility.UrlEncode(Model["ulcallbackurl"].ToString());
+    var ukr = DateTime.Now.Ticks.ToString();
+
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+    var urlprefix_s = Global.urlprefix_s;
+    ViewBag.urlprefix = urlprefix;
+
+    string cdnFileRoot = Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+
+    string domain = Model != null && Model["domain"] != null ? Model["domain"].ToString() : "";
+}
+<script type="text/javascript">
+    window.actionurl = "@actionurl";
+    window.actionuk = "@actionuk";
+    window.ukr = "@ukr";
+    window.plugin = "@plugin";
+</script>
+<script src="@(cdnFileRoot)/Scripts/3.0/logon.js?v=20170904"></script>
+<style>
+    body {
+        background: url('/Images/account/logon/l_bg.png') center no-repeat;
+        background-size:cover;
+    }
+
+    #accounttypecontainer input[type=radio] {
+        vertical-align: -4px;
+        margin-left: 34px;
+    }
+
+    #accounttypecontainer input {
+        border: 1px solid #7b83c6;
+        outline: none;
+    }
+
+    .login_wra #logon_foot_link label input {
+        border-color: #a1b8e6;
+    }
+
+    th, td {
+        border: 1px solid #c0d2f5;
+        padding: 2px 0;
+        text-align: center;
+        font-weight: normal;
+        cursor: pointer;
+    }
+
+    td {
+        cursor: pointer;
+    }
+
+    .key_login {
+        float: left;
+        padding: 1px;
+    }
+
+    .num {
+        color: blue;
+    }
+
+    #keyboard {
+        background: #fff;
+        position: absolute;
+        z-index: 9999;
+        border-radius:3px;
+        display: none;
+    }
+
+    #Ukeyboard {
+        background: #fff;
+        position: absolute;
+        z-index: 9999;
+        display: none;
+    }
+    #service_online{
+        display:none;
+    }
+    .popover-content{
+        padding:9px 4px !important;
+    }
+    .popover.right{
+        margin-left:30px !important;
+    }
+</style>
+<div class="active_position login_wrapper login_bg">
+    <a href="@(urlprefix)/" style="display:inline-block;margin: 25px 0 0 35px;">
+        <img src="@(cdnFileRoot)/Images/account/logon/logo.png" class="l_login" />
+    </a>
+    <div class="wrapper_content_login">
+        <div class="cont_left">
+            <div class="title1">商贸企业专属的云端管理系统</div>
+            <div class="title3">进销存 · 财务 · 微商城 · 订货商城 · 经销加盟管理</div>
+            <img src="@(cdnFileRoot)/Images/account/logon/l_left.png" class="img-responsive l_left_img" />
+        </div>
+        <div class="wrapper_contentwra1 cont_right">
+            <div class="login_wra wra_same wrapper_tips" id="login">
+                <div class="login_positionwra" style="margin-left:0;">
+                    <div class="account_header">
+                        <ul>
+                            <li id="a_login" class="account_header_selectedA">
+                                <a>账号登录</a>
+                            </li>
+
+                            <li id="a_login_weixin">
+                                <a>微信登录</a>
+                            </li>
+
+                            <li id="a_login_u" style="margin-right:0">
+                                <a>U盾登录</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="regster_content" id="login1">
+                        <div class="input_div" style="margin-bottom:20px;">
+                            @Html.TextBox("username", string.Empty, new { autocomplete = "true", placeholder = "请输入手机号码/用户名" })
+                            <label for="username" class="labelPlaceholder">请输入手机号码/用户名</label>
+                        </div>
+                        <div class="input_div " style="margin-bottom:25px;position:relative;">
+                            @Html.Password("pwd", string.Empty, new { @class = "keyboard_inp", placeholder = "请输入密码 " })
+                            <label for="pwd" class="labelPlaceholder">请输入密码</label>
+                            <span class="l_keyboard" onclick="ctrKeyboard()"><img src="@(cdnFileRoot)/Images/account/logon/l_keyboard.png" /></span>
+                            @*密码输入软键盘开始*@
+                            <div id="keyboard" class="key_login">
+                                <table cellspacing="1" width="480" onclick="keyOn()">
+                                    <tr>
+                                        <td>~</td>
+                                        <td>!</td>
+                                        <td>·</td>
+                                        <td>#</td>
+                                        <td>$</td>
+                                        <td>%</td>
+                                        <td>^</td>
+                                        <td>&</td>
+                                        <td>*</td>
+                                        <td>(</td>
+                                        <td>)</td>
+                                        <td>_</td>
+                                        <td>+</td>
+                                        <td>|</td>
+                                        <td rowspan="2" width="90" style="font-size: 14px; color: #6283c2;">退格</td>
+                                    </tr>
+                                    <tr>
+                                        <td>`</td>
+                                        <td class="num">1</td>
+                                        <td class="num">2</td>
+                                        <td class="num">3</td>
+                                        <td class="num">4</td>
+                                        <td class="num">5</td>
+                                        <td class="num">6</td>
+                                        <td class="num">7</td>
+                                        <td class="num">8</td>
+                                        <td class="num">9</td>
+                                        <td class="num">0</td>
+                                        <td>-</td>
+                                        <td>=</td>
+                                        <td>\</td>
+                                    </tr>
+                                    <tr>
+                                        <td>q</td>
+                                        <td>w</td>
+                                        <td>e</td>
+                                        <td>r</td>
+                                        <td>t</td>
+                                        <td>y</td>
+                                        <td>u</td>
+                                        <td>i</td>
+                                        <td>o</td>
+                                        <td>p</td>
+                                        <td>{</td>
+                                        <td>}</td>
+                                        <td>[</td>
+                                        <td>]</td>
+                                        <td colspan="2" style="font-size: 14px; color: #6283c2;">切换大/小写</td>
+                                    </tr>
+                                    <tr>
+                                        <td>a</td>
+                                        <td>s</td>
+                                        <td>d</td>
+                                        <td>f</td>
+                                        <td>g</td>
+                                        <td>h</td>
+                                        <td>j</td>
+                                        <td>k</td>
+                                        <td>l</td>
+                                        <td>:</td>
+                                        <td>"</td>
+                                        <td>;</td>
+                                        <td>'</td>
+                                        <td colspan="3" rowspan="3" style="font-size: 14px; color: #6283c2;">ENTER</td>
+                                    </tr>
+                                    <tr>
+                                        <td>z</td>
+                                        <td>x</td>
+                                        <td>c</td>
+                                        <td>v</td>
+                                        <td>b</td>
+                                        <td>n</td>
+                                        <td>m</td>
+                                        <td><</td>
+                                        <td>></td>
+                                        <td>?</td>
+                                        <td>,</td>
+                                        <td>.</td>
+                                        <td>/</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            @*密码输入软键盘结束*@
+                        </div>
+                        <div class="input_div" id="div_img_code" style="display:none;position:relative;">
+                            @Html.TextBox("imgCode", string.Empty, new { placeholder = "图片验证码 ", data_val_required = "请输入图片验证码", data_val = "true" })
+                            <label for="imgCode" class="labelPlaceholder" style="cursor:pointer;">请输入图片验证码</label>
+                            <span class="imgcode_img"><img title="看不清换一张" id="picCode" /></span>
+                        </div>
+                        <div id="accounttypecontainer" style="display:none;">
+                            <p style="position:relative;">
+                                登录方式：<input type="radio" name="type" value="1">手机号<input type="radio" name="type" value="2">操作员账号
+                            </p>
+
+                        </div>
+                        <div class="" id="logon_foot_link">
+                            <label style="font-weight:500;" title="勾选之后会记住密码，取消勾选则不记住！"><input class="iconfont" type="checkbox" checked="checked" id="check_expire" value="7" />记住密码</label>
+                            <a href="/account/resetpwd?agentid=@(Request["agentid"])&salerid=@(Request["salerid"])&sourceflag=@(Request["sourceflag"])&promoteCode=@(Request["promoteCode"])" style="float:right;">忘记密码</a>
+
+                        </div>
+                        <div class="account_footer" style="margin-top:10px;">
+                            <input type="button" id="btn_login" class="btn" value="登   录" />
+                            @Html.Hidden("domain", domain)
+                        </div>
+                        <div class="div_footer_a" style="padding-bottom:19px;">
+                            <a href="/home/download" target="_blank">
+                                <img src="@(cdnFileRoot)/Images/account/logon/l_down.png" />
+                                产品下载
+                            </a>
+                            <a href="/account/register?agentid=@(Request["agentid"])&salerid=@(Request["salerid"])&sourceflag=@(Request["sourceflag"])&promoteCode=@(Request["promoteCode"])" style="float:right;">
+                                <img src="@(cdnFileRoot)/Images/account/logon/l_register.png" />
+                                注册
+                            </a>
+                        </div>
+                        <div class="bot_tel" style="padding-bottom:15px;margin-top:0;">如遇登录问题，请拨打@(CC.ERP.Portal.Controllers.Public.agent_cellphone)</div>
+                    </div>
+
+
+                    <div class="regster_content" id="login2" style="display:none;">
+                        <div style="width:184px;height:184px;text-align:center;margin:10px auto;border:1px solid #9ab3e4;border-radius:3px;background:#f4f8ff;">
+                            <img id="wx_login_qrcode" src="" style="width: 174px;height: 174px;margin: 5px;" />
+                        </div>
+                        <p style="text-align:center;color:#6283c2;font-size:16px;margin:30px 0 28px;">使用微信扫描上方二维码</p>
+                        <div class="bot_tel" style="padding-bottom: 15px;">如遇登录问题，请拨打@(CC.ERP.Portal.Controllers.Public.agent_cellphone)</div>
+                    </div>
+                    <div class="regster_content" id="login3" style="display:none;">
+                        <div class="input_div" style="position:relative">
+                            @Html.Password("upwd", string.Empty, new { @class = "Ukeyboard_inp", placeholder = "请输入U盾密码 " })
+                            <label for="upwd" class="labelPlaceholder">请输入U盾密码</label>
+                            <span class="l_keyboard" onclick="UctrKeyboard()"><img src="@(cdnFileRoot)/Images/account/logon/l_keyboard.png" /></span>
+                            @*U盾密码输入软键盘开始*@
+                            <div id="Ukeyboard" class="key_login">
+                                <table cellspacing="1" width="480" onclick="UkeyOn()">
+                                    <tr>
+                                        <th>~</th>
+                                        <th>!</th>
+                                        <th>·</th>
+                                        <th>#</th>
+                                        <th>$</th>
+                                        <th>%</th>
+                                        <th>^</th>
+                                        <th>&</th>
+                                        <th>*</th>
+                                        <th>(</th>
+                                        <th>)</th>
+                                        <th>_</th>
+                                        <th>+</th>
+                                        <th>|</th>
+                                        <th rowspan="2" width="90" style="font-size: 14px; color: #6283c2;">退格</th>
+                                    </tr>
+                                    <tr>
+                                        <th>`</th>
+                                        <th class="num">1</th>
+                                        <th class="num">2</th>
+                                        <th class="num">3</th>
+                                        <th class="num">4</th>
+                                        <th class="num">5</th>
+                                        <th class="num">6</th>
+                                        <th class="num">7</th>
+                                        <th class="num">8</th>
+                                        <th class="num">9</th>
+                                        <th class="num">0</th>
+                                        <th>-</th>
+                                        <th>=</th>
+                                        <th>\</th>
+                                    </tr>
+                                    <tr>
+                                        <th>q</th>
+                                        <th>w</th>
+                                        <th>e</th>
+                                        <th>r</th>
+                                        <th>t</th>
+                                        <th>y</th>
+                                        <th>u</th>
+                                        <th>i</th>
+                                        <th>o</th>
+                                        <th>p</th>
+                                        <th>{</th>
+                                        <th>}</th>
+                                        <th>[</th>
+                                        <th>]</th>
+                                        <th colspan="2" style="font-size: 14px; color: #6283c2;">切换大/小写</th>
+                                    </tr>
+                                    <tr>
+                                        <th>a</th>
+                                        <th>s</th>
+                                        <th>d</th>
+                                        <th>f</th>
+                                        <th>g</th>
+                                        <th>h</th>
+                                        <th>j</th>
+                                        <th>k</th>
+                                        <th>l</th>
+                                        <th>:</th>
+                                        <th>"</th>
+                                        <th>;</th>
+                                        <th>'</th>
+                                        <th colspan="3" rowspan="3" style="font-size: 14px; color: #6283c2;">ENTER</th>
+                                    </tr>
+                                    <tr>
+                                        <th>z</th>
+                                        <th>x</th>
+                                        <th>c</th>
+                                        <th>v</th>
+                                        <th>b</th>
+                                        <th>n</th>
+                                        <th>m</th>
+                                        <th><</th>
+                                        <th>></th>
+                                        <th>?</th>
+                                        <th>,</th>
+                                        <th>.</th>
+                                        <th>/</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            @*U盾密码输入软键盘结束*@
+                        </div>
+                        <div class="account_footer">
+                            <input type="button" id="btn_login_u" class="btn" value="登　录" />
+                            <p class="msg" id="msg3"></p>
+                        </div>
+                        <div class="download_text" style="padding-bottom:49px; margin-top: 47px;">
+                            <a href="/home/download" target="_blank">
+                                <img src="@(cdnFileRoot)/Images/account/logon/l_down.png" />
+                                产品下载
+                            </a>
+                            <a href="/account/register?agentid=@(Request["agentid"])&salerid=@(Request["salerid"])&sourceflag=@(Request["sourceflag"])&promoteCode=@(Request["promoteCode"])" style="float:right;">
+                                <img src="@(cdnFileRoot)/Images/account/logon/l_register.png" />
+                                注册
+                            </a>
+                        </div>
+                        <div class="bot_tel" style="padding-bottom: 15px; margin-top: 0;">如遇登录问题，请拨打@(CC.ERP.Portal.Controllers.Public.agent_cellphone)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*续费弹出框*@
+<div class="continuePrice" style="display:none;">
+    <div class="continuePrice_wrapper">
+        <div class="priceClose btnClose" id="priceClose"><img src="@(cdnFileRoot)/Images/3.0/account/continuePriceclose.png" /></div>
+        <ul class="priceText">
+            <li class="textTitle">亲爱的<span id="continueName">XXX</span>:</li>
+            <li style="padding-left:27px;"> 您的账户将于<span id="continueTime">2016年8月30日</span> <span id="continueDay">8天后</span>到期。</li>
+            <li style="padding-left:27px;">请及时联系您的专属客服续费,以免影响您的</li>
+            <li>正常使用。</li>
+            <li style="padding-left:42px;">谢谢！</li>
+        </ul>
+        <div class="buttomBtn">
+            <img class="img" src="@(cdnFileRoot)/Images/3.0/account/continuePriceimg1.png" />
+            <a href="#" class="btnClose"><img src="@(cdnFileRoot)/Images/3.0/account/continuePricebtn.png" /></a>
+        </div>
+        <div class="buttomText">
+            <span style="display:none;" class="continueTel">以下是你的专属客服联系方式<br /><a id="continueTel"></a></span>
+            <span style="display:none;" class="buttomText1">或</span>
+            <span style="display:none;" class="continueQQ"><a id="continueQQ" href="" target="_blank">点击QQ交谈</a></span>
+        </div>
+    </div>
+</div>
+<iframe src="about:blank" id="ukvalidate_service_frame" name="ukvalidate_service_frame" style="display: none"></iframe>
+
+<form id="ukvalidate_service_form" style="display: none" action="@actionuk" method="post" target="ukvalidate_service_frame">
+    <input id="ukvalidate_service_form___postdata" type="hidden" name="d" />
+</form>
+<script>
+    function windowSetHeight() {
+        //设置背景图片高度为屏幕高度
+        var windowHeight = $(window).height();
+        $(".login_wrapper").height(windowHeight);
+    }
+    $(function () {
+        windowSetHeight();
+    })
+    $(window).resize(function () {
+        windowSetHeight();
+    })
+    //密码输入软键盘
+    var htmlCode = {
+        "&": "&",
+        '"': "\"",
+        "<": "<",
+        ">": ">",
+    }
+    function keyOn() {
+        $(".keyboard_inp").focus();
+        var input = document.getElementById("pwd");
+        var e = window.event || test.caller.arguments[0];
+        var el = e.target || e.srcElement;
+        if (el.tagName.toLowerCase() == "td" && el.rowSpan <= 1 && el.colSpan <= 1) {
+            var str = el.innerHTML;
+            str = htmlCode[str] || str;
+            input.value += str;
+        }
+        if (el.innerHTML == "退格") {
+            input.value = input.value.slice(0, -1);
+        }
+        if (el.innerHTML == "切换大/小写") {
+            var els = document.getElementsByTagName("td");
+            for (var i = 0, l = els.length; i < l; i++) {
+                var str = els[i].innerHTML;
+                if (/^[a-z]$/.test(str))
+                    els[i].innerHTML = str.toUpperCase();
+                if (/^[A-Z]$/.test(str))
+                    els[i].innerHTML = str.toLowerCase();
+            }
+        }
+        if (el.innerHTML == "ENTER") {
+            ctrKeyboard();
+        }
+    }
+    function ctrKeyboard() {
+        var el = document.getElementById("keyboard");
+        if (el.offsetWidth > 0)
+            el.style.display = "none";
+        else {
+            el.style.display = "block";
+            sortNum();
+            capsInit();
+        }
+    }
+    function capsInit() {
+        var els = document.getElementsByTagName("td");
+        for (var i = 0, j = 0, l = els.length; i < l; i++) {
+            var str = els[i].innerHTML;
+            if (/^[A-Z]$/.test(str))
+                els[i].innerHTML = str.toLowerCase();
+        }
+    }
+    function sortNum() {
+        var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].sort(function () {
+            return Math.random() > 0.5 ? 1 : -1;
+        });
+        var els = document.getElementsByTagName("td");
+        for (var i = 0, j = 0, l = els.length; i < l; i++) {
+            var str = els[i].innerHTML;
+            if (/^\d$/.test(str))
+                els[i].innerHTML = arr[j++];
+        }
+    }
+    //U盾密码软键盘输入
+    var UhtmlCode = {
+        "&": "&",
+        '"': "\"",
+        "<": "<",
+        ">": ">",
+    }
+    function UkeyOn() {
+        $(".Ukeyboard_inp").focus();
+        var Uinput = document.getElementById("upwd");
+        var e = window.event || test.caller.arguments[0];
+        var el = e.target || e.srcElement;
+        if (el.tagName.toLowerCase() == "th" && el.rowSpan <= 1 && el.colSpan <= 1) {
+            var str = el.innerHTML;
+            str = UhtmlCode[str] || str;
+            Uinput.value += str;
+        }
+        if (el.innerHTML == "退格") {
+            Uinput.value = Uinput.value.slice(0, -1);
+        }
+        if (el.innerHTML == "切换大/小写") {
+            var els = document.getElementsByTagName("th");
+            for (var i = 0, l = els.length; i < l; i++) {
+                var str = els[i].innerHTML;
+                if (/^[a-z]$/.test(str))
+                    els[i].innerHTML = str.toUpperCase();
+                if (/^[A-Z]$/.test(str))
+                    els[i].innerHTML = str.toLowerCase();
+            }
+        }
+        if (el.innerHTML == "ENTER") {
+            UctrKeyboard();
+        }
+    }
+    function UctrKeyboard() {
+        var el = document.getElementById("Ukeyboard");
+        if (el.offsetWidth > 0)
+            el.style.display = "none";
+        else {
+            el.style.display = "block";
+            UsortNum();
+            UcapsInit();
+        }
+    }
+    function UcapsInit() {
+        var els = document.getElementsByTagName("th");
+        for (var i = 0, j = 0, l = els.length; i < l; i++) {
+            var str = els[i].innerHTML;
+            if (/^[A-Z]$/.test(str))
+                els[i].innerHTML = str.toLowerCase();
+        }
+    }
+    function UsortNum() {
+        var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].sort(function () {
+            return Math.random() > 0.5 ? 1 : -1;
+        });
+        var els = document.getElementsByTagName("th");
+        for (var i = 0, j = 0, l = els.length; i < l; i++) {
+            var str = els[i].innerHTML;
+            if (/^\d$/.test(str))
+                els[i].innerHTML = arr[j++];
+        }
+    }
+</script>

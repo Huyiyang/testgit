@@ -1,0 +1,230 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (!CC.ERP.Portal.Global.ShowActive)
+    {
+        Response.Redirect("/home/index");
+    }
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<style>
+    .ActivePage .ActivePage_content .content3 .content3_img li div {
+        line-height: 280px;
+    }
+
+    .ActivePage .ActivePage_content .content1 .content1_img li div {
+        height: 300px;
+        line-height: 300px;
+    }
+
+    .ActivePage {
+        padding-bottom: 55px !important;
+    }
+
+    .trans {
+        background-color: transparent !important;
+    }
+
+    .newyear-page img {
+        width: 100%;
+        height: auto;
+    }
+
+    /*活动-2017*/
+    .activeTop{
+        background:url('@(cdnFileRoot)/Images/active/2017-2-17-activeTop.jpg');
+        height:775px;
+    }
+     .activeTop_day{
+        position: absolute;
+        font-size: 26px;
+        color: #fff;
+        top: 394px;
+        left: 445px;
+    }
+    .active_chance{
+        font-size: 44px;
+        color: #fff;
+        top: 506px;
+        position: absolute;
+        left: 446px;
+    }
+    .active-bg2017 {
+        position: absolute;
+        z-index: -9;
+    }
+
+    .active_cont {
+        width: 1000px;
+        margin: 0 auto;
+        padding-top: 98px;
+    }
+
+    .active_cont1 {
+        width: 100%;
+        margin-bottom:86px;
+    }
+
+    .active_label {
+        width: 296px;
+        line-height: 64px;
+        height: 68px;
+        background: url('@(cdnFileRoot)/Images/active/2017-avtive-label.png') no-repeat;
+        display:block;
+        text-align: center;
+        font-size: 36px;
+        color: #fff;
+    }
+    .active_timeShow{
+        width:980px;
+        margin:27px 10px 0;
+        padding-left:30px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+    .active_labelCont{
+        width:980px;
+        margin:27px 10px 0;
+        padding-left:30px;
+        padding-right:25px;
+    }
+    .Show1{
+        height:68px;
+        background: url('@(cdnFileRoot)/Images/active/2017-avtive-show1.png') no-repeat;
+    }
+    .Show2{
+        height:170px;
+        background: url('@(cdnFileRoot)/Images/active/2017-avtive-show2.png') no-repeat;
+    }
+    .Show3{
+        height:395px;
+        background: url('@(cdnFileRoot)/Images/active/2017-avtive-show3.png') no-repeat;
+
+     }
+    .active_timeShow>span, .active_labelCont>span{
+        font-size:28px;
+        color:#000;
+        display:block;
+    }
+     .active_labelCont>span::before{
+        content:"";
+        width:14px;
+        height:14px;
+        background:#9c1c18;
+        border-radius:50%;
+        display:inline-block;
+        margin-right:7px;
+        vertical-align: 3px;
+    }
+    .Show3>span{
+        padding-top:35px;
+    }
+    .active_bottom{
+        width:1000px;
+        margin:0 auto;
+        text-align:center;
+        padding-bottom:240px;
+    }
+    .bottom_number{
+        font-size:29px;
+        color:#040000;
+        letter-spacing: 5px;
+    }
+    .bottomWord1,.bottomWord2{
+        margin-top:25px;
+    }
+    .myActive-2017{
+        font-size:26px;
+        color:#000;
+        margin: 30px auto 80px;
+    }
+    .activeDetail-bg{
+    background:url("@(cdnFileRoot)/Images/active/2017-2-17active-b.jpg") center;
+    }
+
+</style>
+
+<!--[if lte IE 9]>
+    <script type="text/javascript">
+     document.createElement("footer");
+    </script>
+<![endif]-->
+@*活动-2017*@
+<div>
+    <div class="activeTop">
+        <span class="activeTop_day">2月27日<span style="margin-left:30px;">限时抢购在线商城</span></span>
+        <span class="active_chance">鸡惠难得，不容错过！</span>
+    </div>
+    @*<img src="@(cdnFileRoot)/Images/active/2017-2-17active-b.jpg" class="active-bg2017" />*@
+    <div class="activeDetail-bg">
+        <div class="active_cont">
+            <div class="active_cont1">
+                <span class="active_label">活动时间：</span>
+                <div class="active_timeShow Show1"><span>仅限2017年2月27日。</span></div>
+            </div>
+            <div class="active_cont1">
+                <span class="active_label">活动内容：</span>
+                <div class="active_timeShow Show2"><span>活动期间所有在线商城产品购买1年使用权立即赠送1年使用权，新用户再加进销存ERP标准版单用户1年免费使用权，老用户赠送原ERP的服务时长1个月（不限用户数）。</span></div>
+            </div>
+            <div class="active_cont1" style="margin-bottom:0">
+                <span class="active_label">活动规则：</span>
+                <div class="active_labelCont Show3">
+                    <span>所有在线商城产品均实行买几年送几年的优惠政策，即买1年送1年；买2年送2年；买3年送3年；以此类推。</span>
+                    <span>凡购买在线商城任意版本的用户实际购买几年使用权，新用户即可额外获赠进销存ERP标准版单用户对应年限的免费使用权；老用户即可额外获赠对应几个月的原ERP服务时长（不限用户数）。</span>
+                    <span>本次活动仅限220个名额。</span>
+                </div>
+            </div>
+        </div>
+        <div class="active_bottom">
+            <div class="myActive-2017">本活动最终解释权归成都来肯信息技术有限公司所有。</div>
+            <div class="bottom_number">贰 / 零 / 壹 / 柒 / 农 / 历 / 丁 / 酉 / 鸡 / 年</div>
+            <img src="@(cdnFileRoot)/Images/active/2017-bottomWord.png" class="bottomWord1" />
+            <img src="@(cdnFileRoot)/Images/active/2017bottom_word.png?v=170227" class="bottomWord2" />
+        </div>
+    </div>
+</div>
+<div class="newyear-page">
+    @*<img src="@(cdnFileRoot)/Images/active/2017-1-10-activePage.jpg" usemap="#consultation" alt="元旦活动详情" hidefocus="true" />*@
+    <map name="consultation" id="consultation">
+        <area shape="rect" coords="442,499,726,575" href="/account/Register" alt="8折抢购，再送两月" title="" onfocus="blur(this);">
+        <area shape="rect" coords="745, 499, 1032, 575" href="/account/Register" alt="8元立购，立省两成" title="" onfocus="blur(this);">
+        <area shape="rect" coords="589, 1041, 745, 1115" href="/account/Register" alt="注册咨询" title="" onfocus="blur(this);">
+        <area shape="rect" coords="1280, 1699, 1457, 1776" href="/account/Register" alt="注册咨询" title="" onfocus="blur(this);">
+    </map>
+</div>
+<script>
+
+
+    $(function () {
+        $("#menu_div").hide();
+        $("#footer-outer").hide();
+        $("#nav_height").remove();
+        $("#backTo_home").remove();
+
+        var areaPosition = function () {
+            var imgWidth = $('.newyear-page img').width();
+            var percent = imgWidth / 1920;
+            var area = $('.newyear-page area');
+            var arr = [[442, 499, 726, 575], [745, 499, 1032, 575], [589, 1041, 745, 1115], [1280, 1699, 1457, 1776]];
+
+            for (var i = 0, len = arr.length ; i < len; i++) {
+                area.eq(i).attr("coords", arr[i].map(function (item) {
+                    return item * percent;
+                }).join(","));
+            }
+        }
+        areaPosition();
+        $(window).resize(function () {
+            areaPosition();
+        });
+    });
+
+    $(".logo").on("click", function () {
+        window.location = "/";
+    });
+
+</script>

@@ -1,0 +1,832 @@
+﻿@using CC.InnerBLL.BLL.Agent
+@{
+
+    ViewBag.Title = "云ERP|仓库管理系统|库存管理软件|来肯云商";
+    ViewBag.Keywords = "在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,免费进销存,来肯云商,来肯";
+    ViewBag.description = "来肯云商,云ERP管理专家。实现 [进销存 + 商场] 一体化!功能涵盖:仓库管理系统,销售管理系统,会员分销,移动办公,财务系统,报表系统,商城系统等!强大功能让您的经营更简单!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var urlprefix_s = CC.ERP.Portal.Global.urlprefix_s;
+
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+    var register_url = string.Format("{0}/account/register", urlprefix_s);
+    var login_url = "";
+
+    if (AgentInfo.Current.IsLaiken)
+    {
+        register_url += string.Format("?salerid={0}&sourceflag={1}", Request["salerid"], Request["sourceflag"]);
+    }
+    else
+    {
+        register_url += string.Format("?agentid={0}&salerid={1}&sourceflag={2}", AgentInfo.Current.AgentID, Request["salerid"], Request["sourceflag"]);
+    }
+
+    login_url = register_url.Replace("register", "logon");
+    ViewBag.urlprefix = urlprefix;
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<!--[if IE 8]>
+<style>
+    .iconfont1{
+        margin-top:5px !important;
+    }
+</style>
+<![endif]-->
+
+<div class="CharWrapper">
+    <div class="CharBanner">
+        <div class="CharBanner_wra">
+            <div class="title">来肯云商，云端ERP管理专家</div>
+            <div class="text">对经营从未如此胸有成竹</div>
+            <div class="bannerNav">
+                <div class="bannerNav_wra">
+                    <ul>
+                        <li>
+                            <div class="item1">
+                                <a href="#bannerNav1">
+                                    <i class="iconfont iconfont1 icon-kucun"></i>
+                                    <i class="iconfont iconfont2 icon-kucun2" style="opacity:0;"></i>
+                                    <span>库存</span>
+                                </a>                             
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item3">
+                                <a href="#bannerNav2">
+                                    <i class="iconfont iconfont1 icon-cart"></i>
+                                    <i class="iconfont iconfont2 icon-cart2" style="opacity:0;"></i>
+                                    <span>采购</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item2">
+                                <a href="#bannerNav3">
+                                    <i class="iconfont iconfont1 icon-xioashou1"></i>
+                                    <i class="iconfont iconfont2 icon-xioashou2" style="opacity:0;"></i>
+                                    <span>销售</span>
+                                </a>                               
+                            </div>
+                        </li>
+                       
+                        <li>
+                            <div class="item1">
+                                <a href="#bannerNav4">
+                                    <i class="iconfont iconfont1 icon-huiyuan1"></i>
+                                    <span class="iconfont3 iconfont2_huiyuan" style="opacity:0;"><i class="iconfont  icon-huiyuan1"></i></span>
+                                    <span style="margin-top:2px;">会员/客户</span>
+                                </a>                              
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item2">
+                                <a href="#bannerNav5">
+                                    <i class="iconfont iconfont1 icon-shouji1"></i>
+                                    <i class="iconfont iconfont2 icon-shouji2" style="opacity:0;"></i>
+                                    <span>移动</span>
+                                </a>                             
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item3">
+                                <a href="#bannerNav6">
+                                    <i class="iconfont iconfont1 icon-caiwu1"></i>
+                                    <i class="iconfont iconfont2 icon-caiwu2" style="opacity:0;"></i>
+                                    <span>财务</span>
+                                </a>                             
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item2">
+                                <a href="#bannerNav7">
+                                    <i class="iconfont iconfont1 icon-baobiao1"></i>
+                                    <i class="iconfont iconfont2 icon-baobiao2" style="opacity:0;"></i>
+                                    <span>报表</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item1">
+                                <a href="#bannerNav8">
+                                    <i class="iconfont iconfont1 icon-shangcheng1"></i>
+                                    <i class="iconfont iconfont2 icon-shangcheng2" style="opacity:0;"></i>
+                                    <span>商城</span>
+                                </a>                               
+                            </div>
+                        </li>
+                       
+                    </ul>
+                    <div class="clear"></div>
+                </div>             
+            </div>
+        </div>
+    </div>
+    @*库存管理*@
+    <div id="bannerNav1" class="bannerNav_position"></div>
+    <div class="CharContent1 CharContent_wra">
+        <div class="CharContent1_wra">
+            <div class="CharTitle">库存管理</div>
+            <div class="CharContentNav">
+                <ul>
+                    <li class="CharContentItem active">
+                        <span class="Content1Icon1 Content1Icon"></span><span class="CharSubTitle">库存管理</span>
+                        <div>
+                            报损单、报溢单、其他出入库<br />
+                            单、成本调价单、库存盘点单<br />
+                            ，让您的仓库账目一目了然。
+                        </div>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="Content1Icon2 Content1Icon"></span><span class="CharSubTitle">仓库调拨</span>
+                        <div>
+                            同价调拨申请/单、变价调拨<br />
+                            申请/单帮您轻松管理调拨问<br />
+                            题。
+                        </div>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="Content1Icon3 Content1Icon"></span><span class="CharSubTitle">收发货/验货</span>
+                        <div>
+                            让您的收发货状态更加清晰<br />
+                            明了。
+                        </div>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="Content1Icon4 Content1Icon"></span><span class="CharSubTitle">生产统计</span>
+                        <div>
+                            组装单、拆卸单、生产模板列<br />
+                            表、生产计划功能，帮你自动<br />
+                            统计对应货品的数量。
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a>
+            <div class="CharImg">
+                <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent1Img1.png?v=0926" />
+                <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent1Img2.png?v=0926" />
+                <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent1Img3.png?v=0926" />
+                <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent1Img4.png?v=0926" />
+            </div>
+        </div>
+    </div>
+    @*采购管理*@
+    <div id="bannerNav2" class="bannerNav_position"></div>
+    <div class="CharContent2 CharContent_wra">
+        <div class="CharContent2_wra">
+            <div class="CharContent_left">
+                <div class="CharTitle">采购管理</div>
+                <ul>
+                    <li class="CharContentItem active">
+                        <span class="CharSubTitle">采购订单</span>
+                        <div>
+                            帮您记录采购订单、采购退换货申请，<br />
+                            让你的采购流程井然有序。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">采购业务记账</span>
+                        <div>
+                            为您呈现采购入库单、采购退换货单，<br />
+                            提供采购历史查询功能，让采购记录更<br />
+                            清晰更易管理。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">以销订购</span>
+                        <div>
+                            据实际销售数据决策下一步采购量真正<br />
+                            摆脱库存积压的风险。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li><a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a></li>
+                </ul>
+            </div>
+            <div class="CharContent_right">
+                <div class="CharImg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent2Img1.jpg?v=0926" />
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent2Img2.jpg?v=0926" />
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent2Img4.png?v=0926" />
+                </div>
+                <div class="CharImgBg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent2Img3.jpg?v=0926"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*销售管理*@
+   
+    <div id="bannerNav3" class="bannerNav_position"></div>
+    <div class="CharContent3 CharContent_wra">
+        <div class="CharContent3_wra">
+            <div class="CharContent1_left">
+                <div class="CharImg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent3Img3.jpg" />
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent3Img4.jpg" />
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent3Img5.jpg" />
+                </div>
+                <div class="CharImgBg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent3Img2.png" />
+                </div>
+            </div>
+            <div class="CharContent1_right">
+                <div class="CharTitle">销售管理</div>
+                <ul>
+                    <li class="CharContentItem active">
+                        <span class="CharSubTitle">销售订单</span>
+                        <div>
+                            具备销售订单、销售退换货申请功能，<br />
+                            使销售流程不再杂乱无章。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">销售业务管理</span>
+                        <div>
+                            零售单、销售出库单、销售退换货单帮<br />
+                            您记录各种销售信息，销售历史为您呈<br />
+                            现过往销售情况。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">销售价格体系查询</span>
+                        <div>
+                            让您轻松查找不同客户对应的报价明细。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li><a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @*会员/客户管理*@
+    <div id="bannerNav4" class="bannerNav_position"></div>
+
+    <div class="CharContent4 CharContent_wra">
+        <div class="CharContent4_wra">
+            <div class="CharTitle">会员/客户管理</div>
+            <div class="CharContent4_nav">
+                <ul>
+                    <li class="CharContentItem active">
+                        <div class="navIcon">
+                            <span><i class="iconfont icon-genzhong"></i></span>
+                        </div>
+                        <span class="CharContent4_title">会员/客户跟踪</span>
+                        <div class="CharContent4_text">
+                            为您记录每一位客户的等级、跟进程度、<br />
+                            对应报价、以及对应合同信息,<br />
+                            从而提高客户转化率和忠诚度.
+                        </div>
+                    </li>
+                    <li class="CharContentItem">
+                        <div class="navIcon">
+                            <span><i class="iconfont icon-OAbangong"></i></span>
+                        </div>
+                        <span class="CharContent4_title">办公OA</span>
+                        <div class="CharContent4_text">
+                            让管理不再复杂.<br />
+                            移动审批降低协作繁冗度,<br />
+                            行政成本大幅下降、管理执行力显著提升.
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="CharImg">
+                <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent4Img1.jpg?v=0926" />
+                <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent4Img2.jpg?v=0926" />
+            </div>
+            <a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a>
+        </div>
+    </div>
+    @*移动管理*@
+    <div id="bannerNav5" class="bannerNav_position"></div>
+    <div class="CharContent5 CharContent_wra">
+        <div class="CharContent5_wra">
+            <div class="CharContent1_left">
+                <div class="CharImg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent5Img2.png?v=1214" />    
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent5Img1.png?v=1214" />                                 
+                </div>
+            </div>
+            <div class="CharContent1_right">
+                <div class="CharTitle">移动管理</div>
+                <ul>
+                    <li class="CharContentItem active">
+                        <span class="CharSubTitle">移动销售</span>
+                        <div>
+                            不论你身在哪里，来肯都可以让你不受<br />
+                            时间和空间的限制来完成销售，不放过<br />
+                            任何一个提升销售业绩的机会。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">移动进销存</span>
+                        <div>
+                            除在iOS/Android手机中使用来肯云商<br />
+                            APP以外还可通过适配性更广的微信、<br />
+                            网页版获得完美的移动操作体验。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li><a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @*财务管理*@
+    <div id="bannerNav6" class="bannerNav_position"></div>
+    <div class="CharContent6 CharContent_wra">
+        <div class="CharContent6_wra">
+            <div class="CharContent_left">
+                <div class="CharTitle">财务管理</div>
+                <ul>
+                    <li class="CharContentItem active">
+                        <span class="CharSubTitle">费用管理</span>
+                        <div>
+                            费用单、费用历史、其他收入，为您清<br />
+                            晰记录每一笔资金流向。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">往来账</span>
+                        <div>
+                            收欠款、收款单、预收款单、收款历史<br />
+                            ，帮您记录每一笔收款；付欠款、付款<br />
+                            单、付款历史，让您的每笔付款都一清<br />
+                            二楚。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <span class="CharSubTitle">会计报表</span>
+                        <div>
+                            会计凭证、银行转款、月结存记录等会<br />
+                            计报表，你想要的都在这里。
+                        </div>
+                        <i class="iconfont"></i>
+                    </li>
+                    <li><a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a></li>
+                </ul>
+            </div>
+            <div class="CharContent_right">
+                <div class="CharImg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent6Img2.jpg" />
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent6Img3.jpg" />
+                    <img style="display:none;" src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent6Img4.jpg" />
+                </div>
+                <div class="CharImgBg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent6Img1.jpg?v=0927" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*报表中心*@
+    <div id="bannerNav7" class="bannerNav_position"></div>
+    <div class="CharContent7 CharContent_wra">
+        <div class="CharContent7_top">
+            <ul>
+                <li>
+                    <div class="CharContent7_text">想要随时了解企业经营情况？</div>
+                    <span class="CharTitle">报表中心</span>
+                    <i class="iconfont icon-baobiao2"></i>
+                </li>
+                <li>
+                    <div class="CharContent7_text2">
+                        折线图、环形图、条状图……搭配高辨识度的色彩，<br />
+                        直观的帮您解析经营月报、销售占比、销售排行、业<br />
+                        绩变化等重要数据。您还可以借助这些报表准确的分<br />
+                        析出各类数据变化的原因，从而帮助您更科学的改变<br />
+                        经营策略。
+                    </div>
+                    <a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="CharContent7_content">
+            <div class="CharContent7_wra">
+                <div class="CharContent7_img">
+                    <div class="CharContent7_imgwra">
+                        <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent7Img2.jpg" />
+                        <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent7Img3.jpg" />
+                        <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent7Img4.jpg?v=0926" />
+                        <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent7Img5.jpg" />
+                        <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent7Img6.jpg" />
+                    </div>
+                </div>
+                <div class="CharContent7_bgimg">
+                    <img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent7Img7.png" />
+                    <ul>
+                        <li class="active">库存报表<i class="iconfont"></i></li>
+                        <li>销售报表<i class="iconfont"></i></li>
+                        <li>采购报表<i class="iconfont"></i></li>
+                        <li>往来报表<i class="iconfont"></i></li>
+                        <li>财务报表<i class="iconfont"></i></li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="CharContent7_arrow">
+                        <span id="CharContent7_left"><i class="iconfont icon-moveleft"></i></span>
+                        <span id="CharContent7_right"><i class="iconfont icon-moveright"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*商城管理*@
+    <div id="bannerNav8" class="bannerNav_position"></div>
+    <div class="CharContent8 CharContent_wra">
+        <div class="CharTitle">商城管理</div>
+        <div class="CharSubTitle">想突破地域销售限制？门店无法24小时营业？</div>
+        <div class="CharContent8_wra">
+            <div class="CharContent_left">
+                <ul>
+                    <li class="CharContentItem">
+                        <i class="iconfont iconfont1 icon-kucun"></i>
+                        <span class="CharSubTitle">库存同步</span>
+                        <div>
+                            商城的订单数据与ERP系统的订单数据实时智<br />
+                            能同步。不再需要依靠人工的方式来将商城<br />
+                            订单数据导入ERP系统的订单管理中。
+                        </div>
+                        <i class="iconfont iconfont2"></i>
+                    </li>
+                    <li class="CharContentItem active">
+                        <i class="iconfont iconfont1 icon-dingdan"></i>
+                        <span class="CharSubTitle">订单同步</span>
+                        <div>
+                            商城的库存数据与ERP系统的库存数据实时智<br />
+                            能同步。同样不再需要依靠人工的方式来将<br />
+                            商城库存数据导入ERP系统的库存管理中。
+                        </div>
+                        <i class="iconfont iconfont2"></i>
+                    </li>
+                    <li class="CharContentItem">
+                        <i class="iconfont iconfont1 icon-huiyuan"></i>
+                        <span class="CharSubTitle">会员管理</span>
+                        <div>
+                            为您提供会员积分、定制优惠券、三级分销、<br />
+                            朋友圈分享功能，助力销售业绩稳步提升。
+                        </div>
+                        <i class="iconfont iconfont2"></i>
+                    </li>
+                    <li><a class="CharBtn" target="_blank" href="@(register_url)">注册试用</a></li>
+                </ul>
+            </div>
+            <div class="CharContent_right">
+                <div class="CharImg">
+                    <ul>
+                        <li class="content8_CharImg0"><img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent8Img3.png?v=1214" /></li>
+                        <li class="content8_CharImg1"><img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent8Img2.png?v=0926" /></li>
+                        <li class="content8_CharImg2"><img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent8Img.png?v=0926" /></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="bot_CharImg"><img src="@(cdnFileRoot)/Images/3.0/Characteristics/CharContent8Img4.png" /></div>
+            </div>
+        </div>
+    </div>
+
+    @*配置功能*@
+    <div class="CharContent9">
+        <div class="CharTitle">特定行业可配置功能</div>
+        <div class="content9Icon">
+            <ul>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon1 iconfont iconItem"></span>
+                        </div>     
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>                                         
+                    </div>                   
+                    <div class="contentTitle">
+                        <div>食品药品</div>
+                        <span>保质期、批次/批号、<br />多单位、拆零</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon2 iconfont iconItem"></span>
+                        </div>                       
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>服装鞋帽</div>
+                        <span>颜色、尺码</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon3 iconfont iconItem"></span>
+                        </div>                      
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>手机通讯</div>
+                        <span>串号（序列号）</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon4 iconfont iconItem"></span>
+                        </div>                      
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>汽配汽修</div>
+                        <span>客户定期、定时跟进</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon5 iconfont iconItem"></span>
+                        </div>                      
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>数码家电</div>
+                        <span>序列号</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon6 iconfont iconItem"></span>
+                        </div>                     
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>机械机电</div>
+                        <span>生产管理</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon7 iconfont iconItem"></span>
+                        </div>                       
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>化妆用品</div>
+                        <span>保质期、多单位</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon8 iconfont iconItem"></span>
+                        </div>
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>母婴用品</div>
+                        <span>保质期</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon9 iconfont iconItem"></span>
+                        </div>                      
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>生鲜农贸</div>
+                        <span>保质期、多单位</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contentItem">
+                        <div>
+                            <span class="icon10 iconfont iconItem"></span>
+                        </div>                      
+                        <i class="iconfont iconfont1 icon-liubianxing2"></i>
+                    </div>
+                    <div class="contentTitle">
+                        <div>其它行业</div>
+                        <span>根据各行业属性自由<br />配置细分功能项</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var url = window.location.search
+        var url1 = url.split("?");
+        $("#" + url1[1]).show().siblings().hide();
+        $("." + url1[1]).show().siblings().hide();       
+        //导航
+        var scroll = $(window.document).scrollTop();
+        if (scroll > 190) {
+            $(".top_banner_bg").addClass("change");
+        } else {
+            $(".top_banner_bg").removeClass("change");
+        }
+        $(window).bind("scroll", function () {
+            var scroll = $(window.document).scrollTop();
+            if (scroll > 360) {
+                $(".CharWrapper .bannerNav").addClass("change");
+                $("#getPrize_banner").hide();
+                $("#menu_div").css({ "top": "0px", "display": "none" });
+
+            } else {
+                $(".CharWrapper .bannerNav").removeClass("change");
+                $("#getPrize_banner").show();
+                $("#menu_div").css({ "top": "0px", "display": "block" })
+            }
+
+            if ($(".CharWrapper .bannerNav").hasClass("change")) {
+                $(".top_banner_bg  .lkrep_item").hover(function () {
+                    $(window.document).scrollTop(320)
+                })
+            } else {
+                $(".top_banner_bg  .lkrep_item").hover(function () {
+                    $(window.document).scrollTop(0)
+                })
+            }
+            //导航下划线
+            if (scroll < 1440 && scroll > 460) {
+                $(".bannerNav_wra li").eq(0).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 1440 && scroll < 2190) {
+                $(".bannerNav_wra li").eq(1).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 2190 && scroll < 2970) {
+                $(".bannerNav_wra li").eq(2).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 2970 && scroll < 4060) {
+                $(".bannerNav_wra li").eq(3).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 4060 && scroll < 4840) {
+                $(".bannerNav_wra li").eq(4).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 4840 && scroll < 5560) {
+                $(".bannerNav_wra li").eq(5).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 5560 && scroll < 6455) {
+                $(".bannerNav_wra li").eq(6).addClass("active").siblings().removeClass("active");
+            } else if (scroll > 6455 && scroll < 7303) {
+                $(".bannerNav_wra li").eq(7).addClass("active").siblings().removeClass("active");
+            }
+        })
+ 
+
+    //标签切换
+        $(".top_banner_bg .lkrep_item").click(function () {
+            $(".top_banner_bg .lkrep_item").removeClass("active");
+            $(this).addClass("active").siblings().removeClass("active");
+            var title = $(this).attr("title1");
+            var title2 = $(this).attr("title2");
+            $("." + title).show().siblings().hide();          
+            $("." + title2).show().siblings().hide();          
+        })
+       
+        $(".CoreFunction_content .content1_text .item1_1").hover(function () {
+            $(".CoreFunction_content .content1_text .item").removeClass("active");
+            $(this).addClass("active").siblings().removeClass("active");
+            var imgtitle = $(this).attr("title1");
+            $("." + imgtitle).show().siblings().hide();
+        })
+        $(".CoreFunction_content .content1_text .item2_text").hover(function () {
+            $(".CoreFunction_content .content1_text .item2_text").removeClass("active");
+            $(this).addClass("active").siblings().removeClass("active");
+            var imgtitle = $(this).attr("title1");
+            $("." + imgtitle).show().siblings().hide();
+        });
+        $(".content8_content1 .item").hover(function () {
+            $(".content8_content1 .item").removeClass("active");
+            $(this).addClass("active").siblings().removeClass("active");
+            var itemtitle = $(this).attr("title1");
+            $("." + itemtitle).show().siblings().hide();
+
+        });
+
+      
+        //2016.9.26
+        //-----轮播
+    var curIndex = 0,imgLen = $(".CharContent7_imgwra img").length; 
+        function changeTo(num){
+          
+            if (window.innerWidth< 1170) {
+                var goLeft = num * 785;
+            } else {
+                var goLeft = num * 830;
+            }
+            $(".CharContent7_imgwra").animate({ left: "-" + goLeft + "px" }, 500);
+            $(".CharContent7_bgimg").find("li").removeClass("active").eq(num).addClass("active"); 
+            $(".CharContent7_bgimg").find("li").removeClass("active").eq(num).addClass("active");
+        }
+        var autoChange = setInterval(function(){
+            if(curIndex < imgLen-1){
+                curIndex ++;
+            }else{
+                curIndex = 0;
+            }
+            changeTo(curIndex);
+        },2500);
+        //左箭头滑入滑出事件处理
+        $("#CharContent7_left").hover(function () {
+            //滑入清除定时器
+            clearInterval(autoChange);
+        },function(){
+            //滑出则重置定时器
+            autoChangeAgain();
+        });
+        //左箭头点击处理
+        $("#CharContent7_left").click(function () {
+            //根据curIndex进行上一个图片处理
+            curIndex = (curIndex > 0) ? (--curIndex) : (imgLen - 1);
+            changeTo(curIndex);
+        });
+        //右箭头滑入滑出事件处理
+        $("#CharContent7_right").hover(function () {
+            //滑入清除定时器
+            clearInterval(autoChange);
+        },function(){
+            //滑出则重置定时器
+            autoChangeAgain();
+        });
+        //右箭头点击处理
+        $("#CharContent7_right").click(function () {
+            curIndex = (curIndex < imgLen - 1) ? (++curIndex) : 0;
+            changeTo(curIndex);
+        });
+        //对右下角按钮index进行事件绑定处理等
+        $(".CharContent7_bgimg").find("li").each(function (item) { 
+            $(this).hover(function(){
+                clearInterval(autoChange);
+                changeTo(item);
+                curIndex = item;
+            },function(){
+                autoChangeAgain();
+            });
+        });
+        //清除定时器时候的重置定时器--封装
+        function autoChangeAgain(){
+            autoChange = setInterval(function(){
+                if(curIndex < imgLen-1){
+                    curIndex ++;
+                }else{
+                    curIndex = 0;
+                }
+                //调用变换处理函数
+                changeTo(curIndex);
+            },2500);
+        }
+        //-----轮播
+
+        //图片切换
+        CharContentHover(".CharContent1");
+        CharContentHover(".CharContent2");
+        CharContentHover(".CharContent3");
+        CharContentHover(".CharContent4");
+        CharContentHover(".CharContent5");
+        CharContentHover(".CharContent6");
+
+        //商城管理图片轮换      
+            $(".CharContent8 .CharContentItem").hover(function () {
+                $(this).addClass("active").siblings().removeClass("active");
+                var i = $(this).index();
+                if (i == 2) {
+                    $(".content8_CharImg0").css({ "left": "390px", "width": "320px", "top": "67px", "z-index": "0" });
+                } else if (i == 0) {
+                    $(".content8_CharImg2").css({ "left": "40px", "width": "320pxpx", "top": "67px", "z-index": "0" })
+                }
+                $(".content8_CharImg" + i).css({
+                    left: "200px",
+                    top: "0px",
+                    width: "370px",
+                    "z-index": "1"
+                })
+                $(".content8_CharImg" + i).prev().css({ "left": "40px", "width": "320px", "z-index": "0", "top": "67px" })
+                $(".content8_CharImg" + i).next().css({ "left": "390px", "z-index": "0", "width": "320px", "top": "67px" })
+            })
+       
+        //隐藏下载
+        $("#footer-outer .panel").hide();
+        $("#footer-outer .bottom_content2").show();
+
+    })
+
+    function CharContentHover(targetname) {
+        $(targetname+" .CharContentItem").hover(function () {
+            $(this).addClass("active").siblings().removeClass("active")
+            $(targetname+" .CharImg img").eq($(this).index()).show().siblings().hide();
+        })
+    }
+
+</script>

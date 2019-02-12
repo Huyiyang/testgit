@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "支付结果";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="help">
+
+    <div class="banner" style="height:70px;"></div>
+
+    <div class="panel">
+        <div class="container">
+            <ul class="breadcrumb" style="width:980px;">
+                <li>
+                    @Html.ActionLink("首页", "index", "home")
+                    <span class="divider"></span>
+                </li>
+                <li class="active">@ViewBag.title</li>
+            </ul>
+            <div class="container" style="padding:0;">
+                <div class="alert alert-block alert-success" style="padding: 40px">
+                    <h3 style="color:red;">@ViewBag.result<span style="margin-left:20px;"><a style="color:green !important;" target="_blank" href="/service/OrderCenter">点击进入订单中心</a></span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

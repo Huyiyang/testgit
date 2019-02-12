@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "来肯云商——代理申请";
+
+    ViewBag.Title = "来肯代理|来肯招商|来肯加盟|来肯云商";
+    ViewBag.Keywords = "进销存代理|进销存软件加盟|进销存软件代理|来肯云商加盟|来肯云商代理热线400-800-7683/028-84519709";
+    ViewBag.description = "来肯云商在线进销存管理软件,功能完善,售后强大,支持移动版及微信版下载,中国首家支持微信客户端使用的SAAS技术服务商!进销存代理|进销存软件加盟|进销存软件代理|来肯云商加盟|来肯云商代理热线400-800-7683/028-84519709";
+
+    Layout = "~/Views/Shared/_PassportLayout.cshtml";
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<script src="@(cdnFileRoot)/Scripts/3.0/agent.js?v=0703"></script>
+<script src="@(cdnFileRoot)/Scripts/3.0/account.js"></script>
+<style>
+    /*.input_div {
+        width: 450px;
+    }*/
+    /*.AgentApply_success{
+        float:none;
+            margin: -280px 0 0 -220px;
+           position: absolute;
+    }*/
+</style>
+<div class="registerform BgColorHeight">
+    <form id="registerform" method="post" class="wrapper_tips">
+        <div class="registerform_wra">
+            <div class="text-center" style="margin-bottom:30px;width:504px;">
+                <a href="@(urlprefix)/" target="_blank"><img src="@(cdnFileRoot)/Images/3.0/account/AgentApply_logo.png" /></a>
+            </div>
+
+            <div class="AgentApply_wra wra_same" id="step1">
+                <div class="text-center">
+                    <span class="account_header" style="height:auto;"><span class="line"></span><span class="header_text">申请成为代理商</span><span class="line"></span></span>
+                </div>
+                <div class="regster_content">
+
+                    <div class="input_div">
+                        @Html.TextBox("cellphone", string.Empty, new { autocomplete = "off", placeholder = "请输入手机号码", notype = "agentapply" })
+                    </div>
+                    <div class="input_div">
+                        @Html.TextBox("imgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入图片验证码" })
+                        <span class="imgcode_img"><img src="/account/GetValidateCode" id="picCode" onclick="this.src = '/account/GetValidateCode?r=' + Math.random()" /></span>
+                        @*<a id="picCode_a" onclick='$("#picCode").attr("src", "GetValidateCode?r=" + Math.random())'><img src="~/Images/3.0/account/resetPwd_icon.png" /></a>*@
+                    </div>
+                    <div class="input_div">
+                        @Html.TextBox("msgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入手机验证码", notype = "agentapply" })
+                        <input id="btn_code" codetype="agentapply" class="btn_code_normal " type="button" value="获取验证码" />
+                    </div>
+                    <div class="account_footer">
+                        <input type="button" class="btn" id="btn_apply" value="立即申请" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="AgentApply_wra wra_same" id="step2" style="display:none;">
+                <div class="text-center">
+                    <span class="account_header" style="height:auto;"><span class="line"></span><span class="header_text">设置申请信息</span><span class="line"></span></span>
+                </div>
+                <div class="regster_content">
+                    <div class="input_div">
+                        @Html.TextBox("company", string.Empty, new { autocomplete = "off", placeholder = "请输入您的公司名称" })
+                    </div>
+                    <div class="input_div">
+                        @Html.TextBox("contactor", string.Empty, new { autocomplete = "off", placeholder = "请输入联系人" })
+                    </div>
+                    <div class="input_div">
+                        @Html.TextBox("qq", string.Empty, new { autocomplete = "off", placeholder = "请输入您的QQ号码" })
+                    </div>
+                    <div class="account_footer" style="padding-top:10px;">
+                        <input type="button" class="btn" id="btn_sure" value="确定" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="AgentApply_success wra_same" id="step3" style="display:none;">
+                <div class="text-center top_icon"><i class="iconfont icon-right"></i></div>
+                <div class="AgentApply_successtitle">
+                    <span>申请信息已成功提交 , 稍后渠道经理与您联系!</span>
+                </div>
+                <div class="AgentApply_successbtn"><a href="http://wpa.qq.com/msgrd?v=3&uin=2881397869&site=qq&menu=yes" target="_blank">点击马上联系渠道经理</a></div>
+                <ul class="AgentApply_successimg">
+                    <li><img src="@(cdnFileRoot)/Images/3.0/common/download_partner.png" /></li>
+                    <li style="margin:25px 0 0 16px;" class="text-left">
+                        <div>关注来肯合伙人</div>
+                        <div>获得渠道代理第一手咨询</div>
+                        <div class="AgentApply_successtel">客服电话 @CC.ERP.Portal.Controllers.Public.agent_cellphone</div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        @Html.Hidden("t_code")
+        @Html.Hidden("openid", Request["openid"])
+        @Html.Hidden("weixin", Request["weixin"])
+        @Html.Hidden("userid", Request["userid"])
+        @Html.Hidden("applyid")
+    </form>
+</div>
+

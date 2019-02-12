@@ -1,0 +1,274 @@
+﻿@using CC.InnerBLL.BLL.Agent;
+<!DOCTYPE html>
+@{
+    string cdnFileRoot = ViewData["cdnFileRoot"] == null ? "" : ViewData["cdnFileRoot"].ToString();
+}
+<html lang="zh-cn">
+<head>
+    <title>@((ViewBag.Title == null || ViewBag.Title == "") ? "来肯云商|进销存|网上订货|经销商管理|CRM/ERP软件|进销存软件免费版|微信移动客户端下载" : ViewBag.Title)</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="@if (ViewBag.Keywords == null || ViewBag.Keywords == "")
+                                   { @("在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,经销商管理,crm管理系统,免费进销存软件,进销存软件哪个好");
+                                   }
+                                   else
+                                   {@ViewBag.Keywords}" />
+    <meta name="description" content="@if (ViewBag.description == null || ViewBag.description == "")
+                                      {@("来肯云商是一家专业为中小企业提供在线管理软件的互联网SAAS供应商，旗下产品涵盖在线进销存、网上订货、经销商管理、加盟商订货、erp、crm管理系统等软件，并支持移动版及微信版下载使用，是中国首家专业支持微信客户端使用的SAAS技术服务商,免费版试用热线400-800-7683/028-84519710。");
+                                      }
+                                      else
+                                      {@ViewBag.description}" />
+    <meta name="baidu-site-verification" content="b9BXcjangk" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script src="@(cdnFileRoot)/Scripts/cdn/_lk_check_cdn_avaiabled.js" data-cdn-loader-type="check" data-cdn-loader-src="@(cdnFileRoot)"></script>
+    <script src="/Scripts/cdn/cdn-loader.js?v=04241"></script>
+    <link href="@(cdnFileRoot)/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="@(cdnFileRoot)/Content/portal_local_for.css?v=1223" rel="stylesheet" />
+    <script src="@(cdnFileRoot)/Scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="@(cdnFileRoot)/Content/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="@(cdnFileRoot)/Scripts/jquery.lazyload.js" type="text/javascript"></script>
+    <script src="@(cdnFileRoot)/Scripts/jquery.cookie.js"></script>
+    @RenderSection("head", false)
+    <style>
+        #account_bg {
+            height: 90%;
+        }
+        .loginfor_topbar {
+            width: 100%;
+            height: 100px;
+            background-color: #2d9e5e;
+            text-align: center;
+        }
+
+            .loginfor_topbar div img {
+                margin-top: -30px;
+                width: 100px;
+            }
+
+            .loginfor_topbar div span {
+                color: #fff;
+                font-size: 3.5em;
+                display: inline-block;
+                margin: 15px 0 0 20px;
+            }
+
+        .loginfor_bottom_links {
+            width: 872px;
+            height: 68px;
+            margin: 290px auto 0;
+            background: url('../../Images/3.0/account/login_bottom_links.png') no-repeat;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .loginfor_bottom_links ul {
+            width: 740px;
+            float: right;
+        }
+
+        .loginfor_bottom_links li {
+            list-style: none;
+            float: left;
+            width: 20%;
+            height: 68px;
+        }
+
+            .loginfor_bottom_links li a {
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+            }
+      #service_online{
+             background-color: #fff;
+             padding: 10px;
+      }
+      #service_online li{
+              margin-bottom: 10px;
+            font-size: 17px;
+            padding: 3px 0;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #38adff;
+            width:100%;
+      }
+      #service_online li a{
+          color:#333;
+      }
+      #service_online li span{
+              display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url('../../Images/3.0/common/QQicon_0525.png');
+            margin-right: 3px;
+            position: relative;
+            top: 3px;
+      }
+      #service_online{
+                 top: 190px;
+                right: 1px;
+                width: 153px;
+                padding: 10px;
+                background-color: #fff;
+                border: 6px solid #c6c6c6;
+      }
+      .service_online_content2 .content_btn{
+              display:block;
+                background-color: #febd3d;
+                padding: 5px 0;
+                text-align: center;
+                border-radius: 5px;
+                font-size: 15px;
+                color: #fff;
+                margin: 5px 0 15px 0;
+      }
+      .service_online_content2{
+          text-align:center;
+      }
+    </style>
+</head>
+<body>
+    <div id="wrapper" style="min-width: 980px">
+        <div id="account_bg">
+            <img id="account_bg_img" src="@(cdnFileRoot)/Images/3.0/account/login_bgimg.png" />
+        </div>
+        @RenderBody()
+        <div id="service_online" class="service_online_login">
+            <div>
+                  <ul>
+                      <li>
+                          <span></span>
+                          <a target="_blank" href="@string.Format("http://wpa.qq.com/msgrd?v=3&uin={0}&site=qq&menu=yes", 3186278144)" title="点此咨询">
+                              售前客服
+                          </a>
+                      </li>
+                      <li>
+                          <span></span>
+                          <a target="_blank" href="@string.Format("http://wpa.qq.com/msgrd?v=3&uin={0}&site=qq&menu=yes", 1164256062)" title="点此咨询">
+                              售前客服
+                          </a>
+                      </li>
+                      <li>
+                          <span></span>
+                          <a target="_blank" href="@string.Format("http://wpa.qq.com/msgrd?v=3&uin={0}&site=qq&menu=yes", 1362099118)" title="点此咨询">
+                              售前客服
+                          </a>
+                      </li>
+                  </ul>
+                   <div class="service_online_content2">
+                       @*<div><a class="content_btn" id="pcDownload" href="http://www.lk361.com/setup.exe" target="_blank">PC端下载</a></div>*@
+                       <div><a class="content_btn" id="pcDownload" href="@(CC.ERP.Portal.Global.DownloadForClient)" target="_blank">PC端下载</a></div>
+                       <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile4.0.png" style="margin:0 !important;width:90px;" title="App下载" alt="在线进销存,进销存软件,经销商管理,crm管理系统,免费进销存软件,进销存软件哪个好,进销存软件免费版">
+                       <span>APP下载</span>
+                       <a target="_blank" class="content_btn content_btn_bot" href="/account/register?agentid=@(Request["agentid"])&salerid=@(Request["salerid"])&sourceflag=@(Request["sourceflag"])&promoteCode=@(Request["promoteCode"])">免费注册试用</a>
+                   </div>
+           </div>  
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script type="text/javascript">
+    function showService() {
+        $("#service_close").animate({
+            marginLeft: 0,
+            opacity: 0.65,
+            height: 0
+        }, 300);
+        $("#service_open").animate({
+            marginTop: 0,
+            marginLeft: -170,
+            opacity: 1
+        }, 300);
+    }
+
+    function closeService() {
+        $("#service_open").animate({
+            marginLeft: 0,
+            opacity: 1,
+            marginTop: -48
+        }, 300);
+        $("#service_close").animate({
+            marginLeft: -54,
+            opacity: 0.65,
+            height: 48
+        }, 300);
+    }
+
+    function LoadBaiduScript() {
+        var src = "https://hm.baidu.com/hm.js?3fb0899d09b1e084b9e74c9717ca4ef9";
+        var nodeScript = document.createElement("script");
+        nodeScript.setAttribute("type", "text/javascript");
+        nodeScript.setAttribute("src", src);
+
+        $("#div_script")[0].appendChild(nodeScript);
+    }
+
+    $(function () {
+
+        setTimeout(LoadBaiduScript, 500);
+        //检测到手机设备自动跳转
+        var mobileAgent = new Array("iphone", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+
+        var browser = navigator.userAgent.toLowerCase();
+
+        var isMobile = false;
+        for (var i = 0; i < mobileAgent.length; i++) {
+            if (browser.indexOf(mobileAgent[i]) != -1 && !navigator.userAgent.match(/iPod/i) && !navigator.userAgent.match(/Pad/i)) {
+                isMobile = true;
+                location.href = 'http://m.lk361.com?agentid=@(AgentInfo.Current.AgentID)&salerid=@(Request["salerid"])&sourceflag=@(Request["sourceflag"])';
+                break;
+            }
+        }
+
+        $(".lazy").lazyload();
+        $("img").attr("alt", "在线进销存,进销存软件,经销商管理,crm管理系统,免费进销存软件,进销存软件哪个好,进销存软件免费版");
+
+        closeService();
+
+        $("#service_top").click(function () {
+            closeService();
+        });
+
+        $("#service_close").click(function () {
+            showService();
+        });
+
+        //计算内容离顶部的距离
+        var height = $(window).height();
+        var register_div_height = $(".register_div").height();
+        $(".register_div").each(function () {
+            if ($(this).height() > register_div_height) {
+                register_div_height = $(this).height();
+            }
+        });
+        var padding_top = (height - register_div_height - 107) / 2;
+        if (height < 780) {
+            $("#account_top").css("padding-top", padding_top > 0 ? padding_top : 10);
+        }
+    });
+
+    var getAgentInfo = (function () {
+        var ret;
+        $.ajax({
+            url: "/home/getAgentInfo",
+            type: "post",
+            dataType: "json",
+            success: function (rst) {
+                ret = rst;
+            },
+            async: false
+        });
+        return ret;
+    });
+    var getHostName = (function () { return "@Html.Raw(CC.ERP.Portal.Global.Global_Domain)"; });
+</script>

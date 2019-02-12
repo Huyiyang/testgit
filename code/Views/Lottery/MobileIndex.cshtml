@@ -1,0 +1,91 @@
+﻿@{
+    var urlprefix_s = CC.ERP.Portal.Global.urlprefix_s;
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>来肯抽奖系统</title>
+    <link href="@(cdnFileRoot)/Content/lottery/mzstyle.css" rel="stylesheet" />
+    <script src="@(cdnFileRoot)/Scripts/jquery-1.11.0.min.js"></script>
+    <script src="@(cdnFileRoot)/Scripts/lottery/awardRotate.js"></script>
+    <script src="@(cdnFileRoot)/Scripts/lottery/lottery.js"></script>
+    <script type="text/javascript">
+        var authurl = "@(urlprefix_s + "/Account/Auth")";
+        $(document).ready(function () {
+            var initPage = function () {
+                var bgWidth = 533;
+                var bgHeight = 649;
+                var width = window.screen.availWidth;
+                var scale = width / bgWidth;
+                var height = width * 649 / 533;
+
+                $("#lottery").css({ width: width, height: height });
+                $("#wheelcanvascontainer").css({ position: "absolute", width: 422 * scale, height: 422 * scale, top: 160 * scale, left: 85 * scale });
+                $("#timecontainer").css({ position: "absolute", width: 30 * scale, height: 30 * scale, top: 98 * scale, right: 180 * scale });
+                $("#pointercontainer").css({ position: "absolute", width: 130 * scale, height: 130 * scale, top: 136 * scale, left: 145 * scale });
+                $(".lkDialog").css({ position: "absolute", width: width, height: 320 * scale });
+            }
+            initPage();
+        });
+    </script>
+</head>
+<body style="margin:0 auto;color:#FFFBDC">
+    <div class="lottery" id="lottery">
+        <div id="timecontainer" style="position:absolute;width:30px;height: 30px;top: 98px;right: 180px;">
+            <canvas id="getTime" class="item" width="30" height="30"></canvas>
+        </div>
+        <div id="wheelcanvascontainer">
+            <canvas class="item" id="wheelcanvas" width="422" height="422"></canvas>
+            <div class="pointer" id="pointercontainer">
+            </div>
+        </div>
+    </div>
+    <div id="showme">
+
+    </div>
+    <div style="color: red;
+    text-align: center;
+    font-size: 2em;"><h4>中奖名单</h4></div>
+    <div id="giftList">
+        数据加载中
+    </div>
+   
+    <div id="showmelist">
+        <div style="text-align:center;padding-bottom:5px;"><h4>我的奖品</h4></div>
+        <div id="showmelisttext"></div>
+        <div style="left: 45%;bottom: 10px; border:1px solid #6C0C27" class="lkDialogBtn" id="showmeclose">关闭</div>
+    </div>
+    <!--弹窗开始-->
+
+    <div class="lkDialog" id="showLogin">
+        <div class="lkDialogText">您还没有登录，请先登录或注册新帐号后再进行抽奖</div>
+        <div style="left: 33.5%;bottom: 21.88%;" class="lkDialogBtn" id="btnLogin">登录</div>
+        <div style="right: 25.38%;bottom: 21.88%;" class="lkDialogBtn" id="btnRegister">注册</div>
+        <div class="lkDialogClose lkDialogOnlyClose"></div>
+    </div>
+
+    <div class="lkDialog" id="showMsg">
+        <div class="lkDialogText" id="msgText"></div>
+        <div style="left: 47.38%;bottom: 21.88%;" class="lkDialogClose lkDialogBtn">确定</div>
+        <div class="lkDialogClose lkDialogOnlyClose"></div>
+    </div>
+   
+    <div id="showDoLogin" style="display:none; border:2px solid #EF3A33; background:#6C0C27;width:90%;top: 0;   left: 0;   bottom: 0;   right: 0;   margin: auto; height: 40%; position: absolute; border-radius:5px;">
+        <div style="text-align:center; color:#fff;font-size:1.3em"><h3>请登录</h3></div>
+        <div>
+            <div style="font-size:20px;padding:10px;">账号：<input type="text" name="username" id="username" style=" height: 24px;width:70%" placeholder="请输入账号" /></div>
+            <div style="font-size:20px;padding:10px;">密码：<input type="password" name="pwd" id="pwd" style=" height: 24px;width:70%" placeholder="请输入密码" /></div>
+            <div style="font-size:20px;padding:10px;">
+                验证：<input type="text" name="imgCode" id="imgCode" style=" height: 24px;width:70%" placeholder="请输入图片验证码" />
+                <img src="@(urlprefix_s + "/account/vcode")" onclick="javascript: document.getElementById('picCode').src = '@(urlprefix_s + "/account/vcode")?' + Math.random(); return false;" style="height: 25px; margin-left: -70px;" title="看不清换一张" id="picCode" />
+            </div>
+        </div>
+        <div class="lkDialogBtn" style="width:120px;left: 35.38%;bottom: 10.88%;" id="btnLoginRightNow">立即登录</div>
+        <div class="lkDialogClose lkDialogOnlyClose"></div>
+    </div>
+</body>
+</html>

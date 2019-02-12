@@ -1,0 +1,152 @@
+﻿@using CC.Public
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+@model HashObject
+@section head{
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+}
+<script src="@(cdnFileRoot)/Scripts/knockout-3.1.0.js"></script>
+@{
+    var condition = Model.GetValue<HashObject>("condition", new HashObject());
+    var productCondition = condition.GetValue<HashObject>("product", new HashObject());
+    var subcats = Model.GetValue<HashObjectList>("subcats", new HashObjectList());
+    var articels = Model.GetValue<HashObject>("articels", new HashObject());
+    var detail = Model.GetValue<HashObject>("detail", new HashObject());
+}
+<script>
+    function M() {
+        var self = this;
+        this.selectedProduct = { id: ko.observable(@(productCondition.GetInt("id"))), text: ko.observable("@(productCondition.GetString("title"))") };
+        this.selectProduct = function (d, e) {
+            self.selectedProduct.id($(e.target).attr("data-id"));
+            self.selectedProduct.text($(e.target).text());
+        };
+    }
+    $(function () {
+        ko.applyBindings(new M());
+        $("img", "#help-content").click(function (e) {
+            if ($(e.target).attr("o") !== "true") {
+                $(e.target).data("size", { w: $(e.target).width(), h: $(e.target).height() });
+                $(e.target).css("position", "absolute");
+                $(e.target).width("");
+                $(e.target).height("");
+                $(e.target).attr("o", "true")
+            } else {
+                $(e.target).css("position", "");
+                $(e.target).attr("o", "false");
+                $(e.target).width($(e.target).data("size").w);
+                $(e.target).height($(e.target).data("size").h);
+            }
+        });
+    });
+</script>
+<style>
+    #help a {
+        color: #333 !important;
+    }
+</style>
+<div id="help">
+    <div class="banner" style="height:70px;"></div>
+
+    <div class="panel">
+        <div class="container" style="height:auto;margin:40px auto !important;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="">
+                        <div style="float: left; width: 150px;">
+                            <div style="font-size: 19pt; height: 46px; line-height: 46px;"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;<span>帮助中心</span></div>
+                        </div>
+                        <div style="margin-left: 360px;">
+                            <form action="/help/index">
+                                <input type="hidden" name="productid" data-bind="value: selectedProduct.id" />
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span data-bind="text: selectedProduct.text"></span>&nbsp;&nbsp;<span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var p in Model.GetValue<HashObject>("catroot", new HashObject()).GetValue<HashObjectList>("children", new HashObjectList()))
+                                            {
+                                                <li><a href="#" data-bind="click: selectProduct" data-id="@(p.GetInt("id"))">@p.GetString("title")</a></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <input type="text" class="form-control" name="key" value="@Request["key"]">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="panel-group" id="accordion">
+                                @foreach (var p in Model.GetValue<HashObject>("catroot", new HashObject()).GetValue<HashObjectList>("children", new HashObjectList()))
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" style="text-decoration:none" href="#collapseOne@(p.GetInt("id"))">
+                                                    @p.GetString("title")
+                                                </a>
+                                            </h4>
+                                        </div>
+
+                                        <div id="collapseOne@(p.GetInt("id"))" class="panel-collapse collapse @( p.GetInt("id") == productCondition.GetInt("id") ? "in" : "")">
+                                            <div class="panel-body">
+                                                @foreach (var p1 in p.GetValue<HashObjectList>("children", new HashObjectList()))
+                                                {
+                                                    <div>
+                                                        <a href="/help/?cid=@(p1.GetInt("id"))&productid=@(p.GetInt("id"))">@(p1.GetString("title"))</a>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-xs-9">
+                            <ol class="breadcrumb">
+                                <li><a href="/help/?productid=@detail.GetInt("productid")">@detail.GetString("productname")</a></li>
+                                <li><a href="/help/?productid=@detail.GetInt("productid")&cid=@detail.GetInt("cid")">@detail.GetString("catname")</a></li>
+                                <li><a href="/help/?productid=@detail.GetInt("productid")&cid=@detail.GetInt("cid")&subid=@detail.GetInt("subid")">@detail.GetString("subname")</a></li>
+                            </ol>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span>@detail.GetString("title")</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span><span>@detail.GetDateTime("modifytime").ToString("yyyy/MM/dd HH:mm")</span>
+                                </div>
+                                <div class="panel-body" id="help-content">
+                                    @if (@detail.GetInt("subid") == 3)
+                                    {
+                                        <script src="@(cdnFileRoot)/Content/CuPlayer/images/swfobject.js"></script>
+                                        <div class="video" id="CuPlayer">
+                                        </div>
+                                        <script type="text/javascript">
+                                            var so = new SWFObject("@(cdnFileRoot)/Content/CuPlayer/CuPlayerMiniV4.swf", "CuPlayerV4", "650", "410", "9", "#000000");
+                                            so.addParam("allowfullscreen", "true");
+                                            so.addParam("allowscriptaccess", "always");
+                                            so.addParam("wmode", "opaque");
+                                            so.addParam("quality", "high");
+                                            so.addParam("salign", "lt");
+                                            so.addVariable("CuPlayerSetFile", "/Help/Vedio/?id=@detail.GetString("id")");
+                                            so.write("CuPlayer");
+</script>
+                                    }
+                                    <p>@Html.Raw(detail.GetString("content"))</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

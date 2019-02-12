@@ -1,0 +1,93 @@
+﻿@using CC.Public
+@using CC.InnerBLL.Enum
+@{
+    ViewBag.Title = "产品升级";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<link href="@(cdnFileRoot)/Content/service.css?v=0525" rel="stylesheet" />
+<script src="@(cdnFileRoot)/Scripts/knockout-3.1.0.js"></script>
+<script src="@(cdnFileRoot)/Scripts/service/upgrade.js"></script>
+
+<div id="help">
+
+    <div class="banner" style="height:70px;"></div>
+
+    <div class="panel">
+        <div class="container">
+            <div class="wrapperPage">
+                <div class="content">
+                    <div class="title"><img src="../images/系统服务购买.jpg" alt="Alternate Text" /><span class="title-font">基础服务升级</span></div>
+                    <!--基础资料表格-->
+                    <table cellpadding="0" cellspacing="0" class="base-material-table base-table">
+                        <thead>
+                            <tr>
+                                <td>基础资料</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>公司名称：@Model["companyrealname"]</td>
+                                <td>联系电话：@Model["cellphone"]</td>
+                                <td>客户类型：@(ShowEnumName.GetEnumName<CustomerType>(Model.GetInt("customertype")))</td>
+                            </tr>
+                            <tr>
+                                <td>注册时间：@Model.GetDateTime("addtime").ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                <td>当前服务商：@Model["agentrealname"]</td>
+                                <td>到期时间：@Model.GetDateTime("expiredate").ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            </tr>
+                            <tr>
+                                <td>当前版本：@(ShowEnumName.GetEnumName<BaseServiceFlag>(Model.GetInt("productversion")))</td>
+                                <td colspan="2">用 户 数：@Model["usercount"]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--基础资料表格-->
+                    <form action="/service/upgrade" method="post" style="margin:0;" id="serviceInfo" data-bind="visible:show(),if:show()">
+                        <input type="hidden" name="priceid" id="priceid" value="@Model["id"]">
+                        <table cellpadding="0" cellspacing="0" class="service-table base-table">
+                            <thead>
+                                <tr>
+                                    <td style="width:20%;">类型</td>
+                                    <td style="width:20%;">产品名称</td>
+                                    <td style="width:20%;">产品属性</td>
+                                    <td style="width:20%;">价格</td>
+                                    <td style="width:20%;">金额</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="service-title-tr">
+                                    <td class="green"><span data-bind="text:typename"></span></td>
+                                    <td>
+                                        <select class="propertySelect" data-bind="options:productList,optionsText:'product_name',optionsValue:'productid',value:selectedProductValue"></select>
+                                    </td>
+                                    <td>
+                                        <select class="propertySelect" name="selectedPrice" data-bind="options:selectedPrices,optionsText:'scale_info',optionsValue:'priceid',value:selectedPriceValue"></select>
+                                    </td>
+                                    <td>
+                                        <strong class="price-font money everyPrice">￥<span id="price"></span></strong>
+                                        <h6 id="oldprice_info"><span style="text-decoration:line-through;" class="original-price little-font">原价:￥<span id="oldprice"></span></span></h6>
+                                    </td>
+                                    <td>
+                                        <strong class="price-font money everyPrice">￥<span id="totalmoney"></span></strong>
+                                    </td>
+                                </tr>
+                                <tr class="service-title-tr">
+                                    <td colspan="5" style="color:red;">升级公式：（升级后价格 - 升级前价格） / 365天 * 剩余天数</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h1 style="text-align:center;"><input type="submit" name="name" value="升级" class="upgradeBtn submitBtn" /></h1>
+                        <input type="hidden" id="viewMessage" value="@ViewBag.ErrorMsg" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "来肯云商";
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<div class="LandingPage">
+    <div class="LandingPage_ban">
+        <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/logo_blue.png" class="logoBlue"/>
+        <div class="banner_bgTop">
+            <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/banner-bgTop.png" class="img-responsive"/>
+        </div>
+        <div class="text">进销存管理·订货商城<br />B2C零售商城·客户协作办公</div>
+        <span class="LandingPage_line1"></span>
+        <div class="text3">一套系统<span>四大板块</span></div>
+        <a class="registerbtn" href="/mobile/register?agentid=@Request["agentid"]&salerid=@Request["salerid"]&sourceflag=@Request["sourceflag"]">注册即可使用</a>
+    </div>
+    <div class="LandingPage_content">
+        <div class="LandingPage_contentimg">
+            <img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/NLandingPageImg6.jpg?v=20170912" />
+        </div>
+        <div style="line-height: 30px;font-size: 12px;">成都来肯信息技术有限公司</div>
+        <div class="LandingPage_contentwra">
+            <ul>
+                <li>
+                    <div>一体化经营</div>
+                    一套系统，四大模块，数据无缝衔接，告别管理与销售“零互动”
+                </li>
+                <li>
+                    <div>多终端管理<span>(支持微信全程操作)</span></div>
+                    手机、微信、平板、电脑多终端接入，随时管理、随地销售
+                </li>
+                <li>
+                    <div>在线商城</div>
+                    B2B/B2C完美数据对接，快速形成电商营销模式
+                </li>
+                <li>
+                    <div>客户分销</div>
+                    客户、朋友、家人轻松成为分销员，销售业绩实现质的飞跃
+                </li>
+                <li>
+                    <div>决策中心</div>
+                    关键数据智能提取，展示直观明显，决策轻松准确
+                </li>
+                <li>
+                    <div>品质管理</div>
+                    商品出入库独立监控，完美掌控货品情况，明确界定质检责任
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#height").hide();
+        $(".mobileIndex").hide();
+        $(".LandingPage_ban").height($(window).height());
+    })
+    setInterval(function () {
+        $(".footerLink").hide();
+    }, 10)
+</script>

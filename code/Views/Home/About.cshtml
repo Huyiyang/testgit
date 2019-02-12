@@ -1,0 +1,182 @@
+﻿@using CC.InnerBLL.BLL.Agent;
+@{
+    ViewBag.Title = "关于来肯云商";
+    ViewBag.Keywords = "来肯云商,来肯在线，来肯，来肯进销存";
+    ViewBag.description = "来肯云商-专注于为中小型商贸流通企业提供SAAS信息化解决方案，集进销存、客户管理、协同办公为一体";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+@if (!AgentInfo.Current.IsLaiken)
+{
+    <div id="about">
+        <div class="banner" style="height:300px;">
+        </div>
+
+        <div class="panel">
+            <div class="container" style="margin-bottom:40px !important;">
+                <div class="row">
+                    <div class="col-xs-12">
+                        @Html.Raw(AgentInfo.Current.Properties["aboutHTML"])
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @section head{
+        <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&ak=59T1FL4Vz8ZopBm2w65CAKP7"></script>
+    }
+
+  
+    
+    //关于页面
+    <div class="about_wrapper">
+        <div class="about_top same_topstyle">
+            <img class="lazy" data-original="@(cdnFileRoot)/Images/3.0/about/about_topimg.png" />
+            <span></span>
+            我们         
+        </div>
+        <div>
+            <div class="PayScheme_functiontitle"><span>关于来肯</span><div>ABOUT US</div></div>
+            <div class="about_content">
+                <p>成都来肯信息技术有限公司，成立于2013年，拥有独立知识产权，是国家双软认证企业。公司致力于为中国中小企业提供云端一体化解决方案，支持企业内部管理、外部沟通的全业务过程，用基于互联网的专业服务帮助中小企业快速发展。</p>
+                <p>核心产品“来肯云商”专注于为中小型商贸流通企业提供SAAS信息化解决方案，集进销存、客户管理、协同办公为一体，支持多用户电脑端、手机端、PAD、微信平台同时在线使用，实现企业“3A”（Anytime、Anywhere、Anything）业务管理需求。</p>
+                <p>来肯源于英文<img class="lazy" data-original="@(cdnFileRoot)/Images/3.0/about/about_fontimg.png" />的音译。<img class="lazy" data-original="@(cdnFileRoot)/Images/3.0/about/about_fontimg.png" />意译是地衣。  地衣是地球上生命力最强的植物，在零下273摄氏度的低温下还能生长，在真空条件下放置6年还保持活力，在比沸水温度高一倍的温度下也能生存。正如地衣精神一样，我们成都来肯致力于把SAAS服务拓展到大江南北，成为一家独具特色的互联网公司。</p>
+                <div style="width:100px;"><img class="lazy" data-original="@(cdnFileRoot)/Images/3.0/about/about_snowimg.png"/></div>
+            </div>
+        </div>
+        <div class="about_contact">
+            <div class="about_contactcontent">
+                <font>联系我们</font><span>CONTACT US</span>
+                <div>
+                    <ul>
+                        <li>邮编：610041</li>
+                        <li>电话：028-84519710</li>
+                        <li>邮箱：service@lk361.com</li>
+                        <li>地址：成都市高新区孵化园9号楼F-610</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about_contactmap"><img class="lazy" data-original="@(cdnFileRoot)/Images/3.0/about/about_mapimg.png" /></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    
+    
+    
+
+    @*<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+    }
+
+    //创建地图函数：
+    function createMap() {
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(104.067227, 30.578615);//定义一个中心点坐标
+        map.centerAndZoom(point, 18);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl() {
+        //向地图中添加缩放控件
+        var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+        map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1 });
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+        map.addControl(ctrl_sca);
+    }
+
+    //标注点数组
+    var markerArr = [{ title: "来肯云商", content: "成都来肯信息技术有限公司", point: "104.067222|30.578615", isOpen: 0, icon: { w: 21, h: 21, l: 0, t: 0, x: 6, lb: 5 } }
+    ];
+    //创建marker
+    function addMarker() {
+        for (var i = 0; i < markerArr.length; i++) {
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0, p1);
+            var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point, { icon: iconImg });
+            var iw = createInfoWindow(i);
+            var label = new BMap.Label(json.title, { "offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20) });
+            marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                borderColor: "#808080",
+                color: "#333",
+                cursor: "pointer"
+            });
+
+            (function () {
+                var index = i;
+                var _iw = createInfoWindow(i);
+                var _marker = marker;
+                _marker.addEventListener("click", function () {
+                    this.openInfoWindow(_iw);
+                });
+                _iw.addEventListener("open", function () {
+                    _marker.getLabel().hide();
+                })
+                _iw.addEventListener("close", function () {
+                    _marker.getLabel().show();
+                })
+                label.addEventListener("click", function () {
+                    _marker.openInfoWindow(_iw);
+                })
+                if (!!json.isOpen) {
+                    label.hide();
+                    _marker.openInfoWindow(_iw);
+                }
+            })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i) {
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json) {
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w, json.h), { imageOffset: new BMap.Size(-json.l, -json.t), infoWindowOffset: new BMap.Size(json.lb + 5, 1), offset: new BMap.Size(json.x, json.h) })
+        return icon;
+    }
+
+    initMap();//创建和初始化地图
+    </script>*@
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+}

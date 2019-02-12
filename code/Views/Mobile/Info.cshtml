@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "来肯云商温馨提示您";
+    ViewBag.BannerTitle = "温馨提示";
+    Layout = "~/Views/Shared/_MAccountLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+<section id="step3">
+    
+    <p style="text-align:center;font-size:18px;color:#00B4FF;padding-top:30px;">@Request["message"]</p>
+    @if (!string.IsNullOrEmpty(Request["info"])) { 
+        <p style="text-align:center;font-size:15px;color:#FF4B03;margin-top:-10px;">@Request["info"]</p>
+    }
+    <div id="style1">
+        <img src="@(cdnFileRoot)/Images/3.0/common/download_weixin4.0.png" />
+        <p>长按二维码关注来肯在线</p>
+    </div>
+</section>  

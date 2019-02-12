@@ -1,0 +1,51 @@
+﻿@using CC.ERP.Portal
+@{
+    Layout = "~/Views/Shared/_PassportLayout.cshtml";
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+    ViewBag.urlprefix = urlprefix;
+
+    string cdnFileRoot = Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+<script src="@(cdnFileRoot)/Scripts/3.0/resetpwd.js?v=20170905"></script>
+<script src="@(cdnFileRoot)/Scripts/3.0/account.js"></script>
+<div class="active_position active_position2 login_wrapper">
+    <div class="wrapper_sametop">
+        <img src="@(cdnFileRoot)/Images/3.0/account/samelogo.png" />
+        <a class="wrapper_back" href="@(urlprefix)/"><img src="@(cdnFileRoot)/Images/3.0/account/Nlogin_iconimg.png" />返回首页</a>
+    </div>
+    <div class="wrapper_content">
+        <div class="wrapper_contentwra">
+            <div class="wra_same resetPwd_wra wrapper_tips2" id="resetPwd">
+                <div class="resetPwd_positionwra">
+                    <div class="account_header">
+                        <p class="header_text">找回密码</p>
+                    </div>
+                    <div class="regster_content">
+                        <div class="input_div">
+                            @Html.TextBox("cellphone", string.Empty, new { placeholder = "请输入手机号码", data_val_required = "手机号码不能为空", data_val = "true" })
+                        </div>
+                        <div class="input_div">
+                            @Html.TextBox("imgCode", string.Empty, new { placeholder = "请输入图片验证码 ", data_val_required = "请输入图片验证码", data_val = "true" })
+                            <span class="imgcode_img"><img src="GetValidateCode" id="picCode" onclick="this.src='GetValidateCode?r='+Math.random()" /></span>
+                            @*<a id="picCode_a" onclick='$("#picCode").attr("src","GetValidateCode?r="+Math.random())'><img src="~/Images/3.0/account/resetPwd_icon.png" /></a>*@
+                        </div>
+                        <div class="input_div">
+                            @Html.TextBox("msgCode", string.Empty, new { placeholder = "请输入收到的验证码 ", data_val_required = "请输入短信验证码", data_val = "true" })
+                            <input id="btn_code" class="btn_code_normal" type="button" value="获取验证码" />
+                        </div>
+                        <div class="input_div">
+                            @Html.Password("password", string.Empty, new { placeholder = "请输入新密码 ", data_val_required = "请设置登录密码", data_val = "true" })
+                        </div>
+                    </div>
+                    <div class="account_footer">
+                        <input type="button" id="btn_reset" class="btn" value="提交" />
+                    </div>
+                    <div class="bot_tel">如遇登录问题，请拨打@(CC.ERP.Portal.Controllers.Public.agent_cellphone)</div>
+                </div>            
+            </div>
+        </div>
+    </div>
+   
+</div>

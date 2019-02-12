@@ -1,0 +1,72 @@
+﻿@{
+    string cdnFileRoot = ViewData["cdnFileRoot"] == null ? "" : ViewData["cdnFileRoot"].ToString();
+}
+<html>
+<head>
+    <script>
+        (function () {
+            if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                msViewportStyle.appendChild(document.createTextNode(String.fromCharCode(64) + "-ms-viewport{width:auto!important}"));
+                document.head.appendChild(msViewportStyle);
+            }
+        })();
+    </script>
+    <title>@(ViewBag.Title)</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,经销商管理,crm管理系统,免费进销存软件,进销存软件哪个好">
+    <meta name="description" content="来肯云商是一家专业为中小企业提供在线管理软件的互联网SAAS供应商，旗下产品涵盖在线进销存、网上订货、经销商管理、加盟商订货、erp、crm管理系统等软件，并支持移动版及微信版下载使用，是中国首家专业支持微信客户端使用的SAAS技术服务商,免费版试用热线400-800-7683/028-84519710。">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Pragma" content="cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <script src="@(cdnFileRoot)/Scripts/cdn/_lk_check_cdn_avaiabled.js" data-cdn-loader-type="check" data-cdn-loader-src="@(cdnFileRoot)"></script>
+    <script src="/Scripts/cdn/cdn-loader.js?v=04241"></script>
+    <link href="@(cdnFileRoot)/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="@(cdnFileRoot)/mobile/register.css?v=20170615">
+    <script src="@(cdnFileRoot)/Scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="@(cdnFileRoot)/Content/bootstrap/js/bootstrap.min.js"></script>    
+    <!--360统计-->
+    <script type="text/javascript" src="//s.union.360.cn/45044.js"></script>
+</head>
+<body>
+    @*<header class="register_header">
+        <a href="/mobile/index"><img src="@(cdnFileRoot)/mobile/image/3.0/logo.png" /></a>
+        <span class="split" style="margin:.2em;"></span>
+        <span id="title">@(ViewBag.BannerTitle)</span>
+    </header>*@
+    @RenderBody()
+    <div id="registerTips">
+        <span></span>
+    </div>
+   
+    @*<footer class="reigster_footer">
+        <a href="tel://4006903603"><img src="@(cdnFileRoot)/Images/3.0/common/phone_no.png" /></a>
+    </footer>*@
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?ca33106b3bdc587c72cf661b77cd537e";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+
+            var haosou = document.createElement("script");
+            haosou.src = "//s.union.360.cn/45044.js";
+            s.parentNode.insertBefore(haosou, s);
+        }, 500);
+    });
+</script>

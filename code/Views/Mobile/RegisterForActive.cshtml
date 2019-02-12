@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "来肯云商活动注册";
+    ViewBag.BannerTitle = "注册";
+    Layout = "~/Views/Shared/_MAccountLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+
+    string httpPre = string.Format("{0}{1}", CC.ERP.Portal.Global.SurpportpassportSSL ? "https://" : "http://", Request.Url.Host.ToString());
+}
+
+<style>
+    section .block_version ul li {
+        width: 100%;
+        margin: 5px 0;
+        height: 4.3em;
+    }
+
+    .gradient-regist {
+        border-top: none;
+        background: #b49350; /* Old browsers */
+        background: -moz-linear-gradient(top, #b49350 0%, #8b7039 65%, #634a21 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #b49350 0%,#8b7039 65%,#634a21 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #b49350 0%,#8b7039 65%,#634a21 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b49350', endColorstr='#634a21',GradientType=0 ); /* IE6-9 */
+    }
+</style>
+<script src="@(cdnFileRoot)/mobile/mobile.js?v=0509"></script>
+<div class="mobileRegister">
+
+    <form id="registerform" method="post">
+        <section id="step1">
+            <div class="registerTitle gradient-regist">
+                立即注册参与活动
+            </div>
+            <div class="input_div">
+                @Html.TextBox("cellphone", string.Empty, new { autocomplete = "off", placeholder = "请输入手机号码", notype = "" })
+            </div>
+            <div class="input_div">
+                @Html.TextBox("imgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入图片验证码" })
+                <span class="picCode"><img src="/account/GetValidateCode" id="picCode" onclick="this.src = '/account/GetValidateCode?r=' + Math.random()" /></span>
+                <div style="text-align: right; font-size: 12px; margin-right: 10px; color: #60400d;" id="changePicCode">看不清，换一张</div>
+            </div>
+            <div class="input_div">
+                @Html.TextBox("msgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入短信验证码", notype = "" })
+                <input id="btn_code" codetype="" class="btn" type="button" value="获取验证码" />
+            </div>
+            <div class="input_div">
+                @Html.Password("password", string.Empty, new { autocomplete = "off", placeholder = "请输入登录密码" })
+            </div>
+            <div class="button_div" style="width: 86%;margin-top:60px;">
+                <input style="border-radius:42px;" type="button" class="btn gradient-regist" id="btn_begin" value="注 &emsp;册" />
+            </div>
+        </section>
+        @Html.Hidden("agentid", Request["agentid"])
+        @Html.Hidden("salerid", Request["salerid"])
+        @Html.Hidden("sourceflag", 66)
+        @Html.Hidden("industry","40")
+        @Html.Hidden("business", "1")
+        @Html.Hidden("staff_size", "1")
+        @Html.Hidden("manage_busniness", "")
+        @Html.Hidden("other_bussiness", "")
+        @Html.Hidden("foractive","1")
+    </form>
+</div>

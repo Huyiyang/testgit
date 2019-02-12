@@ -1,0 +1,152 @@
+﻿@using CC.Public
+
+@{
+    ViewBag.Title = "来肯云商——联系客服";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<style>
+    body{
+        font-family:'Microsoft YaHei';
+    }
+
+    a{
+        color:#009E9A;
+    }
+
+    a:hover{
+        color:#008a84;
+    }
+
+    .a_active{
+        display:inline-block;
+        margin-right:10px;
+        margin-top:20px;
+        width:75px;
+        height:30px;
+        border:1px solid #009E9A;
+        font-size:16px;
+        float:right;
+        line-height:30px;
+        text-align:center;
+        border-radius:2px;
+    }
+
+    .a_active:hover{
+        background-color:#009E9A;
+        color:#FFF;
+    }
+
+    tr{
+        border-bottom:1px solid #CDCDCD;
+        height:135px;
+        font-size:16px;
+    }
+
+    .td_1{
+        text-align:center;
+        width:150px;
+        font-size:20px;
+        color:#4D4D4D;
+    }
+
+    .td_1 img{
+        display:block;
+        margin:0 auto;
+    }
+    .td_2{
+        padding-left:60px;
+        padding-top:10px;
+    }
+
+    .td_2 span{
+        margin-left:50px;
+    }
+
+    .contact_QQ {
+        display:inline-block;
+        width:80px;
+        height:22px;
+        line-height:22px;
+        font-size:12px;
+        border:1px solid #009E9A;
+        border-radius:15px;
+        text-align:center;
+        margin-left:10px;
+        margin-right:10px;
+    }
+
+    .contact_QQ img{
+        vertical-align:middle;
+        margin-top:-4px;
+    }    
+</style>
+
+<div id="help">
+
+    <div class="banner" style="height:70px;"></div>
+
+    <div class="container">
+        <div class="panel">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p style="color:#009E9A;font-size:24px;font-weight:500;border-bottom:1px solid #CDCDCD;"><img style="vertical-align:middle;margin-bottom:5px;" src="@(cdnFileRoot)/Images/2.0/home/contact/3.png" /> 联系客服<a class="a_active" href="/product/activepage" target="_blank">最新活动</a></p>
+                    <table style="width:100%;">
+                        <tr>
+                            <td class="td_1">
+                                <img src="@(cdnFileRoot)/Images/2.0/home/contact/1.png" />
+                                试用到期
+                            </td>
+                            <td class="td_2">
+                                <p><a class="green" href="/service/product" target="_blank">A.官网购买</a></p>
+                                <p>B.申请试用期延长1周<a class="contact_QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2103432853&site=qq&menu=yes" title="点此咨询"><img src="@(cdnFileRoot)/Images/2.0/home/contact/7.png" />联系客服</a></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_1">
+                                <img src="@(cdnFileRoot)/Images/2.0/home/contact/2.png" />
+                                密码服务
+                            </td>
+                            <td class="td_2">
+                                <p><a href="/account/ResetPwd" target="_blank">A.验证注册手机号码</a></p>
+                                <p>B.账户申诉<a class="contact_QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2103432853&site=qq&menu=yes" title="点此咨询"><img src="@(cdnFileRoot)/Images/2.0/home/contact/7.png" />联系客服</a></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_1">
+                                <img src="@(cdnFileRoot)/Images/2.0/home/contact/4.png" />
+                                客服电话
+                            </td>
+                            <td class="td_2">
+                                <p>周一至周五（9:00 - 18:00）<span style="margin-right:50px;">购买咨询：400-800-7683-1</span>售后咨询：400-800-7683-2</p>
+                                <p>其余时间请拨打值班电话：17829005022</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_1">
+                                <img src="@(cdnFileRoot)/Images/2.0/home/contact/5.png" />
+                                在线客服
+                            </td>
+                            <td class="td_2">
+                                <p>周一至周五（9:00 - 18:00）<span>节假日（10:00 - 17:00）</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_1">
+                                <img src="@(cdnFileRoot)/Images/2.0/home/contact/6.png" />
+                                在线充值
+                            </td>
+                            <td class="td_2">
+                                <p>A.软件内点击“购买”进行充值</p>
+                                <p>B.联系充值客服<a class="contact_QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2103432853&site=qq&menu=yes" title="点此咨询"><img src="@(cdnFileRoot)/Images/2.0/home/contact/7.png" />联系客服</a>Tel:028-84519710.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+</div>

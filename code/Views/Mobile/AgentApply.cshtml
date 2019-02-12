@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "来肯云商代理申请";
+    ViewBag.BannerTitle = "代理申请";
+    Layout = "~/Views/Shared/_MAccountLayout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<script src="@(cdnFileRoot)/mobile/mobile.js?v=0509"></script>
+
+<form id="registerform" method="post">
+    <section id="step1">
+        <div class="registerTitle">
+            <a href="/mobile/index"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/topbarIcon.png" /></a>
+            来肯云商合作加盟
+        </div>
+        <div class="input_div">
+            @Html.TextBox("cellphone", string.Empty, new { autocomplete = "off", placeholder = "请输入手机号码", notype = "agentapply" })
+        </div>
+        <div class="input_div">
+            @Html.TextBox("imgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入图片验证码" })
+            <span class="picCode"><img src="/account/GetValidateCode" id="picCode" onclick="this.src = '/account/GetValidateCode?r=' + Math.random()" /></span> 
+        </div>
+        <div class="input_div">
+            @Html.TextBox("msgCode", string.Empty, new { autocomplete = "off", placeholder = "请输入手机验证码", notype = "agentapply" })
+            <input id="btn_code" codetype="agentapply" class="btn" type="button" value="获取验证码" />
+        </div>
+        <div class="button_div">
+            <input type="button" class="btn" id="btn_apply" value="立即申请" />
+            @if (!string.IsNullOrEmpty(Request["openid"]))
+            {
+                <p style="text-align:center;margin:0;padding:0;">
+                    <a href="/mobile/agentvalidate?openid=@(Request["openid"])&weixin=@(Request["weixin"])&userid=@(Request["userid"])">已有账号 直接登录</a>
+                </p>
+            }
+        </div>
+    </section>
+    <section id="step2" style="display:none;">
+        <div class="registerTitle">
+            <a id="backFirst"><img src="@(cdnFileRoot)/mobile/image/3.0/product4.0/topbarIcon.png" /></a>
+            完善资料
+        </div>
+        <div class="input_div">
+            @Html.TextBox("company", string.Empty, new { autocomplete = "off", placeholder = "请输入您的公司名称" })
+        </div>
+        <div class="input_div">
+            @Html.TextBox("contactor", string.Empty, new { autocomplete = "off", placeholder = "请输入联系人" })
+        </div>
+        <div class="input_div">
+            @Html.TextBox("qq", string.Empty, new { autocomplete = "off", placeholder = "请输入您的QQ号码" })
+        </div>
+        <div class="button_div">
+            <input type="button" class="btn" id="btn_sure" value="确定" />
+        </div>
+    </section>
+    @Html.Hidden("t_code")
+    @Html.Hidden("openid", Request["openid"])
+    @Html.Hidden("weixin", Request["weixin"])
+    @Html.Hidden("userid", Request["userid"])
+    @Html.Hidden("applyid")
+</form>

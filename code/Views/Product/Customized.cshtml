@@ -1,0 +1,1101 @@
+﻿@{
+    Layout = null;
+    string applyUrl = string.Format("{0}/account/customizedapply?sourceflag={1}", CC.ERP.Portal.Global.urlprefix_s, Request["sourceflag"]);
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="@(cdnFileRoot)/Scripts/cdn/_lk_check_cdn_avaiabled.js" data-cdn-loader-type="check" data-cdn-loader-src="@(cdnFileRoot)"></script>
+    <script src="/Scripts/cdn/cdn-loader.js?v=04241"></script>
+    <link href="@(cdnFileRoot)/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="@(cdnFileRoot)/Content/portal_local.css?v=0527" rel="stylesheet" />
+    <link href="@(cdnFileRoot)/Content/4.0/ka.css?v=20170629" rel="stylesheet" />
+    <script src="@(cdnFileRoot)/Scripts/jquery-1.11.0.js"></script>
+    <title>进销存定制|来肯云商|您的诉求，来肯将竭力满足</title>
+    <meta name="keywords" content="进销存定制" />
+    <meta name="description" content="进销存定制:您的需求，就是我们的方向!为您量身定制的系统！连锁加盟模式，总代/分销模式，多门店经营模式，自主商城模式，商业市场模式等不同模式的不同解决方案。" />
+    <style>
+        /* 呼吸灯效果 */
+        .breath {
+            /* IE10、Firefox and Opera，IE9以及更早的版本不支持 */
+            animation-name: breath; /* 动画名称 */
+            animation-duration: 2s; /* 动画时长3秒 */
+            animation-timing-function: ease-in-out; /* 动画速度曲线：以低速开始和结束 */
+            animation-iteration-count: infinite; /* 播放次数：无限 */
+            /* Safari and Chrome */
+            -webkit-animation-name: breath; /* 动画名称 */
+            -webkit-animation-duration: 2s; /* 动画时长3秒 */
+            -webkit-animation-timing-function: ease-in-out; /* 动画速度曲线：以低速开始和结束 */
+            -webkit-animation-iteration-count: infinite; /* 播放次数：无限 */
+        }
+
+        @@keyframes breath {
+            from {
+                opacity: 0.4;
+                top: 40px;
+            }
+            /* 动画开始时的不透明度 */
+            50% {
+                opacity: 1;
+                top: 60px;
+            }
+            /* 动画50% 时的不透明度 */
+            to {
+                opacity: 0.4;
+                top: 40px;
+            }
+            /* 动画结束时的不透明度 */
+        }
+
+        @@-webkit-keyframes breath {
+            from {
+                opacity: 0.4;
+                top: 40px;
+            }
+            /* 动画开始时的不透明度 */
+            50% {
+                opacity: 1;
+                top: 60px;
+            }
+            /* 动画50% 时的不透明度 */
+            to {
+                opacity: 0.4;
+                top: 40px;
+            }
+            /* 动画结束时的不透明度 */
+        }
+
+
+        /* 导航栏开始 */
+        #custom_page .nav {
+            background-image: url(@(cdnFileRoot)/Images/4.0/ka/custom-header-bg.jpg);
+        }
+
+        /* 页脚开始 */
+        #custom_page #footer {
+            background-image: url(@(cdnFileRoot)/Images/4.0/ka/custom-footer-bg.jpg);
+        }
+        /* 更多选择 */
+        .hidden {
+            display: none;
+        }
+
+        .mask {
+            background: #f0f4f8;
+            position: absolute;
+            height: 460px;
+        }
+
+        .mask-left {
+            left: 0;
+        }
+
+        .mask-right {
+            right: 0;
+        }
+
+        .more-choise {
+            font-size: 45px;
+            text-align: center;
+            color: #000;
+            padding-top: 84px;
+            padding-bottom: 74px;
+            background: #f0f4f8;
+        }
+
+        .fsbanner, .fsbanner > div > span {
+            /* obrigatÃ³rio */
+            /*display: none;*/
+        }
+
+        div.fsbanner {
+            /* obrigatorio */
+            position: relative;
+            overflow: hidden;
+            /* opcional */
+            height: 460px;
+        }
+
+
+        .fsbanner > div {
+            position: absolute;
+            background-size: cover;
+            cursor: pointer;
+            top: 0px;
+            left: 0px;
+        }
+
+            .fsbanner > div .name {
+                display: block;
+                position: absolute;
+                left: 10px;
+                bottom: 10px;
+            }
+
+                .fsbanner > div .name.minimized {
+                    /* css3 */
+                    transform: rotate(-90deg);
+                    transform-origin: left top 0;
+                    /* pode ser necessÃ¡rio ajustar isso dependendo da fonte escolhida */
+                    bottom: -13px;
+                    left: 7px;
+                }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .active-bar {
+            display: none;
+            width: 41px;
+            height: 460px;
+            line-height: 1.1;
+            /* overflow: hidden; */
+            background-color: #3f82df;
+            float: left;
+            font-size: 22px;
+            padding: 5px;
+            color: #fff;
+            text-align: center;
+            /* line-height: 460px; */
+            font-family: '微软雅黑';
+            padding-top: 100px;
+            box-shadow: -2px 0 15px #524b4b;
+        }
+
+            .active-bar:hover {
+                opacity: 0.8;
+            }
+
+        .fsbanner .content {
+            padding-top: 23px;
+            padding-left: 54px;
+            color: #000;
+            font-weight: normal;
+        }
+
+            .fsbanner .content .title {
+                position: relative;
+                display: block;
+                font-size: 28px;
+                margin-bottom: 35px;
+                margin-left: 20px;
+            }
+
+                .fsbanner .content .title .decorate {
+                    position: absolute;
+                    top: 7px;
+                    left: -20px;
+                    width: 12px;
+                    height: 28px;
+                }
+
+            .fsbanner .content .describe {
+                display: block;
+                font-size: 13px;
+                line-height: 1.8;
+            }
+
+        .left-bar {
+            position: relative;
+            /*box-shadow: 0px 0 10px #000;*/
+        }
+
+        .check-choise {
+            width: 205px;
+            height: 251px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            line-height: 250px;
+            vertical-align: middle;
+        }
+
+        .show-font {
+            font-size: 26px;
+            position: absolute;
+            bottom: 110px;
+            left: 0;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .btns {
+            position: absolute;
+            bottom: 22px;
+            left: 45px;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .border-radu {
+            border-radius: 20px;
+            border: 1px solid #fff;
+            padding: 3px 20px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+            .border-radu:hover {
+                opacity: 0.8;
+            }
+
+        .btn-init {
+            font-size: 16px;
+            position: absolute;
+            bottom: 55px;
+            left: 50%;
+            transform: translate(-50%);
+            color: #fff;
+            width: 120px;
+            text-align: center;
+            padding: 2px 18px;
+        }
+
+        .white-bar {
+            width: 76px;
+            height: 10px;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .allow-bottom {
+            height: 135px;
+            text-align: center;
+            background: #f0f4f8;
+            position: relative;
+        }
+
+            .allow-bottom img {
+                position: absolute;
+                top: 50px;
+            }
+
+        .activ-btn {
+            color: #fff;
+            background-color: rgba(0,0,0,.3);
+
+        }
+        /** 结构图 */
+        .structure-chart {
+            background: url("@(cdnFileRoot)/Images/4.0/ka/structure-chart-bg.jpg")no-repeat center;
+            height: 650px;
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 40px;
+        }
+
+        .small-log {
+            padding: 10px 24%;
+            margin-top: 50px;
+            font-size: 20px;
+            color: #000;
+        }
+
+            .small-log ul {
+                zoom: 1;
+                text-align: center;
+                margin-top: 50px;
+                margin-bottom: 40px;
+            }
+
+                .small-log ul:after {
+                    clear: both;
+                    content: '.';
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    visibility: hidden;
+                }
+
+                .small-log ul li {
+                    float: left;
+                    font-size: 16px;
+                    text-align: left;
+                }
+
+                    .small-log ul li img {
+                        vertical-align: text-top;
+                        float: left;
+                    }
+
+                    .small-log ul li span {
+                        text-align: left;
+                        display: block;
+                        margin-left: 60px;
+                    }
+
+        .more-choise-bottom {
+            padding-bottom: 60px;
+            padding-top: 50px;
+            background: url("@(cdnFileRoot)/Images/4.0/ka/footer-bg.png?v=1715")no-repeat top;
+            background-size: cover;
+        }
+
+        .more-choise-footer {
+            text-align: center;
+        }
+
+            .more-choise-footer a {
+                display: inline-block;
+                width: 210px;
+                height: 45px;
+                line-height: 42px;
+                font-size: 21px;
+                color: #007aff;
+                text-align: center;
+                border: 1px solid #1c89ff;
+                border-radius: 25px;
+                background-color: #ffffff;
+            }
+
+            .more-choise-footer img {
+                margin-left: 12px;
+                margin-bottom: 6px;
+            }
+
+            .more-choise-footer .active-more-choise {
+                color: #fff;
+                background-color: #1c89ff;
+            }
+
+        @@media screen and (max-width: 1367px) {
+            .small-log {
+                padding: 10px 13%;
+            }
+        }
+
+        @@media screen and (max-width: 1025px) {
+            .small-log {
+                padding: 10px 1%;
+            }
+        }
+          #custom_page, #footer-outer {
+            min-width: 1200px !important;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            setTimeout(function () {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?3fb0899d09b1e084b9e74c9717ca4ef9";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            }, 500);
+        });
+    </script>
+</head>
+<body>
+    <div id="custom_page">
+        <!-- 导航栏开始 -->
+        <div class="nav nav-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="navbar-brand">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/confirm-header-logo.jpg" />
+                    </div>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    <li>
+                        <a href="/home/new">进销存ERP</a>
+                    </li>
+                    <li>
+                        <a href="/product/dh">线上线下一体化O2O</a>
+                    </li>
+                    <li>
+                        <a href="/product/linkage">全渠道管理</a>
+                    </li>
+                    @*<li>
+                            <a href="/Product/Characteristics">功能</a>
+                        </li>*@
+                    <li>
+                        <a href="/home/service">服务</a>
+                    </li>
+                    <li>
+                        <a href="/product/payscheme">价格</a>
+                    </li>
+                    <li class="active">
+                        <a href="#" style="padding:0 8px;">定制方案</a>
+                    </li>
+                    <li>
+                        <a href="/news/news">我们</a>
+                    </li>
+                    <li>
+                        <a href="/home/joinus">合作共赢</a>
+                    </li>
+                    <li class="concat">
+                        <a target="_blank" onclick="this.blur()" href="@string.Format("http://wpa.qq.com/msgrd?v=3&uin={0}&site=qq&menu=yes", "2880928299")" rel="external nofollow">
+                            <img src="@(cdnFileRoot)/Images/4.0/ka/QQ-hole.png?v=2" />
+                            <span>专属客服QQ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 导航栏结束 -->
+        <!-- 轮播开始 -->
+        <div id="carousel_section">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" class="active" data-slide-to="0"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner active" role="listbox">
+
+                    <div class="item  banner1 active">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/banner1-bg.jpg" />
+                        <div class="carousel-caption">
+                            <img src="@(cdnFileRoot)/Images/4.0/ka/banner1-rectangle.png?v=1" />
+                            <div class="banner-info">
+                                <h3 class="banner-title text-right">铸智能系统<span style="width: 1em; display: inline-block;"></span>创智慧商业</h3>
+                                <p class="banner-desc text-right">
+                                    无论您是连锁加盟、商业市场、总代/厂商+分销，还是多门店经营、供应商/经销商,
+                                    <br />
+                                    我们都能为您提供最合适您的经营管理一体化解决方案
+                                </p>
+                                <a href="@(applyUrl)" class="btn btn-confirm btn-huge">立即获取方案</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="item banner2">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/banner2-bg.jpg?v=1" />
+                        <div class="carousel-caption">
+                            <div class="banner-info text-right">
+                                <h3 class="banner-title">
+                                    用专业成就品质<br />用品质成就高度
+                                </h3>
+                                <p class="banner-desc">
+                                    <span class="important-text">3</span>项专利 &nbsp;&nbsp;/&nbsp;&nbsp;
+                                    <span class="important-text">3</span>项认证 &nbsp;&nbsp;/&nbsp;&nbsp;
+                                    <span class="important-text">9</span>项软著 &nbsp;&nbsp;/&nbsp;&nbsp;
+                                    <span class="important-text">10</span>个专业部门
+                                    <br />
+                                    50人技术团队/ 100人企业规模/100000家用户
+                                </p>
+                                <a href="@(applyUrl)" class="btn btn-confirm btn-huge">立即获取方案</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="item banner3">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/banner3-bg.jpg?v=2" />
+                        <div class="carousel-caption">
+                            <div class="banner-info text-left">
+                                <h3 class="banner-title">
+                                    一体化设计<span style="display: inline-block; width: 1em"></span> 一站式解决
+                                    <br />
+                                    专业定制<span style="display: inline-block; width: 1em"></span>极致品质
+                                </h3>
+                                <p class="banner-desc">
+                                    来肯云商创始团队拥有10年以上管理软件行业应用经验。
+                                    <br />
+                                    核心团队成员拥有多年大型互联网公司产品及架构经验。
+                                    <br />
+                                    极简用户体验，彻底改变传统软件的复杂性，产品简单易用。
+                                </p>
+                                <a href="@(applyUrl)" class="btn btn-huge btn-confirm">立即获取方案</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                </a>
+            </div>
+        </div>
+        <!-- 轮播结束 -->
+        <!-- 更多选择 -->
+        <div class="mask mask-left"></div>
+        <div class="mask mask-right"></div>
+        <div class="more-choise">多种选择，更加贴合您的需求</div>
+        <div class="fsbanner" id="more-choise-img" style="width: 1024px; display: block; margin:0 auto;background-color: #f0f4f8;">
+
+            <div style="background-color: #fff; height: 460px; width: 864px; z-index: 0; left: 0px;">
+                <span class="active-bar" style="background-color:#3f82df;">连锁加盟管理+<br />会员</span>
+                <span class="fl left-bar">
+                    <span class="check-choise hidden" style="background-color: rgba(40,80,150,0.8);">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/checked.png" />
+                    </span>
+                    <img src="@(cdnFileRoot)/Images/4.0/ka/franchise-chain.jpg?v=1715" />
+                    <span class="show-font">连锁加盟管理+会员</span>
+                    <span class="btns">
+                        <span class="border-radu sure-choise" data-sure-index="0">选择此方案</span>
+                        <span class="border-radu cancel-choise">取消选择</span>
+                    </span>
+                    <span class="border-radu btn-init">查看详情</span>
+                    <span class="white-bar"></span>
+                </span>
+                <span class="fl content" style="width:654px;height:460px;background-color:#fff;">
+                    <span class="title"><span class="decorate" style="background-color:#4085e4;"></span>连锁加盟管理</span><br />
+                    <span class="describe">
+                        1、随时查询数据<br />
+                        <span style="font-size:13px;margin-left:40px;">总部可以随时查询分析门店/加盟店商品的销售、库存，排名等数据；</span>
+                    </span>
+                    <span class="describe">
+                        2、统一会员<br />
+                        <span style="font-size:13px;margin-left:40px;">总部掌握所有门店/加盟店会员资源，门店/加盟店的积分储值活动独立运作；</span>
+                    </span>
+                    <span class="describe">
+                        3、加盟商管理<br />
+                        <span style="font-size:13px;margin-left:40px;">总部可以掌握加盟商加盟、订货、往来、回款、库存、销售的各项情况；</span>
+                    </span>
+                    <span class="describe">
+                        4、B2B在线商城<br />
+                        <span style="font-size:13px;margin-left:40px;">加盟商可直接通过在线商城向总部订货，避免QQ、电话等订货造成的沟通不畅；</span>
+                    </span>
+                    <span class="describe">
+                        5、财务独立核算<br />
+                        <span style="font-size:13px;margin-left:40px;">门店/加盟商的收入都能独立核算，成本利润一目了然；</span>
+                    </span>
+                    <span class="describe">
+                        6、加盟商自由共享数据<br />
+                        <span style="font-size:13px;margin-left:40px;">加盟商可自行决定是否共享数据，充分体现自主独立性；</span>
+                    </span>
+                    <span class="describe">
+                        7、自由选择是否共享积分<br />
+                        <span style="font-size:13px;margin-left:40px;">门店/加盟商在管理会员的同时可自由选择是否共享积分；</span>
+                    </span>
+                </span>
+            </div>
+
+            <div style="background-color: #fff; height: 460px; width: 864px; z-index: 1; left: 40px;">
+                <span class="active-bar" style="background-color:#253a4e;">多门店管理+<br />会员</span>
+                <span class="fl left-bar">
+                    <span class="check-choise hidden" style="background-color: rgba(20,40,51,0.7);">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/checked.png" />
+                    </span>
+                    <img src="@(cdnFileRoot)/Images/4.0/ka/store-management.jpg?v=1715" />
+                    <span class="show-font">多门店管理+会员</span>
+                    <span class="btns">
+                        <span class="border-radu sure-choise" data-sure-index="1">选择此方案</span>
+                        <span class="border-radu cancel-choise">取消选择</span>
+                    </span>
+                    <span class="border-radu btn-init">查看详情</span>
+                    <span class="white-bar"></span>
+                </span>
+                <span class="fl content" style="width:654px;height:460px;background-color:#fff;">
+                    <span class="title"><span class="decorate" style="background-color:#253b4f;"></span>多门店管理</span><br />
+                    <span class="describe">
+                        1、自定义组织结构<br />
+                        <span style="font-size:13px;margin-left:40px;">可自行定义下属门店的个数、层级以及整体组织架构，完美解决多门店多层级管理需求；</span>
+                    </span>
+                    <span class="describe">
+                        2、各层级独自管理<br />
+                        <span style="font-size:13px;margin-left:40px;">独立核算财务、销售等数据，实时掌握下级各项数据；</span>
+                    </span>
+                    <span class="describe">
+                        3、处理门店调拨单申请<br />
+                        <span style="font-size:13px;margin-left:40px;">当门店提交货品申请单后，能及时、准确处理门店要货需求；</span>
+                    </span>
+                    <span class="describe">
+                        4、统一会员管理<br />
+                        <span style="font-size:13px;margin-left:40px;">总部掌握所有会员资源，统一会员积分，统一会员活动，更全面地进行促销活动管理；</span>
+                    </span>
+                    <span class="describe">
+                        5、查询和分析各门店数据<br />
+                        <span style="font-size:13px;margin-left:40px;">门店的销售、库存、毛利、收银等情况都能随时查询，并能通过数据进行排名和有效分析；</span>
+                    </span>
+                    <span class="describe">
+                        6、多层级管理<br />
+                        <span style="font-size:13px;margin-left:40px;">上级管理和控制下级区域和门店，同级区域数据独立核算，相互不影响。</span>
+                    </span>
+                </span>
+            </div>
+
+            <div style="background-color: #fff; height: 460px; width: 864px; z-index: 2; left: 80px;">
+                <span class="active-bar" style="background-color:#e93e17;">代理商统一管理+<br />会员</span>
+                <span class="fl left-bar">
+                    <span class="check-choise hidden" style="background-color: rgba(70,10,1,0.7);">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/checked.png" />
+                    </span>
+                    <img src="@(cdnFileRoot)/Images/4.0/ka/agent.jpg?v=1715" />
+                    <span class="show-font">代理商统一管理+会员</span>
+                    <span class="btns">
+                        <span class="border-radu sure-choise" data-sure-index="2">选择此方案</span>
+                        <span class="border-radu cancel-choise">取消选择</span>
+                    </span>
+                    <span class="border-radu btn-init">查看详情</span>
+                    <span class="white-bar"></span>
+                </span>
+                <span class="fl content" style="width:654px;height:460px;background-color:#fff;">
+                    <span class="title"><span class="decorate" style="background-color:#ee3f18;"></span>代理商统一管理</span><br />
+                    <span class="describe">
+                        1、代理商账号管理<br />
+                        <span style="font-size:13px;margin-left:40px;">经销商可将商品档案等数据共享给代理商；</span>
+                    </span>
+                    <span class="describe">
+                        2、代理商自建小商城<br />
+                        <span style="font-size:13px;margin-left:40px;">代理商自己可以在自己的小商城里进行推广、促销等活动来吸纳会员；</span>
+                    </span>
+                    <span class="describe">
+                        3、通过商城订货<br />
+                        <span style="font-size:13px;margin-left:40px;">代理商可以通过总部提供的订货商城在线订货，保证库存量，清晰往来账务；</span>
+                    </span>
+                    <span class="describe">
+                        4、经销商统一管理订单<br />
+                        <span style="font-size:13px;margin-left:40px;">经销商接收代理商订单，安排发货，保证代理商能够及时补充货品；</span>
+                    </span>
+                    <span class="describe">
+                        5、上级掌握下级各项库存数据<br />
+                        <span style="font-size:13px;margin-left:40px;">上级可以随时查看下级的库存、销售情况，掌握第一手货品留存量，方便之后调配；</span>
+                    </span>
+                    <span class="describe">
+                        6、保持跨区域代理商库存平衡<br />
+                        <span style="font-size:13px;margin-left:40px;">经销商总部可以将畅/滞销商品进行平衡调配，减少代理商库存积压。</span>
+                    </span>
+                </span>
+            </div>
+
+            <div style="background-color: #fff; height: 460px; width: 864px; z-index: 3; left: 120px;">
+                <span class="active-bar" style="background-color:#b58b4a;">供应商入驻管理</span>
+                <span class="fl left-bar">
+                    <span class="check-choise hidden" style="background-color: rgba(83,72,51,0.7);width:206px;">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/checked.png" />
+                    </span>
+                    <img src="@(cdnFileRoot)/Images/4.0/ka/supplier.jpg?v=1715" />
+                    <span class="show-font" style="padding: 10px; bottom: 130px;">供应商入驻管理</span>
+                    <span class="btns">
+                        <span class="border-radu sure-choise" data-sure-index="3">选择此方案</span>
+                        <span class="border-radu cancel-choise">取消选择</span>
+                    </span>
+                    <span class="border-radu btn-init">查看详情</span>
+                    <span class="white-bar"></span>
+                </span>
+                <span class="fl content" style="width:654px;height:460px;background-color:#fff;padding-top: 18px;">
+                    <span class="title" style="margin-bottom:20px;"><span class="decorate" style="background-color:#cf9f54;"></span>供应商入驻管理</span><br />
+                    <span class="describe">
+                        1、供应商入驻审核<br />
+                        <span style="font-size:13px;margin-left:40px;">商城管理方将对供应商上架商品进行审核，同时管理平台上的买家与卖家；</span>
+                    </span>
+                    <span class="describe">
+                        2、订单拆分<br />
+                        <span style="font-size:13px;margin-left:40px;">商城方可手动/自动将客户订单分配到对应供应商，并跟踪供应商发货情况；</span>
+                    </span>
+                    <span class="describe">
+                        3、供应商结算<br />
+                        <span style="font-size:13px;margin-left:40px;">商城方可以统计入驻供应商应付、已付、待付情况并能进行账龄分析；</span>
+                    </span>
+                    <span class="describe">
+                        4、统一会员管理<br />
+                        <span style="font-size:13px;margin-left:40px;">掌握所有会员资源，统一会员积分，统一会员活动，所有会员信息进行统一管理；</span>
+                    </span>
+                    <span class="describe">
+                        5、有效分析数据<br />
+                        <span style="font-size:13px;margin-left:40px;">商城方可通过报表进行销售分析、供应商排行、客户消费分析等，轻松收集整理数据；</span>
+                    </span>
+                    <span class="describe">
+                        6、提供供应商后台<br />
+                        <span style="font-size:13px;margin-left:40px;">供应商可在系统提供的后台上编辑商品信息，操作订单发货、结算等情况；</span>
+                    </span>
+                    <span class="describe">
+                        7、订单合并<br />
+                        <span style="font-size:13px;margin-left:40px;">商城方可将平台分配的订单合并，形成统一发货单，方便整理；</span>
+                    </span>
+                    <span class="describe">
+                        8、微信登录<br />
+                        <span style="font-size:13px;margin-left:40px;">通过微信就可以进行商城注册，浏览下单、在线支付、收货、退款、退货等业务。</span>
+                    </span>
+                </span>
+            </div>
+
+            <div style="background-color: #fff; height: 460px; width: 864px; z-index: 4; left: 160px;">
+                <span class="active-bar" style="background-color:#08626a;">统一会员管理</span>
+                <span class="fl left-bar">
+                    <span class="check-choise hidden" style="background-color: rgba(50,114,123,0.8)">
+                        <img src="@(cdnFileRoot)/Images/4.0/ka/checked.png" />
+                    </span>
+                    <img src="@(cdnFileRoot)/Images/4.0/ka/unity.jpg?v=1715" />
+                    <span class="show-font" style="padding: 10px 20px; bottom: 130px;">统一会员管理</span>
+                    <span class="btns">
+                        <span class="border-radu sure-choise" data-sure-index="4">选择此方案</span>
+                        <span class="border-radu cancel-choise">取消选择</span>
+                    </span>
+                    <span class="border-radu btn-init">查看详情</span>
+                    <span class="white-bar"></span>
+                </span>
+                <span class="fl content" style="width:654px;height:460px;background-color:#fff;">
+                    <span class="title"><span class="decorate" style="background-color:#09727b;margin-bottom:30px;"></span>统一会员管理</span><br />
+                    <span class="describe">
+                        1、自由发展会员<br />
+                        <span style="font-size:13px;margin-left:40px;">加盟店、代理商可自由发展和吸纳本地会员；</span>
+                    </span>
+                    <span class="describe">
+                        2、本地数据独享<br />
+                        <span style="font-size:13px;margin-left:40px;">加盟店、代理商本地的会员的信息、储值、积分、优惠等活动都可以独立管理；</span>
+                    </span>
+                    <span class="describe">
+                        3、总部可管理所有会员资料<br />
+                        <span style="font-size:13px;margin-left:40px;">总部掌握商家的所有会员信息，避免分销商流失而导致会员流失；</span>
+                    </span>
+                    <span class="describe">
+                        4、直营店数据共享<br />
+                        <span style="font-size:13px;margin-left:40px;">总部旗下直营门店里的所有会员资料、储值、积分、优惠等数据都实行共享。</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="allow-bottom"><img style="left:50% !important;margin-left:-20px !important;" class="breath" src="@(cdnFileRoot)/Images/4.0/ka/allow-bottom.png" /></div>
+
+        <div class="structure-chart">
+            <img style="cursor: no-drop;" src="@(cdnFileRoot)/Images/4.0/ka/default_check.png" />
+        </div>
+
+        <div class="more-choise-bottom">
+            <div class="small-log">
+                <p>您已选择以下解决方案</p>
+                <ul>
+                    <li class="hidden"><img src="@(cdnFileRoot)/Images/4.0/ka/focus_union.png" /><span>连锁加盟管理<br />+会员</span></li>
+                    <li class="hidden"><img src="@(cdnFileRoot)/Images/4.0/ka/focus_store.png" /><span>多门店管理<br />+会员</span></li>
+                    <li class="hidden"><img src="@(cdnFileRoot)/Images/4.0/ka/focus_agent.png" /><span>代理商统一管理<br />+会员</span></li>
+                    <li class="hidden"><img src="@(cdnFileRoot)/Images/4.0/ka/focus_supplier.png" /><span style="margin-top:10px">供应商入驻管理</span></li>
+                    <li class="hidden"><img src="@(cdnFileRoot)/Images/4.0/ka/focus_vip.png" /><span style="margin-top:10px">统一会员管理</span></li>
+                </ul>
+            </div>
+
+            <div class="more-choise-footer">
+                <a class="breath" href="@(applyUrl)">立即获取方案<img src="@(cdnFileRoot)/Images/4.0/ka/allow-right1.png" /></a>
+            </div>
+        </div>
+
+        <!-- 更多选择结束 -->
+        <!-- 页脚开始 -->
+        <div id="footer">
+            <div class="content">
+                <div class="logo">
+                    <img src="@(cdnFileRoot)/Images/4.0/ka/custom-footer-logo.jpg?v=2" />
+                </div>
+
+                <div class="sale">
+                    <h4>来肯云商主营：</h4>
+                    <p>
+                        进销存管理软件、微信商城、库存管理软件、
+                        仓库管理软件、订货商城、零售商城
+                    </p>
+                </div>
+
+                <div class="contact">
+                    <h4>Contract us</h4>
+                    <ul>
+                        <li>
+                            <img src="@(cdnFileRoot)/Images/4.0/ka/location-icon.png" />
+                            中国.成都市高新科技孵化园9号楼F座6F/8F
+                        </li>
+                        <li style="color: #fff;">
+                            <img src="@(cdnFileRoot)/Images/4.0/ka/phone-fullday-icon.png" />
+                            13547968152
+                        </li>
+
+                        <li style="color: #2693ff;">service@LK361.com</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="copyright">
+                Copyright © 2016 成都来肯信息技术有限公司蜀ICP备13023892号
+            </div>
+        </div>
+    </div>
+    <!-- 页脚结束 -->
+  
+    <script src="@(cdnFileRoot)/Content/bootstrap/js/bootstrap.js"></script>
+    <script src="@(cdnFileRoot)/Scripts/4.0/ka.js?v=1206"></script>
+    <script>
+        var fsBanner = function (container, options) {
+            var self = this;
+
+            var defaults = {
+                'showName': true,
+                'toUpdate': {},
+                'whenEmpty': {},
+                'trigger': 'click',
+                'hideParent': null,
+                'onChanged': null
+            }
+
+            this.options = $.extend({}, defaults, options);
+
+            this.ilast = -1;
+
+            this.setup = function () {
+                this.container = $(container);
+                this.items = this.container.find('div');
+                this.activeBars = this.container.find('.active-bar');
+
+                if (!this.container.width()) {
+                    this.container.width(this.container.parent().width());
+                }
+
+                this.part = this.container.width() / this.items.length;
+                this.mini = this.part / 5;
+                this.widmain = this.container.width() - (this.mini * this.items.length - 1);
+
+                this.items.css({ 'height': this.container.height(), 'width': this.widmain + this.mini });
+
+                if (!this.options.showName) this.items.find('.name').hide();
+
+                this.items.each(function (i) {
+                    var $item = $(this);
+                    $item.css({ 'z-index': i });
+                    if (self.options.trigger == 'click') {
+                        $item.on('click', function () {
+                            self.selectItem($item, i);
+                        })
+                    };
+                    if (self.options.trigger == 'mouse') {
+                        $item.on('mouseenter', function () {
+                            self.selectItem($item, i, true);
+                        });
+                    }
+                });
+
+                if (self.options.trigger == 'mouse') {
+                    this.container.on('mouseleave', function () { self.resetcss(); });
+                }
+
+                this.resetcss();
+                this.container.show();
+            }
+
+            this.resetcss = function () {
+                this.activeBars.hide();
+                this.items.each(function (i) {
+                    var $item = $(this);
+                    $item.stop().animate({ 'left': i * self.part });
+                    if (self.options.showName) {
+                        var $name = $item.find('.name');
+                        if ($name.hasClass('minimized')) $name.hide().removeClass('minimized').fadeIn('fast');
+                    }
+                });
+                this.ilast = null;
+                this.updateHtml();
+            };
+
+            this.selectItem = function ($expanded, iexpanded, forceClick) {
+                var self = this;
+                this.activeBars[iexpanded].style.display = 'none';
+                this.$lastexpanded = this.$expanded;
+
+                if (forceClick) this.ilast = null;
+                if (iexpanded == this.ilast) {
+                    this.$expanded = null;
+                    this.resetcss();
+                } else {
+                    this.$expanded = $expanded;
+                    this.items.each(function (i) {
+                        var $item = $(this);
+                        if (i <= iexpanded) {
+                            $item.stop().animate({ 'left': i * self.mini });
+                            self.activeBars[i].style.display = 'block';
+                            self.activeBars[iexpanded].style.display = 'none';
+                        } else {
+                            $item.stop().animate({ 'left': i * self.mini + self.widmain });
+                            self.activeBars[i].style.display = 'block';
+                            self.activeBars[iexpanded].style.display = 'none';
+                        }
+                        if (self.options.showName) {
+                            var $name = $item.find('.name');
+                            var method = (i == iexpanded) ? 'removeClass' : 'addClass';
+                            if (method == 'addClass' && $name.hasClass('minimized')) method = '';
+                            if (method) $name.hide()[method]('minimized').fadeIn('fast');
+                        }
+                    });
+                    this.ilast = iexpanded;
+                    this.updateHtml($expanded);
+                }
+                this.fireChanged();
+            };
+
+            this.updateHtml = function ($expanded) {
+                this.$expanded = $expanded;
+
+                var $parent = $(self.options.hideParent);
+                $.each(this.options.toUpdate, function (field, selector) {
+                    var $obj = $(selector);
+                    var showit = false;
+                    var value = '';
+                    if ($expanded) {
+                        $parent.show();
+                        value = $expanded.find('.' + field).html();
+                        showit = true;
+                    } else {
+                        if ($parent.length) {
+                            showit = false;
+                            $parent.hide();
+                        } else {
+                            if (self.options.whenEmpty[field]) {
+                                value = self.options.whenEmpty[field];
+                                showit = true;
+                            }
+                        }
+                    }
+                    $obj.hide();
+                    if (showit) $obj.html(value).fadeIn('fast');
+                });
+            };
+
+            this.fireChanged = function () {
+                if (this.options.onChanged) {
+                    this.options.onChanged(this.$expanded, this.$lastexpanded);
+                }
+            };
+
+            this.setup();
+        };
+
+        $.fn.fsBanner = function (options) {
+            return new fsBanner(this, options);
+        };
+
+        $('#more-choise-img').fsBanner({ 'trigger': 'mouse' });
+        //$('#more-choise-img').fsBanner();
+
+    </script>
+    <script>
+        //初始化
+        $('.btn-init').addClass('hidden');
+        $('.white-bar').addClass('hidden');
+        $('.mask').width(($(document).width() - $('#more-choise-img').width()) / 2);//背景遮罩层
+        $('.mask-left').offset({
+            top: $('#carousel_section').height() + $('.more-choise').outerHeight()
+        });
+        $('.mask-right').offset({
+            top: $('#carousel_section').height() + $('.more-choise').outerHeight()
+        });
+
+        //选择此方案
+        $('.sure-choise').click(function () {
+            $(this).addClass('activ-btn');
+            $(this).siblings().removeClass('activ-btn');
+            var _index = $(this).attr('data-sure-index');
+            $('.check-choise').eq(Number(_index)).removeClass('hidden');
+            $('.white-bar').eq(Number(_index)).removeClass('hidden');
+            tabImg();
+        });
+
+        //取消选择
+        $('.cancel-choise').click(function () {
+            $(this).addClass('activ-btn');
+            $(this).siblings().removeClass('activ-btn');
+            var _index = $(this).siblings().attr('data-sure-index');
+            $('.check-choise').eq(Number(_index)).addClass('hidden');
+            $('.white-bar').eq(Number(_index)).addClass('hidden');
+            tabImg();
+        })
+
+        $('#more-choise-img').mouseenter(function () {//"立即获取方案" 交互效果
+            //$('.btns').removeClass('hidden');
+            //$('.btn-init').addClass('hidden');
+        });
+
+        $('#more-choise-img').mouseleave(function () {
+            //$('.btns').addClass('hidden');
+            //$('.btn-init').removeClass('hidden');
+        });
+
+        //结构图切换
+        var tabImg = function () {
+            var imgIndexStr = "check";
+            var aFooterChoise = $('.small-log ul li');
+
+            aFooterChoise.addClass('hidden');
+            $('.sure-choise.activ-btn').each(function () {
+                imgIndexStr += $(this).attr("data-sure-index");
+            });
+            $('.structure-chart img').attr('src', imgJson[imgIndexStr]);
+
+            //底部已选项控制显示隐藏
+            var str = imgIndexStr.replace(/check/, ''),
+                arr = str.split(''),
+                i, leng = arr.length;
+
+            for (i = 0; i < leng; i += 1) {
+                aFooterChoise.eq(Number(arr[i])).removeClass('hidden');
+            }
+        }
+
+        //结构图切换 lian0  duo1 dai2 gong3 hui4
+        var imgJson = {
+            "check": "@(cdnFileRoot)/Images/4.0/ka/default_check.png",
+            "check0": "@(cdnFileRoot)/Images/4.0/ka/lian.png",
+            "check01": "@(cdnFileRoot)/Images/4.0/ka/lian_duo.png",
+            "check02": "@(cdnFileRoot)/Images/4.0/ka/lian_dai.png",
+            "check03": "@(cdnFileRoot)/Images/4.0/ka/lian_gong.png",
+            "check04": "@(cdnFileRoot)/Images/4.0/ka/lian_hui.png",
+            "check012": "@(cdnFileRoot)/Images/4.0/ka/lian_dai_duo.png",
+            "check013": "@(cdnFileRoot)/Images/4.0/ka/lian_gong_duo.png",
+            "check014": "@(cdnFileRoot)/Images/4.0/ka/lian_hui_duo.png",
+            "check023": "@(cdnFileRoot)/Images/4.0/ka/lian_gong_dai.png",
+            "check024": "@(cdnFileRoot)/Images/4.0/ka/lian_dai_hui.png",
+            "check034": "@(cdnFileRoot)/Images/4.0/ka/lian_gong_hui.png",
+            "check0123": "@(cdnFileRoot)/Images/4.0/ka/lian_duo_dai_gong.png",
+            "check0124": "@(cdnFileRoot)/Images/4.0/ka/lian_dai_hui_duo.png",
+            "check0134": "@(cdnFileRoot)/Images/4.0/ka/lian_gong_hui_duo.png",
+            "check0234": "@(cdnFileRoot)/Images/4.0/ka/lian_gong_dai_hui.png",
+            "check01234": "@(cdnFileRoot)/Images/4.0/ka/lian_duo_dai_gong_hui.png",
+            "check1": "@(cdnFileRoot)/Images/4.0/ka/duo.png",
+            "check12": "@(cdnFileRoot)/Images/4.0/ka/dai_duo.png",
+            "check13": "@(cdnFileRoot)/Images/4.0/ka/gong_duo.png",
+            "check14": "@(cdnFileRoot)/Images/4.0/ka/hui_duo.png",
+            "check123": "@(cdnFileRoot)/Images/4.0/ka/duo_gong_dai.png",
+            "check124": "@(cdnFileRoot)/Images/4.0/ka/dai_hui_duo.png",
+            "check134": "@(cdnFileRoot)/Images/4.0/ka/gong_hui_duo.png",
+            "check1234": "@(cdnFileRoot)/Images/4.0/ka/gong_dai_hui_duo.png",
+            "check2": "@(cdnFileRoot)/Images/4.0/ka/dai.png",
+            "check23": "@(cdnFileRoot)/Images/4.0/ka/gong_dai.png",
+            "check24": "@(cdnFileRoot)/Images/4.0/ka/dai_hui.png",
+            "check234": "@(cdnFileRoot)/Images/4.0/ka/gong_dai_hui.png",
+            "check3": "@(cdnFileRoot)/Images/4.0/ka/gong.png",
+            "check34": "@(cdnFileRoot)/Images/4.0/ka/gong_hui.png",
+            "check4": "@(cdnFileRoot)/Images/4.0/ka/hui.png"
+        }
+
+        var aImg = $(".structure-chart img").on('load', function () {//图片预加载
+            for (var img in imgJson) {
+                new Image().src = imgJson[img];
+            }
+        });
+
+        //底部切换
+        var oW = $('.small-log ul').width();
+        $('.small-log ul li').width((oW - 1) / 5);//均摊宽度
+
+        $('.more-choise-footer a').mouseenter(function () {//"立即获取方案" 交互效果
+            $('.more-choise-footer img').attr('src', '@(cdnFileRoot)/Images/4.0/ka/allow-right2.png');
+            $(this).addClass('active-more-choise').removeClass('breath');
+        });
+
+        $('.more-choise-footer a').mouseleave(function () {
+            $('.more-choise-footer img').attr('src', '@(cdnFileRoot)/Images/4.0/ka/allow-right1.png');
+            $(this).removeClass('active-more-choise').addClass('breath');
+        });
+    </script>
+</body>
+</html>

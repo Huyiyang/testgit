@@ -1,0 +1,510 @@
+﻿@using CC.InnerBLL.BLL.Agent
+@{
+    ViewBag.Title = "云ERP|进销存|SAAS|仓库管理系统|库存管理软件";
+    ViewBag.Keywords = "在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,免费进销存,来肯云商,来肯";
+    ViewBag.description = "来肯云商,云ERP管理专家。实现“进销存+商城”一体化!功能涵盖:仓库管理系统,销售管理系统,会员分销,移动办公,财务系统,报表系统,商城系统等!强大功能让您的经营更简单!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+    var urlprefix_s = CC.ERP.Portal.Global.urlprefix_s;
+    ViewBag.urlprefix = urlprefix;
+
+    <link href="@(cdnFileRoot)/Content/video.css?v=20170515" rel="stylesheet" />
+    var register_url = string.Format("{0}/account/register", urlprefix_s);
+    var login_url = "";
+
+    if (AgentInfo.Current.IsLaiken)
+    {
+        register_url += string.Format("?salerid={0}&sourceflag={1}", Request["salerid"], Request["sourceflag"]);
+    }
+    else
+    {
+        register_url += string.Format("?agentid={0}&salerid={1}&sourceflag={2}", AgentInfo.Current.AgentID, Request["salerid"], Request["sourceflag"]);
+    }
+
+    login_url = register_url.Replace("register", "logon");
+}
+<style>
+    .kc_left {
+       left: -400px ;
+       transition:1.5s;
+    }
+    .kc_right {
+        right: -660px ;
+         transition:1.5s;
+         top:20px;
+    }
+     .xs_left {
+       left: -700px ;
+       transition:1.5s;
+         top:20px;
+    }
+    .xs_right {
+        right: -400px ;
+         transition:1.5s;
+    }
+     .cg_left {
+       left: -400px ;
+       transition:1.5s;
+    }
+    .cg_right {
+        right: -660px ;
+         transition:1.5s;
+         top:20px;
+    }
+     .cw_left {
+       left: -700px ;
+       transition:1.5s;
+         top:20px;
+    }
+    .cw_right {
+        right: -400px ;
+         transition:1.5s;
+    }
+     .kh_left {
+       left: -400px ;
+       transition:1.5s;
+    }
+    .kh_right {
+        right: -660px ;
+         transition:1.5s;
+         top:20px;
+    }
+    #wrapper,#footer-outer{
+        min-width:1200px !important;
+    }
+</style>
+@*4.0产品页面*@
+    <div class="productBanner">
+        <div class="productBanner_wra">
+            <div class="prodectBanner_title">人力成本大幅降低，</div>
+            <div class="prodectBanner_title2">工作效率提升<span>50%</span>以上</div>
+            <div class="prodectBanner_title3">
+                <div>来肯云商进销存是以SaaS模式打造的云端ERP,</div>
+                <div>让客户的硬件和IT成本得到了极大限度的降低，</div>
+                <div>同时产品的灵活性和稳定性也给客户提供了优质的用户体验。</div>
+            </div>
+            <div class="prodectBanner_title4">
+                <img src="@(cdnFileRoot)/Images/3.0/product4.0/invoicBanner_install.png" />
+                <span>无需安装、无需下载 注册即可使用</span>
+            </div>
+            <img src="@(cdnFileRoot)/Images/3.0/product4.0/invoicBanner_phone.png" class="invoicBanner_phone" />
+        </div>
+    </div>
+    <div class="productContent1" style="padding-bottom:0px !important;">
+        <div class="cont1_title">“也许，您正在遭受这些问题的困扰”</div>
+        <div class="cont1_cont">
+            <div class="cont1_center">
+                <div class="cont1_left">
+                    <div class="left_1">多个仓库或门店间数据无法协同</div>
+                    <div class="left_2">库存数据不清晰，业务绊手绊脚</div>
+                    <div>外勤工作，天高皇帝远，无从监管</div>
+                    <div>怎么报价、库存多少，一问三不知</div>
+                </div>
+                <div class="cont1_c">
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/cont1Cont_center.png" />
+                </div>
+                <div class="cont1_right">
+                    <div class="right_1">老人流失业务停滞、新人上手慢影响收入</div>
+                    <div>新客拓展难，老客维护难，业绩难增长</div>
+                    <div>办公地域受限，无法随时随地掌控企业状况</div>
+                    <div>
+                        财务工作量大，所以无精力进行预算、<br />
+                        成本控制、合理避税、短期投资和政<br />
+                        府扶持政策申请等工作。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="productContent4">
+        <div class="cont4_width">
+            <div class="cont4_title">来肯云商—云端进销存ERP帮您解决</div>
+            <ul class="cont4_cont">
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/content4_01.png" />
+                    <span class="cont_s1">多终端掌控业务</span>
+                    <div>
+                        <p>PC、Web、PAD、IOS、安卓、</p>
+                        <p>微信多终端接入；随时随地掌</p>
+                        <p>控业务状况。</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/content4_02.png" />
+                    <span class="cont_s2">多点多地协同</span>
+                    <div>
+                        <p>轻松管理多门店、多仓库，多点</p>
+                        <p>数据协同无障碍。</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/content4_03.png" />
+                    <span class="cont_s3">按需启用行业配置</span>
+                    <div>
+                        <p>支持行业属性配置，颜色/尺码、</p>
+                        <p>批次/保质期、序列号、多计量</p>
+                        <p>单位等。</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/content4_04.png" />
+                    <span class="cont_s4">启用微商城业绩翻倍</span>
+                    <div style="padding-left:13px;">
+                        <p>可在云端进销存的基础上启用</p>
+                        <p>微商城，帮您拓展线上销售渠</p>
+                        <p>道，提升业绩。</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="productContent2" id="productContent2">
+    <div class="cont2_title">库存管理</div>
+    <div class="cont2_cont">
+        <div class="cont2_left kc_left">
+            <div>
+                <span>多仓库（门店）间数据协同难</span>
+                <div>
+                    <p>多门店或多仓库一般不在同一位置，很难协同；来肯完美</p>
+                    <p>解决仓库或门店间的数据同步及相互调货问题。</p>
+                </div>
+            </div>
+            <div>
+                <span>库存数据不清楚</span>
+                <div>
+                    <p>有没有货，值多少钱，能不能按时发货，通过系统查询就</p>
+                    <p>能一清二楚。</p>
+                </div>
+            </div>
+            <div>
+                <span>库存数量上下限控制难</span>
+                <div>
+                    <p>下限，确保最低库存量，避免有单无货；</p>
+                    <p>上限，保证最高库存量，防止占用资金；</p>
+                </div>
+            </div>
+            <div>
+                <span>仓库盘点费时耗力</span>
+                <div>
+                    <p>采用不定期抽盘以及分量盘点，填入盘点数据系统自动算</p>
+                    <p>出盈亏数量及金额，完全不影响业务开展。</p>
+                </div>
+            </div>
+            <div>
+                <span>数据分析难 </span>
+                <div>
+                    <p>系统自动生成各种报表：库存状况表、库存数量排行、金</p>
+                    <p>额排行、周转率分析、报损报溢分析...应有尽有。</p>
+                </div>
+            </div>
+            <a class="peoduct_btn" target="_blank" href="@(register_url)">注册试用</a>
+        </div>
+        <div class="cont2_right kc_right">
+            <img src="@(cdnFileRoot)/Images/3.0/product4.0/content2_right.png?v=0606" class="content2_right" />
+            <ul>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/contentRight_01.png" />
+                    <span>出入库</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/contentRight_02.png" />
+                    <span>收发货</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/contentRight_03.png" />
+                    <span>调拨</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/contentRight_04.png" />
+                    <span>盘点</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/contentRight_05.png" />
+                    <span>各种分析报表</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="productContent5" id="productContent5">
+    <div class="cont2_title">销售管理</div>
+    <div class="cont2_cont">
+        <div class="cont2_right xs_left">
+            <img src="@(cdnFileRoot)/Images/3.0/product4.0/content5_left.png?v=0606" class="content2_right" />
+            <ul>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten5_Left01.png" />
+                    <span>销售订单</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten5_Left02.png" />
+                    <span>销售出库</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten5_Left03.png" />
+                    <span>退换货</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten5_Left04.png" />
+                    <span>外勤管理</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten5_Left05.png" />
+                    <span>各种分析报表</span>
+                </li>
+            </ul>
+        </div>
+        <div class="cont2_left xs_right">
+            <div>
+                <span>报价难，往来管理难</span>
+                <div>
+                    <p>
+                        不同客户不同价格，轻松解决报价问题，即便新人也能分
+                    </p>
+                    <p>分钟上手；客户欠款轻松管理。</p>
+                </div>
+            </div>
+            <div>
+                <span>销售外勤监管难</span>
+                <div>
+                    <p>
+                        外勤工作，天高皇帝远，无从监管；GPS签到、拍照上图，
+                    </p>
+                    <p>轻松搞定外勤监管。</p>
+                </div>
+            </div>
+            <div>
+                <span>移动销售（车销），效率低下</span>
+                <div>
+                    <p>白天业务员移动销售，晚上回公司对货、对钱、对账，效</p>
+                    <p>率极低；移动销售的同时将数据实时传回总部，效率提高</p>
+                    <p>10倍以上。</p>
+                </div>
+            </div>
+            <div>
+                <span>以销订购解决库存积压难题</span>
+                <div>
+                    <p>根据接收到的客户订单情况，决定向供应商采购货品的数</p>
+                    <p>量，在销售流程上降低库存加压风险。</p>
+                </div>
+            </div>
+            <div>
+                <span>客户/会员管理难 </span>
+                <div>
+                    <p>新客户/会员拓展难，老客户/会员维护难，来肯帮您解决</p>
+                    <p>新客户拓展、老客户维护问题。 </p>
+                </div>
+            </div>
+            <div>
+                <span>销售数据分析决策难</span>
+                <div>
+                    <p>来肯自动为您生成、销售日月年报、订单分析、各种销售</p>
+                    <p>排行...助您业绩大幅提升 </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="productContent6" id="productContent6">
+    <div class="cont2_title">采购管理</div>
+    <div class="cont2_cont">
+        <div class="cont2_left cg_left">
+            <div>
+                <span>往来欠款、支付款项清晰把握</span>
+                <div>
+                    <p>往来账、预付款、返点、付款历史等数据都可以通过系统</p>
+                    <p>清晰的记录下来，再也不是供应商说了算。</p>
+                </div>
+            </div>
+            <div>
+                <span>以数据为依托，降低采购成本</span>
+                <div>
+                    <p>在采购报表中可查询到在哪些供应商那里采购了多少货品；</p>
+                    <p>这就是与供应商议价降低采购成本的资本。</p>
+                </div>
+            </div>
+            <div>
+                <span>历史成本怎么样，不清楚</span>
+                <div>
+                    <p>历史成本走势，便于我们决策分析</p>
+                </div>
+            </div>
+            <div>
+                <span>采购数据分析决策难</span>
+                <div>
+                    <p>来肯自动为您生成：采购分析、各种采购排行...依托数据，</p>
+                    <p>助您轻松决策</p>
+                </div>
+            </div>
+            <a class="peoduct_btn" target="_blank" href="@(register_url)">注册试用</a>
+        </div>
+        <div class="cont2_right cg_right">
+            <img src="@(cdnFileRoot)/Images/3.0/product4.0/content6_right.png?v=0606" class="content2_right" />
+            <ul>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten6_right01.png" />
+                    <span>采购订单</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten6_right02.png" />
+                    <span>采购入库</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten6_right03.png" />
+                    <span>退换货</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten6_right04.png" />
+                    <span>各种分析报表</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="productContent7" id="productContent7">
+    <div class="cont2_title">财务管理</div>
+    <div class="cont2_cont">
+        <div class="cont2_right cw_left">
+            <img src="@(cdnFileRoot)/Images/3.0/product4.0/content7_left.png?v=0606" class="content2_right" />
+        </div>
+        <div class="cont2_left cw_right">
+            <div>
+                <span>业务员录入凭证，财务只需审核</span>
+                <div>
+                    <p>所有原始业务凭证由业务部门通过系统直接录入，财务人</p>
+                    <p>员只需要在系统中审核凭证即可。</p>
+                </div>
+            </div>
+            <div>
+                <span>财务人员不再需要编制各类报表</span>
+                <div>
+                    <p>所有收入、成本费用、往来账等数据均由系统自动统计，</p>
+                    <p>各类报表也由系统自动生成。</p>
+                </div>
+            </div>
+            <div>
+                <span>让财务做更有利于企业发展的事 </span>
+                <div>
+                    <p>将财务人员从繁琐重复性的工作中解放出来后，可以为企</p>
+                    <p>业做更多有意义的事，比如控制成本及预算、合理避税、</p>
+                    <p>短期投资、获取政府支持等。</p>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten7_right01.png" />
+                    <span>费用记录 </span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten7_right02.png" />
+                    <span>应收应付调整</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten7_right03.png" />
+                    <span>凭证录入</span>
+                </li>
+                <li>
+                    <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten7_right04.png" />
+                    <span>财务报表</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="productContent8">
+        <div class="cont2_title">客户管理和协同办公</div>
+        <div class="cont2_cont">
+            <div class="cont2_left kh_left">
+                <div>
+                    <span>随时随地查询客户信息</span>
+                    <div>
+                        <p>客户基本信息、客户等级、客户合同内容、客户跟进状态</p>
+                        <p>等都一一记录在案，轻松实现客户管理，并且不用担心客</p>
+                        <p>户信息丢失的问题。</p>
+                    </div>
+                </div>
+                <div>
+                    <span>协同办公让工作更有条理</span>
+                    <div>
+                        <p>将每天的工作计划记录在日程中，可自由设定提醒时间，</p>
+                        <p>保证工作计划有序进行；将每天的工作情况记录在动态中，</p>
+                        <p>包括今日工作总结及明日工作计划，提升工作效率。</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>
+                        <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten8_Left01.png" />
+                        <span>客户管理</span>
+                    </li>
+                    <li>
+                        <img src="@(cdnFileRoot)/Images/3.0/product4.0/conten8_Left02.png" />
+                        <span>协同办公</span>
+                    </li>
+                </ul>
+                <a class="peoduct_btn" target="_blank" href="@(register_url)">注册试用</a>
+            </div>
+            <div class="cont2_right kh_right">
+                <img src="@(cdnFileRoot)/Images/3.0/product4.0/content8_right.png?v=0606" class="content2_right" />
+            </div>
+        </div>
+    </div>
+    <a class="productContent9" href="/Product/IndurstryCase" style="display:block;">
+    <div class="cont9_title1">
+        <span>100000</span>
+        <img src="@(cdnFileRoot)/Images/3.0/product4.0/content9_word.png" />
+    </div>
+    <img src="@(cdnFileRoot)/Images/3.0/product4.0/content9_word1.png" />
+</a>
+<script>
+    //左右淡入淡出效果
+    $(function () {
+        $(window).scroll(function () {
+            if (($(window).scrollTop()) > 1050) {
+                $(".kc_left").css("left", "0");
+                $(".kc_right").css("right", "50px")
+            }
+            else {
+                $(".kc_left").css("left","-400px");
+                $(".kc_right").css("right", "-660px")
+            }
+            if (($(window).scrollTop()) > 1950) {
+                $(".xs_left").css("left", "0");
+                $(".xs_right").css("right", "0px")
+            }
+            else {
+                $(".xs_left").css("left", "-700px");
+                $(".xs_right").css("right", "-400px")
+            }
+            if (($(window).scrollTop()) > 2850) {
+                $(".cg_left").css("left", "0");
+                $(".cg_right").css("right", "50px")
+            }
+            else {
+                $(".cg_left").css("left", "-400px");
+                $(".cg_right").css("right", "-660px")
+            }
+            if (($(window).scrollTop()) > 3700) {
+                $(".cw_left").css("left", "0");
+                $(".cw_right").css("right", "0px")
+            }
+            else {
+                $(".cw_left").css("left", "-700px");
+                $(".cw_right").css("right", "-400px")
+            }
+            if (($(window).scrollTop()) > 4450) {
+                $(".kh_left").css("left", "0");
+                $(".kh_right").css("right", "50px")
+            }
+            else {
+                $(".kh_left").css("left", "-400px");
+                $(".kh_right").css("right", "-660px")
+            }
+        });
+    });
+</script>

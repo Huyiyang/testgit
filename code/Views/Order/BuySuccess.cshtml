@@ -1,0 +1,132 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+<link href="@(cdnFileRoot)/Content/service.css?v=0525" rel="stylesheet" />
+
+<script>
+    $(function () {
+        $("#onlinepay").click(function () {
+            $("#onlinepay").removeClass("btn_apliy_nomal");
+            $("#onlinepay").addClass("btn_apliy_selected");
+
+            $("#offlinepay").removeClass("btn_apliy_selected");
+            $("#offlinepay").addClass("btn_apliy_nomal");
+
+            $("#divOnline").show();
+            $("#divOffline").hide();
+            var paytype = $('input[name="paytype"]:checked').val();
+            $("#selectPayType").val(paytype);
+        });
+
+        $("#offlinepay").click(function () {
+            $("#offlinepay").removeClass("btn_apliy_nomal");
+            $("#offlinepay").addClass("btn_apliy_selected");
+
+            $("#onlinepay").removeClass("btn_apliy_selected");
+            $("#onlinepay").addClass("btn_apliy_nomal");
+
+            $("#divOffline").show();
+            $("#divOnline").hide();
+            $("#selectPayType").val(3);
+        });
+        $("input:radio[name='paytype']").change(function () {
+            var paytype = $('input[name="paytype"]:checked').val();
+            $("#selectPayType").val(paytype);
+        });
+        var paytype = $('input[name="paytype"]:checked').val();
+        $("#selectPayType").val(paytype);
+    });
+</script>
+<style type="text/css">
+    .accout {
+        margin:20px 50px;
+        line-height:25px;
+    }
+
+    .type {
+        font-size:1.1em;
+        font-weight:900;
+        margin-bottom:10px;
+    }
+
+    .number {
+        color:#FF4B02;
+    }
+
+    .payImg{
+        margin-left:10px;
+        margin-right:40px;
+        width:100px;
+    }
+</style>
+<div class="buySuccess_wrapper">
+    <div class="orderDetail_content_top">
+        <div class="orderDetail_content_top_wrap">
+            <div class="orderDetail_title"><div>订单</div><span>(PURCHASE ORDER)</span></div> 
+            <div class="buySuccess_content_top">
+                <div>订单编号(ORDER NUMNER)：<span>@ViewData["orderid"]</span></div>
+                <div>应付金额（AMOUNT PAYABLE）：<span class="buySuccess_price">¥<span>@ViewData["totalmoney"]</span></span></div>
+            </div>          
+        </div>
+    </div>
+    <div class="buySuccess_payWay">
+        <div class="buySuccess_payOnline">
+            <ul>
+                <li class="buySuccess_title">在线支付:</li>
+                <li class="buySuccess_payimg" id="divOnline">
+                    <form  method="post">
+                        <input type="hidden" name="selectPayType" id="selectPayType" value="0" />
+                        <input type="hidden" name="order" value="@ViewData["orderid"]" />
+                        <input type="radio" id="paytype-0" name="paytype" value="0" checked="checked" /><label for="paytype-0"><img src="@(cdnFileRoot)/Images/3.0/service/BuySuccess_payimg1.jpg" /></label>
+                        <input type="radio" id="paytype-2" name="paytype" value="2" /><label for="paytype-2"><img src="@(cdnFileRoot)/Images/3.0/service/BuySuccess_payimg2.jpg" /></label>
+                        <input type="radio" id="paytype-1" name="paytype" value="1" /><label for="paytype-1"><img src="@(cdnFileRoot)/Images/3.0/service/BuySuccess_payimg3.jpg" /></label>
+                        <button type="submit">立即支付</button>
+                        <div class="col-xs-9 alert alert-danger hidden"><i class="glyphicon glyphicon-minus-sign"></i>@Html.ValidationMessage("error") </div>
+                    </form>                  
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="buySuccess_payOfline">
+            <ul>
+                <li class="buySuccess_title">线下支付:</li>
+                <li>
+                    <div class="buySuccess_payOfline_item">
+                        <ul>
+                            <li><img src="@(cdnFileRoot)/Images/3.0/service/BuySuccess_payimg4.jpg" /></li>
+                            <li>
+                                <div><span>公司名称：</span>成都来肯信息技术有限公司</div>
+                                <div><span>银行账号：</span>44020  72209  10001  2447</div>
+                                <div><span>开户行：</span>中国工商银行成都春熙支行锦华路分理处</div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="buySuccess_payOfline_item">
+                        <ul>
+                            <li><img src="@(cdnFileRoot)/Images/3.0/service/BuySuccess_payimg2_2.jpg" /></li>
+                            <li style="margin-top:20px;">
+                                <div><span>支付宝账号：</span>erpfuture@163.com</div>
+                                <div><span>校验全名：</span>成都来肯信息技术有限公司</div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>   
+</div>
+
+<script>
+    $(document).ready(function () {
+        var errMsg = $(".field-validation-error").text();
+        if (errMsg) {
+            $('.alert-danger').removeClass("hidden");
+        }
+    });
+</script>

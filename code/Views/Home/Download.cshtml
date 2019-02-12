@@ -1,0 +1,235 @@
+﻿@using CC.InnerBLL.BLL.Agent
+@using CC.Public
+@{
+    ViewBag.Title = "进销存|进销存软件|进销存系统|移动进销存下载";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Keywords = "进销存下载,进销存";
+    ViewBag.description = "提供进销存下载,移动进销存下载（Android/IOS）,PC电脑进销存下载,iPad进销存下载,微信进销存下载。功能涵盖：在线进销存,云ERP,库存管理软件,CRM,商城系统,客户管理,OA管理系统等,支持移动版及微信版下载,中国首家支持微信客户端使用的SAAS技术服务商！";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+
+    var urlprefix_s = CC.ERP.Portal.Global.urlprefix_s;
+    var urlprefix = "http://" + Request.Url.DnsSafeHost;
+    var register_url = string.Format("{0}/account/register", urlprefix_s);
+    var login_url = "";
+
+    if (AgentInfo.Current.IsLaiken)
+    {
+        register_url += string.Format("?salerid={0}&sourceflag={1}", Request["salerid"], Request["sourceflag"]);
+    }
+    else
+    {
+        register_url += string.Format("?agentid={0}&salerid={1}&sourceflag={2}", AgentInfo.Current.AgentID, Request["salerid"], Request["sourceflag"]);
+    }
+
+    login_url = register_url.Replace("register", "logon");
+    ViewBag.urlprefix = urlprefix;
+}
+
+<style>
+    .bottom_img, .bottomP {
+        display: none;
+    }
+
+    .download_wra {
+        padding-top: 170px;
+        width: 1020px;
+        margin: 0 auto;
+        height: 777px;
+    }
+
+    .download_l {
+        float: left;
+        width: 240px;
+    }
+
+    .download_r {
+        width: 740px;
+        margin-left: 40px;
+        float: left;
+        padding-top: 85px;
+    }
+
+    h2 {
+        color: #252627;
+        font-size: 32px;
+        text-align: left;
+        font-family: "微软雅黑";
+    }
+
+    h3 {
+        color: #7c7c7c;
+        font-size: 18px;
+        margin-top: 13px;
+        text-align: left;
+        font-family: "微软雅黑";
+    }
+
+    .panel {
+        position: relative;
+    }
+
+    .bottom_img {
+        width: 920px !important;
+        float: left;
+        margin-left: 50px !important;
+    }
+
+    .bottom_img {
+        padding: 210px 0 0;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .down_div {
+        margin-right: 38px !important;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+</style>
+
+<div class="download_wra">
+    <div class="download_l">
+        <img src="@(cdnFileRoot)/Images/home/download/down_phone.png" class="img-responsive" />
+    </div>
+    <div class="download_r">
+        <h2>来肯云商应用下载</h2>
+        <h3>100000 家商贸企业正在使用来肯云商产品</h3>
+        <div class="panel_div">
+            <div class="container down0 ">
+                <div class="row">
+                    <div class="title">
+                        <div>多终端匹配，契合您的使用习惯</div>
+                    </div>
+                </div>
+                <div style="margin-top:45px;">
+                    <a href="@(register_url)" target="_blank" class="down_div down_1" style="cursor:pointer;display:none">
+                        <div class="footer_img">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile_wz.png?v=0516" />
+                            <div class="text">Web端</div>
+                            <div class="img img1">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile_wz_light.png?v=0516" style="width:75px; margin: -7px 0 0 6px;" />
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:;" target="_blank" class="down_div  down_2" style="cursor:pointer;display:inline-block;" onclick="window.open('@(CC.ERP.Portal.Global.DownloadForClient)', '_blank');">
+                        <div class="footer_img">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/footerImg4.png?v=20170515" class="img4" />
+                            <div class="text">电脑端</div>
+                            <div class="img img1">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/footerImg6.png?v20170515" style="margin-left:9px;"/>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="down_div down_3">
+                        <div class="footer_img">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/footerImg2.png?v=20170515" />
+                            <div class="text">安卓端</div>
+                            <div class="img">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile4.0.png" style="border:5px solid #fff;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down_div down_4">
+                        <div class="footer_img">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/footerImg1.png?v=20170515" />
+                            <div class="text">IOS端</div>
+                            <div class="img">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile4.0.png" style="border:5px solid #fff;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down_div down_5 m_0">
+                        <div class="footer_img">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/footerImg3.png?v=20170515" />
+                            <div class="text">微信端</div>
+                            <div class="img">
+                                <img src="@(cdnFileRoot)/Images/3.0/common/download_weixin4.0.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom_load">
+    <div class="index_bottom container">
+        <div class="row">
+            <div class="col-xs-6 border_r">
+                <div class="indexBottom_ab">About Us</div>
+                <div class="indexBottom_slogan">
+                    用专业与专注，创造价值与品质；高质量满足客户需求，高效率提供超值服务；
+                </div>
+                <div class="indexBottom_slogan">
+                    成为受中小企业欢迎的SaaS整体解决方案提供商。
+                </div>
+                <div class="indexBottom_slogan">来肯云商主营：<h1><a href="/home/new">进销存管理软件</a>、</h1><h1><a href="/product/dh">微信商城</a>、</h1><h1><a href="/home/new">库存管理软件</a>、</h1><h1><a href="/home/new">仓库管理软件</a>、</h1><h1><a href="/product/dh">订货商城</a>、</h1><h1><a href="/product/dh">零售商城</a></h1></div>
+                <div class="indexBottom_ab contact">联系我们</div>
+                @if (AgentInfo.Current.IsLaiken)
+                    {
+                    <div class="indexBottom_slogan">
+                        邮 箱：　service@LK361.com
+                    </div>
+                    }
+                <div class="indexBottom_slogan">
+                    地 址：　中国 · 成都市高新科技孵化园9号楼F座6F/8F
+                </div>
+
+            </div>
+            <div class="col-xs-6 indexBottom_right">
+                <div class="lk_code">
+                    @if (AgentInfo.Current.IsLaiken)
+                        {
+                        <img src="@(cdnFileRoot)/Images/3.0/common/lk_code.png" title="App下载" style="border:5px solid #fff;" />
+                        <div style="text-align:center;">扫码下载APP</div>
+                        }
+                        else
+                        {
+                        <img src="@(CC.ERP.Portal.Controllers.Public.GetAgentQrCode())" style="border:5px solid #fff;" />
+                        <div style="text-align:center;"><a id="pcDownload" href="javascript:;" target="_blank">关注来肯官方微信</a></div>
+                        }
+                </div>
+                <div class="indexBottom_title1">让管理与销售更贴近更轻松 </div>
+                <div class="indexBottom_title2">来肯云商，企业专属的一体化云端ERP</div>
+                <div class="bannerTel bottom_register">
+                    <span class="bannerTel_span"><input id="bannerTel_public" type="tel" name="name" value="" placeholder="请输入手机号码" /><span class="errorText" id="errorText_public"></span></span>
+                    <a href="" id="bannerTelBtn_public" onclick="CheckTelLayout()" target="_blank" rel="external nofollow">注册试用</a>
+                </div>
+                @if (AgentInfo.Current.IsLaiken)
+                    {
+                    <div class="indeBottom_tel">400-800-7683</div>
+                    <div class="indeBottom_download">
+                        <span class="indeBottom_download_span">移动客户端下载</span>
+                        <a href="javascript:;" class="indeBottom_ad">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/ad01.png" />
+                            <img src="@(cdnFileRoot)/Images/3.0/common/download_mobile4.0.png" class="indeBottom_img">
+                        </a>
+                        <a href="javascript:;" class="indeBottom_ad">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/ad02.png" />
+                            <img src="/Images/3.0/common/download_mobile4.0.png" class="indeBottom_img">
+                        </a>
+                        <a href="javascript:;" class="indeBottom_ad" onclick="window.open('@(CC.ERP.Portal.Global.DownloadForClient)', '_blank');" title="点击下载电脑端">
+                            <img src="@(cdnFileRoot)/Images/3.0/common/ad03.png" />
+                        </a>
+                    </div>
+                    }
+            </div>
+        </div>
+    </div>
+    <div class="indexBottom_bottom">
+        <div class="indexBottom_cp">
+            Copyright © 2016 成都来肯信息技术有限公司蜀ICP备13023892号
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,217 @@
+﻿@{
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+    ViewBag.Title = "来肯云商-手机官网";
+    ViewBag.Keywords = "在线进销存,进销存管理软件,进销存软件免费版,进销存,进销存软件,经销商管理";
+    ViewBag.description = "来肯云商在线管理软件,中小微企业互联网SAAS供应商，提供在线进销存,手机商城,客户管理,协同办公等企业整体解决方案";
+
+    string cdnFileRoot = CC.ERP.Portal.Global.CDNFileRoot;
+    ViewData.Add("cdnFileRoot", cdnFileRoot);
+}
+
+@*<h2>B2C</h2>*@
+<div class="Mb2c_wra">
+    <div class="Mb2c_banner_wra">
+        <div class="div_header" style="display:none;">
+            <a href="/mobile/index"><img src="@(cdnFileRoot)/mobile/image/3.0/b2c/Mb2c_logoimg.png" /></a>          
+        </div>
+        <div class="Mb2c_banner">
+            <ul>
+                <li class="li_left">
+                    <div class="title">B2C零售商城</div>
+                    <div class="text"><span>·线上销售·</span><span>·线下管理·</span></div>
+                    <div class="text"><span>·刺激消费·</span><span>·客群维护·</span></div>
+                    <div class="text"><span>·销管一体·</span></div>
+                    <div><a class="btn b2c_btn" target="_blank" href="/mobile/register?agentid=@Request["agentid"]&salerid=@Request["salerid"]&sourceflag=@Request["sourceflag"]">免费注册试用</a></div>
+                    <div class="text2"><div>无需下载安装</div><div>注册即可使用</div></div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="Mb2c_content1_wra">
+        <div class="Mtitle">
+            <div>有效的盈利方案</div>
+            <div>简单的实现途径</div>
+        </div>
+        <div class="Msubtitle">
+            <div>面向近7亿微信活跃用户销售</div>
+            <div>零售商城系统全面给力</div>
+        </div>
+        <div class="content">
+            <div class="item item1">
+                <div><span>全时在线</span>24小时不打烊</div>
+                <span>抓住网络夜间消费高峰</span>
+            </div>
+            <div class="item item2" style="display:none;">
+                <div><span>朋友圈展示 二维码推广 微信支付</span></div>
+                <span><span>灵活主动营销</span>实现收入倍增</span>
+            </div>
+            <div class="item item3" style="display:none;">
+                <div>B2C零售商城跨区域经营</div>
+                <span><span>立足本地</span>辐射全国</span>
+            </div>
+            <div class="item item4" style="display:none;">
+                <div><span>活动促销</span>积分优惠</div>
+                <div>会员一键轻松管理</div>
+                <span><span>从2到N次持续消费</span>有效提升客户忠诚度</span>
+            </div>
+        </div>
+        <ul class="content_icon">
+            <li class="item1 active">
+                <div></div>
+            </li>
+            <li class="item2">
+                <div></div>
+            </li>
+            <li class="item3">
+                <div></div>
+            </li>
+            <li class="item4">
+                <div></div>
+            </li>
+        </ul>
+        <div class="clear"></div>
+        <div class="wra_line"></div>
+    </div>
+    <div class="Mb2c_content2_wra">
+        <div class="Mtitle"><span>多重核心功能</span>颠覆实体店零售</div>
+        <div class="Msubtitle">用信息化手段拉开同行竞争距离</div>
+        <div class="content1">
+            <div class="title">商城前台</div>
+            <ul>
+                <li class="item1">
+                    <div></div>
+                    商品列表
+                </li>
+                <li class="item2">
+                    <div></div>
+                    商品详情
+                </li>
+                <li class="item3">
+                    <div></div>
+                    购物车
+                </li>
+                <li class="item4">
+                    <div></div>
+                    支付
+                </li>
+                <li class="item5">
+                    <div></div>
+                    积分
+                </li>
+                <li class="item6">
+                    <div></div>
+                    优惠
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="content2">
+            <div class="title title2">运营后台</div>
+            <div class="clear"></div>
+            <ul class="content2_top">
+                <li class="item1">
+                    <div></div>
+                    <span>利用微信</span>
+                    <span>扩大销售</span>
+                </li>
+                <li class="line"></li>
+                <li class="item2">
+                    <div></div>
+                    <span>线上线下</span>
+                    <span>会员维护</span>
+                </li>
+                <li class="line"></li>
+                <li class="item3">
+                    <div></div>
+                    <span>交易结束</span>
+                    <span>积分生成</span>
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <ul class="content2_bot">
+                <li class="item4">
+                    <div></div>
+                    <span>商城系统</span>
+                    <span>自动记账</span>
+                </li>
+                <li class="line"></li>
+                <li class="item5">
+                    <div></div>
+                    <span>门店二维码</span>
+                    <span>迅速推广</span>
+                </li>
+                <li class="line"></li>
+                <li class="item6">
+                    <div></div>
+                    <span>移动定位 </span>
+                    <span>就近配送</span>
+                </li>
+                <li class="line"></li>
+                <li class="item7">
+                    <div></div>
+                    <span>订单进销存</span>
+                    <span>实时同步</span>
+                </li>
+            </ul>
+            <div class="clear"></div>         
+        </div>
+        <div class="wra_line"></div>
+    </div>
+    <div class="Mb2c_content3_wra">
+        <div class="Mtitle">低成本实现O2O支持</div>
+        <div class="Msubtitle">1名员工1月薪酬可换全年业绩飞涨</div>
+        <ul>
+            <li>
+                <img src="@(cdnFileRoot)/mobile/image/3.0/b2c/Mb2b_content3_img1.png" />
+                <div>商城数据</div>
+                <div>进销存实时同步</div>
+            </li>
+            <li>
+                <img style="width:35px;" src="@(cdnFileRoot)/mobile/image/3.0/b2c/Mb2b_content3_img2.png" />
+                <div>移动交易</div>
+                <div>生意随身打理</div>
+            </li>
+            <li>
+                <img src="@(cdnFileRoot)/mobile/image/3.0/b2c/Mb2b_content3_img3.png" />
+                <div>微信营销</div>
+                <div>拓展销售半径</div>
+            </li>
+        </ul>
+        <div class="clear"></div>
+        <div class="wra_line"></div>
+    </div>
+    @*<div class="Mb2cb2c_content_bot">
+        <div class="content_wra">
+            <div class="title"><span></span>云端商贸管理专家<span></span></div>
+            <div class="content_wra_ul">
+                <ul>
+                    <li class="btn_left"><a class="btn" href="/mobile/register?agentid=@Request["agentid"]&salerid=@Request["salerid"]&sourceflag=@Request["sourceflag"]">免费注册试用</a></li>
+                    <li class="btn_right"><a class="btn " href="/mobile/erp">了解第5代进销存</a></li>
+                </ul>
+            </div>          
+            <div class="clear"></div>
+        </div>
+    </div>*@
+</div>
+<div style="height:60px;"></div>
+
+<script>
+    $(function () {
+        var index = $(".Mb2c_content1_wra .content_icon li").size();
+        var i = 0
+        $(".Mb2c_content1_wra .content_icon li").click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            i = $(this).index();
+            $(".Mb2c_content1_wra .content .item").eq(i).show().siblings().hide();
+        })
+        setInterval(function () {
+            if (i > index) {
+                i = 0
+            }
+            $(".Mb2c_content1_wra .content_icon li").eq(i).addClass("active").siblings().removeClass("active");
+            $(".Mb2c_content1_wra .content .item").eq(i).show().siblings().hide();
+            i++;
+        }, 2000)
+    })
+</script>

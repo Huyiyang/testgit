@@ -1,0 +1,652 @@
+2018-11-12 00:36:52,854 [10] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 02:36:53,002 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 04:36:53,088 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 06:36:53,156 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 08:36:53,227 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 09:03:19,451 [11] ERROR register - 注册错误
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at CC.DataAccess.Extend.SingleDALBaseMysql.GetData(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Agent.AgentManager.LoadSalerInfo(String cellphone, String promoteCode, Int64 userid)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 09:13:27,103 [7] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:5110/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 09:14:25,886 [11] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:5110/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 09:17:01,261 [12] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:5110/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 10:03:05,165 [10] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:5110/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 10:05:17,159 [10] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:5110/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 10:05:42,585 [7] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:8085/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 10:08:31,871 [7] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:8085/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 10:10:20,364 [7] ERROR 客户注册 - 账套初始化错误：nullhttp://127.0.0.1:8085/innerapi
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'clientip' at row 1
+   at CC.DataAccess.Extend.SingleDALBaseMysql.ExecuteScalar(HashObject parameters, String sqlName, SqlType sqlType)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.CreateCompany(HashObject company)
+   at CC.InnerBLL.BLL.Customer.CustomerManager.PublicCustomerRegister(HashObject data, Boolean checkCellphone)
+2018-11-12 10:33:59,484 [7] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 10:36:52,873 [8] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 10:40:26,208 [12] ERROR 【ERP接口调用错误】 - 【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>IIS 7.5 详细错误 - 500.0 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>应用程序“APP”中的服务器错误</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>错误摘要</legend> 
+  <h2>HTTP 错误 500.0 - Internal Server Error</h2> 
+  <h3>无法显示页面，因为发生内部服务器错误。</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>详细错误信息</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>模块</th><td>ManagedPipelineHandler</td></tr> 
+    <tr><th>通知</th><td>ExecuteRequestHandler</td></tr> 
+    <tr class="alt"><th>处理程序</th><td>inner_api</td></tr> 
+    <tr><th>错误代码</th><td>0x00000000</td></tr> 
+     
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>请求的 URL</th><td>http://127.0.0.1:8085/innerapi</td></tr> 
+    <tr><th>物理路径</th><td>D:\站点\站点\业务\APPServer\innerapi</td></tr> 
+    <tr class="alt"><th>登录方法</th><td>匿名</td></tr> 
+    <tr><th>登录用户</th><td>匿名</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>最可能的原因:</legend> 
+  <ul> 	<li>IIS 收到了请求；但在处理请求过程中出现内部错误。此错误的根本原因取决于处理该请求的是哪一个模块以及出现此错误时工作进程中出现了何种情况。</li> 	<li>IIS 无法访问网站或应用程序的 web.config 文件。如果 NTFS 权限设置不正确，便会出现这种情况。</li> 	<li>IIS 无法处理网站或应用程序的配置。</li> 	<li>已经过身份验证的用户没有使用此 DLL 的权限。</li> 	<li>该请求将被映射到托管处理程序，但不会安装 .NET 可扩展功能。</li> </ul> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>可尝试的操作:</legend> 
+  <ul> 	<li>确保 web.config 文件的 NTFS 权限正确，并允许访问 Web 服务器的计算机帐户。</li> 	<li>检查事件日志中是否记录了任何附加信息。</li> 	<li>确认 DLL 的权限。</li> 	<li>如果请求被映射到托管处理程序，则安装 .NET 可扩展功能。</li>  	<li>创建跟踪规则以跟踪此 HTTP 状态代码的失败的请求。有关为失败的请求创建跟踪规则的详细信息，请单击<a href="http://go.microsoft.com/fwlink/?LinkID=66439">此处</a>。</li> </ul> 
+ </fieldset> 
+</div> 
+ 
+ 
+<div class="content-container"> 
+ <fieldset><legend>链接和更多信息</legend> 
+  此错误表明在处理请求时出现问题。Web 服务器收到了请求，但在处理过程中出现错误，导致 500 错误。 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=500,0,0x00000000,7601">查看更多信息 &raquo;</a></p> 
+  <p>Microsoft 知识库文章:</p> 
+ <ul><li>294807</li></ul> 
+ 
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+2018-11-12 10:40:26,294 [12] ERROR CC.Public.Email.EmailSend - 邮件发送异常
+System.ArgumentException: The specified string is not in the form required for a subject.
+   at System.Net.Mail.Message.set_Subject(String value)
+   at CC.Public.Email.EmailSend.Send(String[] to, String subject, String body, Boolean isBodyHtml)
+2018-11-12 10:40:26,304 [12] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> \n<html xmlns=\"http://www.w3.org/1999/xhtml\"> \n<head> \n<title>IIS 7.5 详细错误 - 500.0 - Internal Server Error</title> \n<style type=\"text/css\"> \n<!-- \nbody{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} \ncode{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} \n.config_source code{font-size:.8em;color:#000000;} \npre{margin:0;font-size:1.4em;word-wrap:break-word;} \nul,ol{margin:10px 0 10px 40px;} \nul.first,ol.first{margin-top:5px;} \nfieldset{padding:0 15px 10px 15px;} \n.summary-container fieldset{padding-bottom:5px;margin-top:4px;} \nlegend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} \nlegend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; \n border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; \n border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} \na:link,a:visited{color:#007EFF;font-weight:bold;} \na:hover{text-decoration:none;} \nh1{font-size:2.4em;margin:0;color:#FFF;} \nh2{font-size:1.7em;margin:0;color:#CC0000;} \nh3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} \nh4{font-size:1.2em;margin:10px 0 5px 0; \n}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:\"trebuchet MS\",Verdana,sans-serif; \n color:#FFF;background-color:#5C87B2; \n}#content{margin:0 0 0 2%;position:relative;} \n.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} \n.config_source{background:#fff5c4;} \n.content-container p{margin:0 0 10px 0; \n}#details-left{width:35%;float:left;margin-right:2%; \n}#details-right{width:63%;float:left;overflow:hidden; \n}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; \n background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; \n font-size:1em;color:#FFF;text-align:right; \n}#server_version p{margin:5px 0;} \ntable{margin:4px 0 4px 0;width:100%;border:none;} \ntd,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} \nth{width:30%;text-align:right;padding-right:2%;font-weight:normal;} \nthead th{background-color:#ebebeb;width:25%; \n}#details-right th{width:20%;} \ntable tr.alt td,table tr.alt th{background-color:#ebebeb;} \n.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} \n.clear{clear:both;} \n.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} \n--> \n</style> \n \n</head> \n<body> \n<div id=\"header\"><h1>应用程序“APP”中的服务器错误</h1></div> \n<div id=\"server_version\"><p>Internet Information Services 7.5</p></div> \n<div id=\"content\"> \n<div class=\"content-container\"> \n <fieldset><legend>错误摘要</legend> \n  <h2>HTTP 错误 500.0 - Internal Server Error</h2> \n  <h3>无法显示页面，因为发生内部服务器错误。</h3> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>详细错误信息</legend> \n  <div id=\"details-left\"> \n   <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> \n    <tr class=\"alt\"><th>模块</th><td>ManagedPipelineHandler</td></tr> \n    <tr><th>通知</th><td>ExecuteRequestHandler</td></tr> \n    <tr class=\"alt\"><th>处理程序</th><td>inner_api</td></tr> \n    <tr><th>错误代码</th><td>0x00000000</td></tr> \n     \n   </table> \n  </div> \n  <div id=\"details-right\"> \n   <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> \n    <tr class=\"alt\"><th>请求的 URL</th><td>http://127.0.0.1:8085/innerapi</td></tr> \n    <tr><th>物理路径</th><td>D:\\站点\\站点\\业务\\APPServer\\innerapi</td></tr> \n    <tr class=\"alt\"><th>登录方法</th><td>匿名</td></tr> \n    <tr><th>登录用户</th><td>匿名</td></tr> \n     \n   </table> \n   <div class=\"clear\"></div> \n  </div> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>最可能的原因:</legend> \n  <ul> \t<li>IIS 收到了请求；但在处理请求过程中出现内部错误。此错误的根本原因取决于处理该请求的是哪一个模块以及出现此错误时工作进程中出现了何种情况。</li> \t<li>IIS 无法访问网站或应用程序的 web.config 文件。如果 NTFS 权限设置不正确，便会出现这种情况。</li> \t<li>IIS 无法处理网站或应用程序的配置。</li> \t<li>已经过身份验证的用户没有使用此 DLL 的权限。</li> \t<li>该请求将被映射到托管处理程序，但不会安装 .NET 可扩展功能。</li> </ul> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>可尝试的操作:</legend> \n  <ul> \t<li>确保 web.config 文件的 NTFS 权限正确，并允许访问 Web 服务器的计算机帐户。</li> \t<li>检查事件日志中是否记录了任何附加信息。</li> \t<li>确认 DLL 的权限。</li> \t<li>如果请求被映射到托管处理程序，则安装 .NET 可扩展功能。</li>  \t<li>创建跟踪规则以跟踪此 HTTP 状态代码的失败的请求。有关为失败的请求创建跟踪规则的详细信息，请单击<a href=\"http://go.microsoft.com/fwlink/?LinkID=66439\">此处</a>。</li> </ul> \n </fieldset> \n</div> \n \n \n<div class=\"content-container\"> \n <fieldset><legend>链接和更多信息</legend> \n  此错误表明在处理请求时出现问题。Web 服务器收到了请求，但在处理过程中出现错误，导致 500 错误。 \n  <p><a href=\"http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=500,0,0x00000000,7601\">查看更多信息 &raquo;</a></p> \n  <p>Microsoft 知识库文章:</p> \n <ul><li>294807</li></ul> \n \n </fieldset> \n</div> \n</div> \n</body> \n</html> \n"}http://127.0.0.1:8085/innerapi
+2018-11-12 10:43:47,285 [11] ERROR 【ERP接口调用错误】 - 【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<html>
+    <head>
+        <title>配置错误</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>“/”应用程序中的服务器错误。<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>配置错误</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> 说明: </b>在处理向该请求提供服务所需的配置文件时出错。请检查下面的特定错误详细信息并适当地修改配置文件。
+            <br><br>
+
+            <b> 分析器错误消息: </b>无法识别的属性“targetFramework”。请注意属性名称区分大小写。<br><br>
+
+            <b>源错误:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+行 217:  &lt;/cc.com&gt;
+行 218:  &lt;system.web&gt;
+<font color=red>行 219:    &lt;compilation debug=&quot;true&quot; targetFramework=&quot;4.5&quot; /&gt;
+</font>行 220:    &lt;httpRuntime targetFramework=&quot;4.5&quot; maxRequestLength=&quot;999999999&quot; executionTimeout=&quot;999999&quot; /&gt;
+行 221:        &lt;customErrors&gt;</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> 源文件: </b> D:\站点\站点\业务\APPServer\web.config<b> &nbsp;&nbsp; 行: </b> 219
+            <br><br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>版本信息:</b>&nbsp;Microsoft .NET Framework 版本:2.0.50727.5420; ASP.NET 版本:2.0.50727.5420
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[ConfigurationErrorsException]: 无法识别的属性“targetFramework”。请注意属性名称区分大小写。 (D:\站点\站点\业务\APPServer\web.config line 219)
+   在 System.Web.HttpRuntime.HostingInit(HostingEnvironmentFlags hostingFlags)
+[HttpException]: 无法识别的属性“targetFramework”。请注意属性名称区分大小写。 (D:\站点\站点\业务\APPServer\web.config line 219)
+   在 System.Web.HttpRuntime.FirstRequestInit(HttpContext context)
+   在 System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)
+   在 System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)
+-->
+2018-11-12 10:43:47,286 [11] ERROR CC.Public.Email.EmailSend - 邮件发送异常
+System.ArgumentException: The specified string is not in the form required for a subject.
+   at System.Net.Mail.Message.set_Subject(String value)
+   at CC.Public.Email.EmailSend.Send(String[] to, String subject, String body, Boolean isBodyHtml)
+2018-11-12 10:43:47,290 [11] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<html>\r\n    <head>\r\n        <title>配置错误</title>\r\n        <style>\r\n         body {font-family:\"Verdana\";font-weight:normal;font-size: .7em;color:black;} \r\n         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top: -5px}\r\n         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top: -5px}\r\n         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red }\r\n         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon }\r\n         pre {font-family:\"Lucida Console\";font-size: .9em}\r\n         .marker {font-weight: bold; color: black;text-decoration: none;}\r\n         .version {color: gray;}\r\n         .error {margin-bottom: 10px;}\r\n         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }\r\n        </style>\r\n    </head>\r\n\r\n    <body bgcolor=\"white\">\r\n\r\n            <span><H1>“/”应用程序中的服务器错误。<hr width=100% size=1 color=silver></H1>\r\n\r\n            <h2> <i>配置错误</i> </h2></span>\r\n\r\n            <font face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">\r\n\r\n            <b> 说明: </b>在处理向该请求提供服务所需的配置文件时出错。请检查下面的特定错误详细信息并适当地修改配置文件。\r\n            <br><br>\r\n\r\n            <b> 分析器错误消息: </b>无法识别的属性“targetFramework”。请注意属性名称区分大小写。<br><br>\r\n\r\n            <b>源错误:</b> <br><br>\r\n\r\n            <table width=100% bgcolor=\"#ffffcc\">\r\n               <tr>\r\n                  <td>\r\n                      <code><pre>\r\n\r\n行 217:  &lt;/cc.com&gt;\r\n行 218:  &lt;system.web&gt;\r\n<font color=red>行 219:    &lt;compilation debug=&quot;true&quot; targetFramework=&quot;4.5&quot; /&gt;\r\n</font>行 220:    &lt;httpRuntime targetFramework=&quot;4.5&quot; maxRequestLength=&quot;999999999&quot; executionTimeout=&quot;999999&quot; /&gt;\r\n行 221:        &lt;customErrors&gt;</pre></code>\r\n\r\n                  </td>\r\n               </tr>\r\n            </table>\r\n\r\n            <br>\r\n\r\n            <b> 源文件: </b> D:\\站点\\站点\\业务\\APPServer\\web.config<b> &nbsp;&nbsp; 行: </b> 219\r\n            <br><br>\r\n\r\n            <hr width=100% size=1 color=silver>\r\n\r\n            <b>版本信息:</b>&nbsp;Microsoft .NET Framework 版本:2.0.50727.5420; ASP.NET 版本:2.0.50727.5420\r\n\r\n            </font>\r\n\r\n    </body>\r\n</html>\r\n<!-- \r\n[ConfigurationErrorsException]: 无法识别的属性“targetFramework”。请注意属性名称区分大小写。 (D:\\站点\\站点\\业务\\APPServer\\web.config line 219)\r\n   在 System.Web.HttpRuntime.HostingInit(HostingEnvironmentFlags hostingFlags)\r\n[HttpException]: 无法识别的属性“targetFramework”。请注意属性名称区分大小写。 (D:\\站点\\站点\\业务\\APPServer\\web.config line 219)\r\n   在 System.Web.HttpRuntime.FirstRequestInit(HttpContext context)\r\n   在 System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)\r\n   在 System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)\r\n-->"}http://127.0.0.1:8085/innerapi
+2018-11-12 10:46:02,612 [16] ERROR 【ERP接口调用错误】 - 【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>IIS 7.5 详细错误 - 500.0 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>应用程序“APPSERVER”中的服务器错误</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>错误摘要</legend> 
+  <h2>HTTP 错误 500.0 - Internal Server Error</h2> 
+  <h3>无法显示页面，因为发生内部服务器错误。</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>详细错误信息</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>模块</th><td>ManagedPipelineHandler</td></tr> 
+    <tr><th>通知</th><td>ExecuteRequestHandler</td></tr> 
+    <tr class="alt"><th>处理程序</th><td>inner_api</td></tr> 
+    <tr><th>错误代码</th><td>0x00000000</td></tr> 
+     
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>请求的 URL</th><td>http://127.0.0.1:8085/innerapi</td></tr> 
+    <tr><th>物理路径</th><td>D:\站点\站点\业务\APPServer\innerapi</td></tr> 
+    <tr class="alt"><th>登录方法</th><td>匿名</td></tr> 
+    <tr><th>登录用户</th><td>匿名</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>最可能的原因:</legend> 
+  <ul> 	<li>IIS 收到了请求；但在处理请求过程中出现内部错误。此错误的根本原因取决于处理该请求的是哪一个模块以及出现此错误时工作进程中出现了何种情况。</li> 	<li>IIS 无法访问网站或应用程序的 web.config 文件。如果 NTFS 权限设置不正确，便会出现这种情况。</li> 	<li>IIS 无法处理网站或应用程序的配置。</li> 	<li>已经过身份验证的用户没有使用此 DLL 的权限。</li> 	<li>该请求将被映射到托管处理程序，但不会安装 .NET 可扩展功能。</li> </ul> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>可尝试的操作:</legend> 
+  <ul> 	<li>确保 web.config 文件的 NTFS 权限正确，并允许访问 Web 服务器的计算机帐户。</li> 	<li>检查事件日志中是否记录了任何附加信息。</li> 	<li>确认 DLL 的权限。</li> 	<li>如果请求被映射到托管处理程序，则安装 .NET 可扩展功能。</li>  	<li>创建跟踪规则以跟踪此 HTTP 状态代码的失败的请求。有关为失败的请求创建跟踪规则的详细信息，请单击<a href="http://go.microsoft.com/fwlink/?LinkID=66439">此处</a>。</li> </ul> 
+ </fieldset> 
+</div> 
+ 
+ 
+<div class="content-container"> 
+ <fieldset><legend>链接和更多信息</legend> 
+  此错误表明在处理请求时出现问题。Web 服务器收到了请求，但在处理过程中出现错误，导致 500 错误。 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=500,0,0x00000000,7601">查看更多信息 &raquo;</a></p> 
+  <p>Microsoft 知识库文章:</p> 
+ <ul><li>294807</li></ul> 
+ 
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+2018-11-12 10:46:02,615 [16] ERROR CC.Public.Email.EmailSend - 邮件发送异常
+System.ArgumentException: The specified string is not in the form required for a subject.
+   at System.Net.Mail.Message.set_Subject(String value)
+   at CC.Public.Email.EmailSend.Send(String[] to, String subject, String body, Boolean isBodyHtml)
+2018-11-12 10:46:02,625 [16] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> \n<html xmlns=\"http://www.w3.org/1999/xhtml\"> \n<head> \n<title>IIS 7.5 详细错误 - 500.0 - Internal Server Error</title> \n<style type=\"text/css\"> \n<!-- \nbody{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} \ncode{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} \n.config_source code{font-size:.8em;color:#000000;} \npre{margin:0;font-size:1.4em;word-wrap:break-word;} \nul,ol{margin:10px 0 10px 40px;} \nul.first,ol.first{margin-top:5px;} \nfieldset{padding:0 15px 10px 15px;} \n.summary-container fieldset{padding-bottom:5px;margin-top:4px;} \nlegend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} \nlegend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; \n border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; \n border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} \na:link,a:visited{color:#007EFF;font-weight:bold;} \na:hover{text-decoration:none;} \nh1{font-size:2.4em;margin:0;color:#FFF;} \nh2{font-size:1.7em;margin:0;color:#CC0000;} \nh3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} \nh4{font-size:1.2em;margin:10px 0 5px 0; \n}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:\"trebuchet MS\",Verdana,sans-serif; \n color:#FFF;background-color:#5C87B2; \n}#content{margin:0 0 0 2%;position:relative;} \n.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} \n.config_source{background:#fff5c4;} \n.content-container p{margin:0 0 10px 0; \n}#details-left{width:35%;float:left;margin-right:2%; \n}#details-right{width:63%;float:left;overflow:hidden; \n}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; \n background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; \n font-size:1em;color:#FFF;text-align:right; \n}#server_version p{margin:5px 0;} \ntable{margin:4px 0 4px 0;width:100%;border:none;} \ntd,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} \nth{width:30%;text-align:right;padding-right:2%;font-weight:normal;} \nthead th{background-color:#ebebeb;width:25%; \n}#details-right th{width:20%;} \ntable tr.alt td,table tr.alt th{background-color:#ebebeb;} \n.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} \n.clear{clear:both;} \n.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} \n--> \n</style> \n \n</head> \n<body> \n<div id=\"header\"><h1>应用程序“APPSERVER”中的服务器错误</h1></div> \n<div id=\"server_version\"><p>Internet Information Services 7.5</p></div> \n<div id=\"content\"> \n<div class=\"content-container\"> \n <fieldset><legend>错误摘要</legend> \n  <h2>HTTP 错误 500.0 - Internal Server Error</h2> \n  <h3>无法显示页面，因为发生内部服务器错误。</h3> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>详细错误信息</legend> \n  <div id=\"details-left\"> \n   <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> \n    <tr class=\"alt\"><th>模块</th><td>ManagedPipelineHandler</td></tr> \n    <tr><th>通知</th><td>ExecuteRequestHandler</td></tr> \n    <tr class=\"alt\"><th>处理程序</th><td>inner_api</td></tr> \n    <tr><th>错误代码</th><td>0x00000000</td></tr> \n     \n   </table> \n  </div> \n  <div id=\"details-right\"> \n   <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> \n    <tr class=\"alt\"><th>请求的 URL</th><td>http://127.0.0.1:8085/innerapi</td></tr> \n    <tr><th>物理路径</th><td>D:\\站点\\站点\\业务\\APPServer\\innerapi</td></tr> \n    <tr class=\"alt\"><th>登录方法</th><td>匿名</td></tr> \n    <tr><th>登录用户</th><td>匿名</td></tr> \n     \n   </table> \n   <div class=\"clear\"></div> \n  </div> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>最可能的原因:</legend> \n  <ul> \t<li>IIS 收到了请求；但在处理请求过程中出现内部错误。此错误的根本原因取决于处理该请求的是哪一个模块以及出现此错误时工作进程中出现了何种情况。</li> \t<li>IIS 无法访问网站或应用程序的 web.config 文件。如果 NTFS 权限设置不正确，便会出现这种情况。</li> \t<li>IIS 无法处理网站或应用程序的配置。</li> \t<li>已经过身份验证的用户没有使用此 DLL 的权限。</li> \t<li>该请求将被映射到托管处理程序，但不会安装 .NET 可扩展功能。</li> </ul> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>可尝试的操作:</legend> \n  <ul> \t<li>确保 web.config 文件的 NTFS 权限正确，并允许访问 Web 服务器的计算机帐户。</li> \t<li>检查事件日志中是否记录了任何附加信息。</li> \t<li>确认 DLL 的权限。</li> \t<li>如果请求被映射到托管处理程序，则安装 .NET 可扩展功能。</li>  \t<li>创建跟踪规则以跟踪此 HTTP 状态代码的失败的请求。有关为失败的请求创建跟踪规则的详细信息，请单击<a href=\"http://go.microsoft.com/fwlink/?LinkID=66439\">此处</a>。</li> </ul> \n </fieldset> \n</div> \n \n \n<div class=\"content-container\"> \n <fieldset><legend>链接和更多信息</legend> \n  此错误表明在处理请求时出现问题。Web 服务器收到了请求，但在处理过程中出现错误，导致 500 错误。 \n  <p><a href=\"http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=500,0,0x00000000,7601\">查看更多信息 &raquo;</a></p> \n  <p>Microsoft 知识库文章:</p> \n <ul><li>294807</li></ul> \n \n </fieldset> \n</div> \n</div> \n</body> \n</html> \n"}http://127.0.0.1:8085/innerapi
+2018-11-12 10:47:41,486 [7] ERROR 【ERP接口调用错误】 - 【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>IIS 7.5 详细错误 - 500.0 - Internal Server Error</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 40px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; 
+ border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; 
+ border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.config_source{background:#fff5c4;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:normal;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{background-color:#ebebeb;} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="header"><h1>应用程序“APPSERVER”中的服务器错误</h1></div> 
+<div id="server_version"><p>Internet Information Services 7.5</p></div> 
+<div id="content"> 
+<div class="content-container"> 
+ <fieldset><legend>错误摘要</legend> 
+  <h2>HTTP 错误 500.0 - Internal Server Error</h2> 
+  <h3>无法显示页面，因为发生内部服务器错误。</h3> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>详细错误信息</legend> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>模块</th><td>ManagedPipelineHandler</td></tr> 
+    <tr><th>通知</th><td>ExecuteRequestHandler</td></tr> 
+    <tr class="alt"><th>处理程序</th><td>inner_api</td></tr> 
+    <tr><th>错误代码</th><td>0x00000000</td></tr> 
+     
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>请求的 URL</th><td>http://127.0.0.1:8085/innerapi</td></tr> 
+    <tr><th>物理路径</th><td>D:\站点\站点\业务\APPServer\innerapi</td></tr> 
+    <tr class="alt"><th>登录方法</th><td>匿名</td></tr> 
+    <tr><th>登录用户</th><td>匿名</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>最可能的原因:</legend> 
+  <ul> 	<li>IIS 收到了请求；但在处理请求过程中出现内部错误。此错误的根本原因取决于处理该请求的是哪一个模块以及出现此错误时工作进程中出现了何种情况。</li> 	<li>IIS 无法访问网站或应用程序的 web.config 文件。如果 NTFS 权限设置不正确，便会出现这种情况。</li> 	<li>IIS 无法处理网站或应用程序的配置。</li> 	<li>已经过身份验证的用户没有使用此 DLL 的权限。</li> 	<li>该请求将被映射到托管处理程序，但不会安装 .NET 可扩展功能。</li> </ul> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><legend>可尝试的操作:</legend> 
+  <ul> 	<li>确保 web.config 文件的 NTFS 权限正确，并允许访问 Web 服务器的计算机帐户。</li> 	<li>检查事件日志中是否记录了任何附加信息。</li> 	<li>确认 DLL 的权限。</li> 	<li>如果请求被映射到托管处理程序，则安装 .NET 可扩展功能。</li>  	<li>创建跟踪规则以跟踪此 HTTP 状态代码的失败的请求。有关为失败的请求创建跟踪规则的详细信息，请单击<a href="http://go.microsoft.com/fwlink/?LinkID=66439">此处</a>。</li> </ul> 
+ </fieldset> 
+</div> 
+ 
+ 
+<div class="content-container"> 
+ <fieldset><legend>链接和更多信息</legend> 
+  此错误表明在处理请求时出现问题。Web 服务器收到了请求，但在处理过程中出现错误，导致 500 错误。 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=500,0,0x00000000,7601">查看更多信息 &raquo;</a></p> 
+  <p>Microsoft 知识库文章:</p> 
+ <ul><li>294807</li></ul> 
+ 
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+
+2018-11-12 10:47:41,637 [7] ERROR CC.Public.Email.EmailSend - 邮件发送异常
+System.ArgumentException: The specified string is not in the form required for a subject.
+   at System.Net.Mail.Message.set_Subject(String value)
+   at CC.Public.Email.EmailSend.Send(String[] to, String subject, String body, Boolean isBodyHtml)
+2018-11-12 10:47:41,653 [7] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"【ERP接口调用错误】接口地址：http://127.0.0.1:8085/innerapi,服务器ip：127.0.0.1,调用方法：init_profile,错误信息：The remote server returned an error: (500) Internal Server Error.，响应信息：<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> \n<html xmlns=\"http://www.w3.org/1999/xhtml\"> \n<head> \n<title>IIS 7.5 详细错误 - 500.0 - Internal Server Error</title> \n<style type=\"text/css\"> \n<!-- \nbody{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;background:#CBE1EF;} \ncode{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} \n.config_source code{font-size:.8em;color:#000000;} \npre{margin:0;font-size:1.4em;word-wrap:break-word;} \nul,ol{margin:10px 0 10px 40px;} \nul.first,ol.first{margin-top:5px;} \nfieldset{padding:0 15px 10px 15px;} \n.summary-container fieldset{padding-bottom:5px;margin-top:4px;} \nlegend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} \nlegend{color:#333333;padding:4px 15px 4px 10px;margin:4px 0 8px -12px;_margin-top:0px; \n border-top:1px solid #EDEDED;border-left:1px solid #EDEDED;border-right:1px solid #969696; \n border-bottom:1px solid #969696;background:#E7ECF0;font-weight:bold;font-size:1em;} \na:link,a:visited{color:#007EFF;font-weight:bold;} \na:hover{text-decoration:none;} \nh1{font-size:2.4em;margin:0;color:#FFF;} \nh2{font-size:1.7em;margin:0;color:#CC0000;} \nh3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} \nh4{font-size:1.2em;margin:10px 0 5px 0; \n}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:\"trebuchet MS\",Verdana,sans-serif; \n color:#FFF;background-color:#5C87B2; \n}#content{margin:0 0 0 2%;position:relative;} \n.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} \n.config_source{background:#fff5c4;} \n.content-container p{margin:0 0 10px 0; \n}#details-left{width:35%;float:left;margin-right:2%; \n}#details-right{width:63%;float:left;overflow:hidden; \n}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; \n background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; \n font-size:1em;color:#FFF;text-align:right; \n}#server_version p{margin:5px 0;} \ntable{margin:4px 0 4px 0;width:100%;border:none;} \ntd,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:bold;border:none;} \nth{width:30%;text-align:right;padding-right:2%;font-weight:normal;} \nthead th{background-color:#ebebeb;width:25%; \n}#details-right th{width:20%;} \ntable tr.alt td,table tr.alt th{background-color:#ebebeb;} \n.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} \n.clear{clear:both;} \n.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} \n--> \n</style> \n \n</head> \n<body> \n<div id=\"header\"><h1>应用程序“APPSERVER”中的服务器错误</h1></div> \n<div id=\"server_version\"><p>Internet Information Services 7.5</p></div> \n<div id=\"content\"> \n<div class=\"content-container\"> \n <fieldset><legend>错误摘要</legend> \n  <h2>HTTP 错误 500.0 - Internal Server Error</h2> \n  <h3>无法显示页面，因为发生内部服务器错误。</h3> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>详细错误信息</legend> \n  <div id=\"details-left\"> \n   <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> \n    <tr class=\"alt\"><th>模块</th><td>ManagedPipelineHandler</td></tr> \n    <tr><th>通知</th><td>ExecuteRequestHandler</td></tr> \n    <tr class=\"alt\"><th>处理程序</th><td>inner_api</td></tr> \n    <tr><th>错误代码</th><td>0x00000000</td></tr> \n     \n   </table> \n  </div> \n  <div id=\"details-right\"> \n   <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> \n    <tr class=\"alt\"><th>请求的 URL</th><td>http://127.0.0.1:8085/innerapi</td></tr> \n    <tr><th>物理路径</th><td>D:\\站点\\站点\\业务\\APPServer\\innerapi</td></tr> \n    <tr class=\"alt\"><th>登录方法</th><td>匿名</td></tr> \n    <tr><th>登录用户</th><td>匿名</td></tr> \n     \n   </table> \n   <div class=\"clear\"></div> \n  </div> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>最可能的原因:</legend> \n  <ul> \t<li>IIS 收到了请求；但在处理请求过程中出现内部错误。此错误的根本原因取决于处理该请求的是哪一个模块以及出现此错误时工作进程中出现了何种情况。</li> \t<li>IIS 无法访问网站或应用程序的 web.config 文件。如果 NTFS 权限设置不正确，便会出现这种情况。</li> \t<li>IIS 无法处理网站或应用程序的配置。</li> \t<li>已经过身份验证的用户没有使用此 DLL 的权限。</li> \t<li>该请求将被映射到托管处理程序，但不会安装 .NET 可扩展功能。</li> </ul> \n </fieldset> \n</div> \n<div class=\"content-container\"> \n <fieldset><legend>可尝试的操作:</legend> \n  <ul> \t<li>确保 web.config 文件的 NTFS 权限正确，并允许访问 Web 服务器的计算机帐户。</li> \t<li>检查事件日志中是否记录了任何附加信息。</li> \t<li>确认 DLL 的权限。</li> \t<li>如果请求被映射到托管处理程序，则安装 .NET 可扩展功能。</li>  \t<li>创建跟踪规则以跟踪此 HTTP 状态代码的失败的请求。有关为失败的请求创建跟踪规则的详细信息，请单击<a href=\"http://go.microsoft.com/fwlink/?LinkID=66439\">此处</a>。</li> </ul> \n </fieldset> \n</div> \n \n \n<div class=\"content-container\"> \n <fieldset><legend>链接和更多信息</legend> \n  此错误表明在处理请求时出现问题。Web 服务器收到了请求，但在处理过程中出现错误，导致 500 错误。 \n  <p><a href=\"http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=500,0,0x00000000,7601\">查看更多信息 &raquo;</a></p> \n  <p>Microsoft 知识库文章:</p> \n <ul><li>294807</li></ul> \n \n </fieldset> \n</div> \n</div> \n</body> \n</html> \n"}http://127.0.0.1:8085/innerapi
+2018-11-12 10:51:52,728 [15] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 11:03:34,495 [34] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 11:03:42,953 [14] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 11:03:52,877 [14] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 11:14:51,573 [51] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:53,711 [42] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:54,750 [53] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:55,374 [49] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:55,627 [51] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:55,826 [42] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:56,003 [53] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:56,178 [52] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:56,351 [49] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:56,510 [51] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:14:56,656 [42] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 11:15:33,427 [51] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 11:15:57,907 [7] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 12:36:53,435 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 13:09:30,419 [7] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 13:10:48,617 [7] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 13:34:10,442 [7] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 13:37:04,845 [7] ERROR register - 注册错误
+CC.Public.CCAlarm: 短信验证码错误
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 13:37:44,399 [7] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 13:43:11,035 [12] ERROR error - 错误记录
+System.Exception: 获取不到代理商信息
+   at CC.InnerBLL.BLL.Agent.AgentInfo.get_Current()
+   at ASP._Page_Views_Home_Index_cshtml.Execute() in d:\lkhost\Views\Home\Index.cshtml:line 21
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2018-11-12 13:43:56,987 [12] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 13:43:57,976 [7] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 13:43:58,605 [9] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 13:43:58,939 [10] ERROR register - 注册错误
+CC.Framework.SmsCodeInvalidException: 短信验证码已过期，请重新获取
+   at CC.Framework.GlobalBLL.GetVCode(VCodeType type, String mobile)
+   at CC.ERP.Portal.Controllers.AccountController.PackageRegisterData(FormCollection collection, Boolean fromMobile)
+2018-11-12 13:45:20,179 [11] ERROR 客户注册 - 账套初始化错误：{"success":false,"message":"Unknown column 'paymentcodepic' in 'field list'"}http://127.0.0.1:8085/innerapi
+2018-11-12 14:36:53,524 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 16:36:53,990 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 18:36:53,593 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 20:36:53,716 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-11-12 22:36:53,807 [7] ERROR error - 错误记录
+System.Web.HttpException (0x80004005): The controller for path '/messenger-front/get' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
